@@ -12,8 +12,7 @@ env/
 # Mac
 .DS_Store
 
-# Data
-data/
-*data.parquet
-*data.csv
+# ignore processed data
+data/processed/
+data/raw/
 
