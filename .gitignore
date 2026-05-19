@@ -1,0 +1,21 @@
+nano .gitignore
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Virtual env
+.venv/
+venv/
+env/
+
+# Mac
+.DS_Store
+
+# Data
+data/
+*.parquet
+*.csv
+*.h5
+*.pkl
+
