@@ -73,6 +73,7 @@ DECILE           = 0.10
 MIN_STOCKS       = 100
 MAX_NAN_FRAC     = 0.30
 CHECKPOINT_EVERY = 12
+RET_CAP          = 1.0    # ← add this
 
 # Identifier / flag columns — never used as predictors
 _META = {
@@ -186,6 +187,7 @@ def preprocess(
     t_prev: pd.Timestamp,
     t: pd.Timestamp,
     char_cols: list[str],
+    ret_cap: float = 1.0,
 ) -> tuple[np.ndarray, np.ndarray, pd.DataFrame] | tuple[None, None, None]:
     """
     Build training arrays (from month t-1) and signal DataFrame (from month t).
@@ -199,6 +201,11 @@ def preprocess(
         return None, None, None
 
     train = slices[t_prev].dropna(subset=[Y_COL])
+
+    # ── Remove extreme return observations ───────────────────────────
+    train = train[train[Y_COL].abs() <= ret_cap]
+    # ─────────────────────────────────────────────────────────────────
+
     if len(train) < MIN_STOCKS:
         return None, None, None
 
@@ -293,6 +300,7 @@ def construct_portfolio(
     prev_long_ids: set | None,
     prev_short_ids: set | None,
     tc_bps: float,
+    ret_cap: float = 1.0,
 ) -> tuple[pd.DataFrame, dict] | tuple[None, None]:
     """
     Form equal-weighted long-short decile portfolio and compute returns.
@@ -301,6 +309,10 @@ def construct_portfolio(
     final months of the dataset where ret_exc_lead1m is all NaN).
     """
     tc = tc_bps / 10_000
+
+    # ── Remove extreme realized returns ──────────────────────────────
+    realized = realized[realized.abs() <= ret_cap]
+    # ─────────────────────────────────────────────────────────────────
 
     common = predicted.index.intersection(realized.dropna().index)
     pred_c = predicted.reindex(common).dropna()
