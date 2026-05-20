@@ -534,7 +534,7 @@ def _flush(
 # ══════════════════════════════════════════════════════════════════════════════
 
 def run_backtest(
-    start_year: int = 1990,
+    start_year: int = 1981,
     tc_bps: float = 10.0,
     resume: bool = False,
 ) -> pd.DataFrame:
@@ -730,8 +730,8 @@ if __name__ == "__main__":
         description="Cross-sectional XGBoost equity backtest on JKP USA data."
     )
     parser.add_argument(
-        "--start", type=int, default=1990,
-        help="First year for portfolio returns (default: 1990).",
+        "--start", type=int, default=1981,
+        help="First year for portfolio returns (default: 1981).",
     )
     parser.add_argument(
         "--tc", type=float, default=10.0,

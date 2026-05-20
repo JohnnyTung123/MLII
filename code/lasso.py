@@ -125,7 +125,7 @@ def preprocess(
     t: pd.Timestamp,
     char_cols: list[str],
     ret_cap: float = 1.0,   # drop stocks with |realized return| > this
-) -> tuple[np.ndarray, np.ndarray, pd.DataFrame, SimpleImputer] | tuple[None, ...]:
+) -> tuple[np.ndarray, np.ndarray, pd.DataFrame, SimpleImputer, list[str]] | tuple[None, ...]:
     """
     Build training arrays (from month t-1) and signal DataFrame (from month t).
 
@@ -133,14 +133,17 @@ def preprocess(
         y  = Y_COL at t-1    — excess return realized at month t
         X  = char_cols[t-1]  — characteristics known at end of month t-1
         Missing feature values are imputed with the cross-sectional mean.
+        Columns that are entirely NaN in the training month are excluded so
+        that sklearn >= 1.2's SimpleImputer (which drops all-NaN columns by
+        default) never sees a shape mismatch between X and model.coef_.
 
     Signal:
-        DataFrame at month t; includes char_cols and Y_COL (for evaluation only).
+        DataFrame at month t; includes active_cols and Y_COL (for evaluation only).
 
-    Returns (None, None, None, None) if too few training stocks.
+    Returns (None, None, None, None, None) if too few training stocks.
     """
     if t_prev not in slices or t not in slices:
-        return None, None, None, None
+        return None, None, None, None, None
 
     train = slices[t_prev].dropna(subset=[Y_COL])
 
@@ -149,16 +152,25 @@ def preprocess(
     # ─────────────────────────────────────────────────────────────────
 
     if len(train) < MIN_STOCKS:
-        return None, None, None, None
+        return None, None, None, None, None
 
-    y_train = train[Y_COL].values
-    X_train = train[char_cols].values
+    y_train   = train[Y_COL].values
+    X_raw     = train[char_cols].values
+
+    # Drop columns that are entirely NaN in this training cross-section.
+    # sklearn >= 1.2 SimpleImputer removes such columns by default, which
+    # would make model.coef_ shorter than char_cols and cause a length
+    # mismatch when building the coef Series. Early-period data (e.g. 1981)
+    # can have many characteristics not yet available.
+    has_data    = ~np.isnan(X_raw).all(axis=0)
+    active_cols = [c for c, v in zip(char_cols, has_data) if v]
+    X_train     = X_raw[:, has_data]
 
     imputer     = SimpleImputer(strategy="mean")
     X_train_imp = imputer.fit_transform(X_train)
 
-    signal_df = slices[t][char_cols + [Y_COL]]
-    return X_train_imp, y_train, signal_df, imputer
+    signal_df = slices[t][active_cols + [Y_COL]]
+    return X_train_imp, y_train, signal_df, imputer, active_cols
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -482,7 +494,7 @@ def _flush(
 # ══════════════════════════════════════════════════════════════════════════════
 
 def run_backtest(
-    start_year: int = 1990,
+    start_year: int = 1981,
     tc_bps: float = 10.0,
     resume: bool = False,
 ) -> pd.DataFrame:
@@ -537,15 +549,15 @@ def run_backtest(
         t_prev = months[i - 1]
 
         # ── Preprocess ────────────────────────────────────────────────────────
-        X_train, y_train, signal_df, imputer = preprocess(slices, t_prev, t, char_cols)
+        X_train, y_train, signal_df, imputer, active_cols = preprocess(slices, t_prev, t, char_cols)
         if X_train is None:
             continue
 
         # ── Train ─────────────────────────────────────────────────────────────
-        model, scaler, coefs = train_lasso(X_train, y_train, char_cols)
+        model, scaler, coefs = train_lasso(X_train, y_train, active_cols)
 
         # ── Signal generation ─────────────────────────────────────────────────
-        predicted, realized = generate_signals(model, scaler, imputer, signal_df, char_cols)
+        predicted, realized = generate_signals(model, scaler, imputer, signal_df, active_cols)
         if predicted is None:
             continue
 
@@ -579,7 +591,7 @@ def run_backtest(
         port_df["eom"] = t
         port_buf.append(port_df)
 
-        coef_s      = coefs.copy()
+        coef_s      = coefs.reindex(char_cols)   # NaN for cols absent this month
         coef_s.name = t
         coef_buf.append(coef_s)
 
@@ -662,8 +674,8 @@ if __name__ == "__main__":
         description="Cross-sectional LASSO equity backtest on JKP USA data."
     )
     parser.add_argument(
-        "--start", type=int, default=1990,
-        help="First year for portfolio returns (default: 1990).",
+        "--start", type=int, default=1981,
+        help="First year for portfolio returns (default: 1981).",
     )
     parser.add_argument(
         "--tc", type=float, default=10.0,
