@@ -1,0 +1,712 @@
+2026-05-21 19:25:44  INFO      ======================================================================
+2026-05-21 19:25:44  INFO      NEW RUN — 2026-05-21 19:25:44
+2026-05-21 19:25:44  INFO      ======================================================================
+2026-05-21 19:25:44  INFO      Config: start_year=1981  tc=10.0 bps  max_depth=4  lr=0.05  n_estimators=500  early_stopping=30  val_frac=0.2  window=expanding
+2026-05-21 19:25:44  INFO      Loading data.parquet …
+2026-05-21 19:25:58  INFO        2,256,068 rows  |  408 candidate predictors  |  540 months
+2026-05-21 19:26:11  INFO      Backtest: 1981-02-28 → 2025-12-31  |  539 months  |  TC = 10.0 bps one-way
+2026-05-21 19:26:11  DEBUG         XGBoost: best_iteration=61  top_feature=eqnpo_me
+2026-05-21 19:26:11  INFO        [retrain]  1981-02-28  n_train=2,675  n_features=133
+2026-05-21 19:26:11  INFO      1981-02-28  |  qspread=+0.0002  IC=+0.029  trees= 61  n_train=2,675  n_universe=2,678
+2026-05-21 19:26:11  INFO      1981-03-31  |  qspread=-0.0057  IC=+0.030  trees= 61  n_train=2,675  n_universe=2,690
+2026-05-21 19:26:11  INFO      1981-04-30  |  qspread=-0.0335  IC=-0.033  trees= 61  n_train=2,675  n_universe=2,696
+2026-05-21 19:26:11  INFO      1981-05-31  |  qspread=+0.0867  IC=+0.267  trees= 61  n_train=2,675  n_universe=2,706
+2026-05-21 19:26:11  INFO      1981-06-30  |  qspread=+0.0141  IC=+0.062  trees= 61  n_train=2,675  n_universe=2,714
+2026-05-21 19:26:11  INFO      1981-07-31  |  qspread=+0.0665  IC=+0.219  trees= 61  n_train=2,675  n_universe=2,723
+2026-05-21 19:26:11  INFO      1981-08-31  |  qspread=+0.0592  IC=+0.194  trees= 61  n_train=2,675  n_universe=2,721
+2026-05-21 19:26:11  INFO      1981-09-30  |  qspread=-0.0383  IC=-0.090  trees= 61  n_train=2,675  n_universe=2,718
+2026-05-21 19:26:11  INFO      1981-10-31  |  qspread=+0.0178  IC=+0.091  trees= 61  n_train=2,675  n_universe=2,721
+2026-05-21 19:26:11  INFO      1981-11-30  |  qspread=+0.0252  IC=+0.112  trees= 61  n_train=2,675  n_universe=2,722
+2026-05-21 19:26:11  INFO      1981-12-31  |  qspread=+0.0086  IC=+0.060  trees= 61  n_train=2,675  n_universe=2,759
+2026-05-21 19:26:12  DEBUG         XGBoost: best_iteration=21  top_feature=ret_2_0
+2026-05-21 19:26:12  INFO        [retrain]  1982-01-31  n_train=32,523  n_features=143
+2026-05-21 19:26:12  INFO      1982-01-31  |  qspread=+0.0266  IC=+0.132  trees= 21  n_train=32,523  n_universe=2,773
+2026-05-21 19:26:12  INFO        ✓ checkpoint saved  (1982-01-31)  elapsed=0m
+2026-05-21 19:26:12  INFO      1982-02-28  |  qspread=+0.0036  IC=+0.063  trees= 21  n_train=32,523  n_universe=2,761
+2026-05-21 19:26:12  INFO      1982-03-31  |  qspread=+0.0242  IC=-0.037  trees= 21  n_train=32,523  n_universe=2,817
+2026-05-21 19:26:12  INFO      1982-04-30  |  qspread=-0.0098  IC=+0.020  trees= 21  n_train=32,523  n_universe=2,814
+2026-05-21 19:26:12  INFO      1982-05-31  |  qspread=+0.0275  IC=+0.064  trees= 21  n_train=32,523  n_universe=2,806
+2026-05-21 19:26:12  INFO      1982-06-30  |  qspread=+0.0139  IC=-0.009  trees= 21  n_train=32,523  n_universe=2,813
+2026-05-21 19:26:12  INFO      1982-07-31  |  qspread=+0.0526  IC=+0.125  trees= 21  n_train=32,523  n_universe=2,807
+2026-05-21 19:26:12  INFO      1982-08-31  |  qspread=-0.0229  IC=+0.020  trees= 21  n_train=32,523  n_universe=2,797
+2026-05-21 19:26:12  INFO      1982-09-30  |  qspread=-0.0357  IC=-0.045  trees= 21  n_train=32,523  n_universe=2,789
+2026-05-21 19:26:12  INFO      1982-10-31  |  qspread=-0.0901  IC=-0.155  trees= 21  n_train=32,523  n_universe=2,795
+2026-05-21 19:26:12  INFO      1982-11-30  |  qspread=-0.0101  IC=+0.021  trees= 21  n_train=32,523  n_universe=2,795
+2026-05-21 19:26:12  INFO      1982-12-31  |  qspread=-0.0936  IC=-0.150  trees= 21  n_train=32,523  n_universe=2,803
+2026-05-21 19:26:12  DEBUG         XGBoost: best_iteration=0  top_feature=ret_3_0
+2026-05-21 19:26:12  INFO        [retrain]  1983-01-31  n_train=66,093  n_features=191
+2026-05-21 19:26:12  INFO      1983-01-31  |  qspread=+0.0134  IC=+0.019  trees=  0  n_train=66,093  n_universe=2,805
+2026-05-21 19:26:12  INFO        ✓ checkpoint saved  (1983-01-31)  elapsed=0m
+2026-05-21 19:26:12  INFO      1983-02-28  |  qspread=+0.0176  IC=+0.039  trees=  0  n_train=66,093  n_universe=2,811
+2026-05-21 19:26:12  INFO      1983-03-31  |  qspread=+0.0058  IC=+0.054  trees=  0  n_train=66,093  n_universe=2,832
+2026-05-21 19:26:13  INFO      1983-04-30  |  qspread=-0.0243  IC=-0.061  trees=  0  n_train=66,093  n_universe=2,851
+2026-05-21 19:26:13  INFO      1983-05-31  |  qspread=-0.0032  IC=-0.041  trees=  0  n_train=66,093  n_universe=2,856
+2026-05-21 19:26:13  INFO      1983-06-30  |  qspread=-0.0034  IC=+0.086  trees=  0  n_train=66,093  n_universe=2,882
+2026-05-21 19:26:13  INFO      1983-07-31  |  qspread=+0.0147  IC=+0.067  trees=  0  n_train=66,093  n_universe=2,912
+2026-05-21 19:26:13  INFO      1983-08-31  |  qspread=+0.0359  IC=+0.112  trees=  0  n_train=66,093  n_universe=2,936
+2026-05-21 19:26:13  INFO      1983-09-30  |  qspread=+0.0383  IC=+0.086  trees=  0  n_train=66,093  n_universe=2,963
+2026-05-21 19:26:13  INFO      1983-10-31  |  qspread=+0.0535  IC=+0.075  trees=  0  n_train=66,093  n_universe=2,953
+2026-05-21 19:26:13  INFO      1983-11-30  |  qspread=+0.0068  IC=+0.126  trees=  0  n_train=66,093  n_universe=225
+2026-05-21 19:26:13  INFO      1983-12-31  |  qspread=+0.0491  IC=+0.153  trees=  0  n_train=66,093  n_universe=219
+2026-05-21 19:26:14  DEBUG         XGBoost: best_iteration=0  top_feature=ret_9_0
+2026-05-21 19:26:14  INFO        [retrain]  1984-01-31  n_train=95,338  n_features=230
+2026-05-21 19:26:14  INFO      1984-01-31  |  qspread=-0.0181  IC=-0.099  trees=  0  n_train=95,338  n_universe=2,167
+2026-05-21 19:26:14  INFO        ✓ checkpoint saved  (1984-01-31)  elapsed=0m
+2026-05-21 19:26:14  INFO      1984-02-29  |  qspread=+0.0203  IC=+0.051  trees=  0  n_train=95,338  n_universe=2,176
+2026-05-21 19:26:14  INFO      1984-03-31  |  qspread=+0.0183  IC=+0.101  trees=  0  n_train=95,338  n_universe=2,183
+2026-05-21 19:26:14  INFO      1984-04-30  |  qspread=-0.0172  IC=+0.004  trees=  0  n_train=95,338  n_universe=2,209
+2026-05-21 19:26:14  INFO      1984-05-31  |  qspread=+0.0064  IC=+0.005  trees=  0  n_train=95,338  n_universe=2,213
+2026-05-21 19:26:14  INFO      1984-06-30  |  qspread=-0.0085  IC=-0.073  trees=  0  n_train=95,338  n_universe=2,218
+2026-05-21 19:26:14  INFO      1984-07-31  |  qspread=+0.0013  IC=+0.031  trees=  0  n_train=95,338  n_universe=2,237
+2026-05-21 19:26:14  INFO      1984-08-31  |  qspread=-0.0163  IC=-0.083  trees=  0  n_train=95,338  n_universe=2,247
+2026-05-21 19:26:14  INFO      1984-09-30  |  qspread=-0.0119  IC=-0.070  trees=  0  n_train=95,338  n_universe=2,246
+2026-05-21 19:26:14  INFO      1984-10-31  |  qspread=+0.0125  IC=+0.098  trees=  0  n_train=95,338  n_universe=2,261
+2026-05-21 19:26:14  INFO      1984-11-30  |  qspread=+0.0026  IC=+0.071  trees=  0  n_train=95,338  n_universe=2,260
+2026-05-21 19:26:14  INFO      1984-12-31  |  qspread=-0.0491  IC=-0.128  trees=  0  n_train=95,338  n_universe=2,262
+2026-05-21 19:26:16  DEBUG         XGBoost: best_iteration=62  top_feature=eqnpo_3m
+2026-05-21 19:26:16  INFO        [retrain]  1985-01-31  n_train=122,017  n_features=241
+2026-05-21 19:26:16  INFO      1985-01-31  |  qspread=+0.0187  IC=+0.047  trees= 62  n_train=122,017  n_universe=2,264
+2026-05-21 19:26:16  INFO        ✓ checkpoint saved  (1985-01-31)  elapsed=0m
+2026-05-21 19:26:16  INFO      1985-02-28  |  qspread=+0.0225  IC=+0.026  trees= 62  n_train=122,017  n_universe=2,267
+2026-05-21 19:26:16  INFO      1985-03-31  |  qspread=+0.0294  IC=+0.032  trees= 62  n_train=122,017  n_universe=2,275
+2026-05-21 19:26:16  INFO      1985-04-30  |  qspread=+0.0335  IC=+0.022  trees= 62  n_train=122,017  n_universe=2,292
+2026-05-21 19:26:16  INFO      1985-05-31  |  qspread=+0.0110  IC=+0.019  trees= 62  n_train=122,017  n_universe=2,297
+2026-05-21 19:26:16  INFO      1985-06-30  |  qspread=-0.0179  IC=-0.007  trees= 62  n_train=122,017  n_universe=2,305
+2026-05-21 19:26:16  INFO      1985-07-31  |  qspread=+0.0213  IC=+0.057  trees= 62  n_train=122,017  n_universe=2,322
+2026-05-21 19:26:16  INFO      1985-08-31  |  qspread=+0.0390  IC=+0.121  trees= 62  n_train=122,017  n_universe=2,326
+2026-05-21 19:26:16  INFO      1985-09-30  |  qspread=-0.0139  IC=-0.010  trees= 62  n_train=122,017  n_universe=2,340
+2026-05-21 19:26:16  INFO      1985-10-31  |  qspread=+0.0025  IC=-0.040  trees= 62  n_train=122,017  n_universe=2,343
+2026-05-21 19:26:16  INFO      1985-11-30  |  qspread=+0.0244  IC=+0.061  trees= 62  n_train=122,017  n_universe=2,350
+2026-05-21 19:26:16  INFO      1985-12-31  |  qspread=+0.0381  IC=+0.055  trees= 62  n_train=122,017  n_universe=2,381
+2026-05-21 19:26:17  DEBUG         XGBoost: best_iteration=6  top_feature=eqnpo_12m
+2026-05-21 19:26:17  INFO        [retrain]  1986-01-31  n_train=149,779  n_features=249
+2026-05-21 19:26:17  INFO      1986-01-31  |  qspread=+0.0357  IC=+0.125  trees=  6  n_train=149,779  n_universe=2,387
+2026-05-21 19:26:18  INFO        ✓ checkpoint saved  (1986-01-31)  elapsed=0m
+2026-05-21 19:26:18  INFO      1986-02-28  |  qspread=+0.0417  IC=+0.123  trees=  6  n_train=149,779  n_universe=2,395
+2026-05-21 19:26:18  INFO      1986-03-31  |  qspread=-0.0153  IC=-0.047  trees=  6  n_train=149,779  n_universe=2,440
+2026-05-21 19:26:18  INFO      1986-04-30  |  qspread=+0.0233  IC=+0.063  trees=  6  n_train=149,779  n_universe=2,450
+2026-05-21 19:26:18  INFO      1986-05-31  |  qspread=+0.0304  IC=+0.073  trees=  6  n_train=149,779  n_universe=2,458
+2026-05-21 19:26:18  INFO      1986-06-30  |  qspread=+0.0274  IC=+0.059  trees=  6  n_train=149,779  n_universe=2,515
+2026-05-21 19:26:18  INFO      1986-07-31  |  qspread=-0.0107  IC=-0.040  trees=  6  n_train=149,779  n_universe=2,537
+2026-05-21 19:26:18  INFO      1986-08-31  |  qspread=+0.0095  IC=-0.008  trees=  6  n_train=149,779  n_universe=2,548
+2026-05-21 19:26:18  INFO      1986-09-30  |  qspread=-0.0148  IC=-0.027  trees=  6  n_train=149,779  n_universe=2,579
+2026-05-21 19:26:18  INFO      1986-10-31  |  qspread=+0.0067  IC=+0.028  trees=  6  n_train=149,779  n_universe=2,591
+2026-05-21 19:26:18  INFO      1986-11-30  |  qspread=+0.0242  IC=+0.057  trees=  6  n_train=149,779  n_universe=2,596
+2026-05-21 19:26:18  INFO      1986-12-31  |  qspread=-0.0278  IC=-0.049  trees=  6  n_train=149,779  n_universe=2,647
+2026-05-21 19:26:20  DEBUG         XGBoost: best_iteration=3  top_feature=fnl_gr1a
+2026-05-21 19:26:20  INFO        [retrain]  1987-01-31  n_train=179,922  n_features=250
+2026-05-21 19:26:20  INFO      1987-01-31  |  qspread=-0.0009  IC=-0.015  trees=  3  n_train=179,922  n_universe=2,650
+2026-05-21 19:26:20  INFO        ✓ checkpoint saved  (1987-01-31)  elapsed=0m
+2026-05-21 19:26:20  INFO      1987-02-28  |  qspread=+0.0123  IC=+0.063  trees=  3  n_train=179,922  n_universe=2,661
+2026-05-21 19:26:20  INFO      1987-03-31  |  qspread=+0.0319  IC=+0.052  trees=  3  n_train=179,922  n_universe=2,732
+2026-05-21 19:26:20  INFO      1987-04-30  |  qspread=+0.0203  IC=+0.060  trees=  3  n_train=179,922  n_universe=2,741
+2026-05-21 19:26:20  INFO      1987-05-31  |  qspread=+0.0081  IC=+0.020  trees=  3  n_train=179,922  n_universe=2,744
+2026-05-21 19:26:20  INFO      1987-06-30  |  qspread=+0.0256  IC=+0.131  trees=  3  n_train=179,922  n_universe=2,767
+2026-05-21 19:26:20  INFO      1987-07-31  |  qspread=-0.0106  IC=-0.058  trees=  3  n_train=179,922  n_universe=2,784
+2026-05-21 19:26:20  INFO      1987-08-31  |  qspread=+0.0295  IC=+0.078  trees=  3  n_train=179,922  n_universe=2,801
+2026-05-21 19:26:20  INFO      1987-09-30  |  qspread=+0.0201  IC=+0.008  trees=  3  n_train=179,922  n_universe=2,837
+2026-05-21 19:26:20  INFO      1987-10-31  |  qspread=+0.0312  IC=+0.050  trees=  3  n_train=179,922  n_universe=2,837
+2026-05-21 19:26:21  INFO      1987-11-30  |  qspread=-0.0127  IC=-0.023  trees=  3  n_train=179,922  n_universe=2,841
+2026-05-21 19:26:21  INFO      1987-12-31  |  qspread=-0.0036  IC=-0.028  trees=  3  n_train=179,922  n_universe=2,885
+2026-05-21 19:26:23  DEBUG         XGBoost: best_iteration=0  top_feature=at_gr1
+2026-05-21 19:26:23  INFO        [retrain]  1988-01-31  n_train=213,202  n_features=251
+2026-05-21 19:26:23  INFO      1988-01-31  |  qspread=-0.0070  IC=-0.093  trees=  0  n_train=213,202  n_universe=2,883
+2026-05-21 19:26:23  INFO        ✓ checkpoint saved  (1988-01-31)  elapsed=0m
+2026-05-21 19:26:23  INFO      1988-02-29  |  qspread=+0.0039  IC=-0.047  trees=  0  n_train=213,202  n_universe=2,886
+2026-05-21 19:26:23  INFO      1988-03-31  |  qspread=+0.0390  IC=+0.061  trees=  0  n_train=213,202  n_universe=2,902
+2026-05-21 19:26:23  INFO      1988-04-30  |  qspread=+0.0087  IC=+0.052  trees=  0  n_train=213,202  n_universe=2,895
+2026-05-21 19:26:23  INFO      1988-05-31  |  qspread=-0.0029  IC=+0.031  trees=  0  n_train=213,202  n_universe=2,901
+2026-05-21 19:26:23  INFO      1988-06-30  |  qspread=+0.0115  IC=+0.105  trees=  0  n_train=213,202  n_universe=2,918
+2026-05-21 19:26:23  INFO      1988-07-31  |  qspread=+0.0264  IC=+0.115  trees=  0  n_train=213,202  n_universe=2,916
+2026-05-21 19:26:23  INFO      1988-08-31  |  qspread=+0.0134  IC=+0.078  trees=  0  n_train=213,202  n_universe=2,909
+2026-05-21 19:26:23  INFO      1988-09-30  |  qspread=+0.0315  IC=+0.112  trees=  0  n_train=213,202  n_universe=2,932
+2026-05-21 19:26:23  INFO      1988-10-31  |  qspread=+0.0017  IC=+0.024  trees=  0  n_train=213,202  n_universe=2,936
+2026-05-21 19:26:23  INFO      1988-11-30  |  qspread=+0.0081  IC=+0.022  trees=  0  n_train=213,202  n_universe=2,934
+2026-05-21 19:26:23  INFO      1988-12-31  |  qspread=+0.0287  IC=+0.054  trees=  0  n_train=213,202  n_universe=2,934
+2026-05-21 19:26:25  DEBUG         XGBoost: best_iteration=0  top_feature=ret_18_1
+2026-05-21 19:26:25  INFO        [retrain]  1989-01-31  n_train=248,148  n_features=254
+2026-05-21 19:26:25  INFO      1989-01-31  |  qspread=+0.0130  IC=+0.006  trees=  0  n_train=248,148  n_universe=2,960
+2026-05-21 19:26:25  INFO        ✓ checkpoint saved  (1989-01-31)  elapsed=0m
+2026-05-21 19:26:25  INFO      1989-02-28  |  qspread=+0.0244  IC=+0.007  trees=  0  n_train=248,148  n_universe=2,959
+2026-05-21 19:26:25  INFO      1989-03-31  |  qspread=+0.0271  IC=+0.019  trees=  0  n_train=248,148  n_universe=2,971
+2026-05-21 19:26:25  INFO      1989-04-30  |  qspread=+0.0125  IC=+0.027  trees=  0  n_train=248,148  n_universe=2,972
+2026-05-21 19:26:25  INFO      1989-05-31  |  qspread=+0.0089  IC=-0.009  trees=  0  n_train=248,148  n_universe=2,972
+2026-05-21 19:26:25  INFO      1989-06-30  |  qspread=-0.0205  IC=-0.030  trees=  0  n_train=248,148  n_universe=2,982
+2026-05-21 19:26:25  INFO      1989-07-31  |  qspread=-0.0029  IC=+0.024  trees=  0  n_train=248,148  n_universe=2,984
+2026-05-21 19:26:25  INFO      1989-08-31  |  qspread=-0.0212  IC=-0.069  trees=  0  n_train=248,148  n_universe=2,982
+2026-05-21 19:26:25  INFO      1989-09-30  |  qspread=-0.0009  IC=-0.030  trees=  0  n_train=248,148  n_universe=2,981
+2026-05-21 19:26:25  INFO      1989-10-31  |  qspread=-0.0156  IC=-0.068  trees=  0  n_train=248,148  n_universe=2,992
+2026-05-21 19:26:25  INFO      1989-11-30  |  qspread=+0.0052  IC=-0.030  trees=  0  n_train=248,148  n_universe=2,995
+2026-05-21 19:26:25  INFO      1989-12-31  |  qspread=+0.0122  IC=+0.020  trees=  0  n_train=248,148  n_universe=2,993
+2026-05-21 19:26:28  DEBUG         XGBoost: best_iteration=0  top_feature=ret_18_1
+2026-05-21 19:26:28  INFO        [retrain]  1990-01-31  n_train=283,891  n_features=255
+2026-05-21 19:26:28  INFO      1990-01-31  |  qspread=-0.0011  IC=-0.004  trees=  0  n_train=283,891  n_universe=2,993
+2026-05-21 19:26:28  INFO        ✓ checkpoint saved  (1990-01-31)  elapsed=0m
+2026-05-21 19:26:28  INFO      1990-02-28  |  qspread=+0.0208  IC=+0.062  trees=  0  n_train=283,891  n_universe=2,993
+2026-05-21 19:26:28  INFO      1990-03-31  |  qspread=+0.0243  IC=+0.007  trees=  0  n_train=283,891  n_universe=2,996
+2026-05-21 19:26:28  INFO      1990-04-30  |  qspread=-0.0079  IC=-0.021  trees=  0  n_train=283,891  n_universe=3,019
+2026-05-21 19:26:28  INFO      1990-05-31  |  qspread=+0.0034  IC=+0.022  trees=  0  n_train=283,891  n_universe=3,029
+2026-05-21 19:26:28  INFO      1990-06-30  |  qspread=-0.0045  IC=-0.059  trees=  0  n_train=283,891  n_universe=3,046
+2026-05-21 19:26:28  INFO      1990-07-31  |  qspread=-0.0133  IC=-0.080  trees=  0  n_train=283,891  n_universe=3,058
+2026-05-21 19:26:28  INFO      1990-08-31  |  qspread=-0.0223  IC=-0.120  trees=  0  n_train=283,891  n_universe=3,061
+2026-05-21 19:26:28  INFO      1990-09-30  |  qspread=-0.0034  IC=-0.055  trees=  0  n_train=283,891  n_universe=3,061
+2026-05-21 19:26:28  INFO      1990-10-31  |  qspread=+0.0181  IC=+0.043  trees=  0  n_train=283,891  n_universe=3,064
+2026-05-21 19:26:28  INFO      1990-11-30  |  qspread=+0.0022  IC=+0.007  trees=  0  n_train=283,891  n_universe=3,062
+2026-05-21 19:26:28  INFO      1990-12-31  |  qspread=+0.0612  IC=+0.166  trees=  0  n_train=283,891  n_universe=3,069
+2026-05-21 19:26:31  DEBUG         XGBoost: best_iteration=0  top_feature=ret_18_1
+2026-05-21 19:26:31  INFO        [retrain]  1991-01-31  n_train=320,342  n_features=255
+2026-05-21 19:26:31  INFO      1991-01-31  |  qspread=+0.0014  IC=+0.031  trees=  0  n_train=320,342  n_universe=3,067
+2026-05-21 19:26:31  INFO        ✓ checkpoint saved  (1991-01-31)  elapsed=0m
+2026-05-21 19:26:31  INFO      1991-02-28  |  qspread=+0.0093  IC=+0.014  trees=  0  n_train=320,342  n_universe=3,079
+2026-05-21 19:26:31  INFO      1991-03-31  |  qspread=+0.0107  IC=+0.006  trees=  0  n_train=320,342  n_universe=3,094
+2026-05-21 19:26:31  INFO      1991-04-30  |  qspread=-0.0038  IC=-0.021  trees=  0  n_train=320,342  n_universe=3,109
+2026-05-21 19:26:31  INFO      1991-05-31  |  qspread=+0.0062  IC=+0.007  trees=  0  n_train=320,342  n_universe=3,117
+2026-05-21 19:26:31  INFO      1991-06-30  |  qspread=-0.0108  IC=-0.028  trees=  0  n_train=320,342  n_universe=3,130
+2026-05-21 19:26:31  INFO      1991-07-31  |  qspread=-0.0171  IC=-0.051  trees=  0  n_train=320,342  n_universe=3,152
+2026-05-21 19:26:31  INFO      1991-08-31  |  qspread=-0.0299  IC=-0.057  trees=  0  n_train=320,342  n_universe=3,157
+2026-05-21 19:26:31  INFO      1991-09-30  |  qspread=-0.0245  IC=-0.054  trees=  0  n_train=320,342  n_universe=3,180
+2026-05-21 19:26:31  INFO      1991-10-31  |  qspread=+0.0002  IC=+0.032  trees=  0  n_train=320,342  n_universe=3,200
+2026-05-21 19:26:31  INFO      1991-11-30  |  qspread=-0.0654  IC=-0.093  trees=  0  n_train=320,342  n_universe=3,225
+2026-05-21 19:26:31  INFO      1991-12-31  |  qspread=+0.0517  IC=+0.085  trees=  0  n_train=320,342  n_universe=3,231
+2026-05-21 19:26:37  DEBUG         XGBoost: best_iteration=69  top_feature=ret_24_12
+2026-05-21 19:26:37  INFO        [retrain]  1992-01-31  n_train=358,083  n_features=257
+2026-05-21 19:26:37  INFO      1992-01-31  |  qspread=+0.0472  IC=+0.082  trees= 69  n_train=358,083  n_universe=3,269
+2026-05-21 19:26:37  INFO        ✓ checkpoint saved  (1992-01-31)  elapsed=0m
+2026-05-21 19:26:38  INFO      1992-02-29  |  qspread=+0.0360  IC=+0.101  trees= 69  n_train=358,083  n_universe=3,289
+2026-05-21 19:26:38  INFO      1992-03-31  |  qspread=+0.0656  IC=+0.113  trees= 69  n_train=358,083  n_universe=3,333
+2026-05-21 19:26:38  INFO      1992-04-30  |  qspread=+0.0177  IC=+0.013  trees= 69  n_train=358,083  n_universe=3,339
+2026-05-21 19:26:38  INFO      1992-05-31  |  qspread=+0.0043  IC=+0.027  trees= 69  n_train=358,083  n_universe=3,355
+2026-05-21 19:26:38  INFO      1992-06-30  |  qspread=-0.0012  IC=-0.024  trees= 69  n_train=358,083  n_universe=3,388
+2026-05-21 19:26:38  INFO      1992-07-31  |  qspread=+0.0272  IC=+0.053  trees= 69  n_train=358,083  n_universe=3,398
+2026-05-21 19:26:38  INFO      1992-08-31  |  qspread=-0.0050  IC=-0.036  trees= 69  n_train=358,083  n_universe=3,412
+2026-05-21 19:26:38  INFO      1992-09-30  |  qspread=+0.0066  IC=-0.016  trees= 69  n_train=358,083  n_universe=3,433
+2026-05-21 19:26:38  INFO      1992-10-31  |  qspread=-0.0180  IC=+0.001  trees= 69  n_train=358,083  n_universe=3,440
+2026-05-21 19:26:38  INFO      1992-11-30  |  qspread=+0.0090  IC=+0.044  trees= 69  n_train=358,083  n_universe=3,454
+2026-05-21 19:26:38  INFO      1992-12-31  |  qspread=+0.0399  IC=+0.085  trees= 69  n_train=358,083  n_universe=3,484
+2026-05-21 19:26:42  DEBUG         XGBoost: best_iteration=0  top_feature=ret_24_12
+2026-05-21 19:26:42  INFO        [retrain]  1993-01-31  n_train=398,677  n_features=262
+2026-05-21 19:26:42  INFO      1993-01-31  |  qspread=+0.0275  IC=+0.033  trees=  0  n_train=398,677  n_universe=3,500
+2026-05-21 19:26:42  INFO        ✓ checkpoint saved  (1993-01-31)  elapsed=0m
+2026-05-21 19:26:42  INFO      1993-02-28  |  qspread=-0.0069  IC=+0.012  trees=  0  n_train=398,677  n_universe=3,512
+2026-05-21 19:26:42  INFO      1993-03-31  |  qspread=-0.0020  IC=+0.033  trees=  0  n_train=398,677  n_universe=3,568
+2026-05-21 19:26:42  INFO      1993-04-30  |  qspread=-0.0147  IC=-0.026  trees=  0  n_train=398,677  n_universe=3,581
+2026-05-21 19:26:42  INFO      1993-05-31  |  qspread=+0.0013  IC=+0.025  trees=  0  n_train=398,677  n_universe=3,605
+2026-05-21 19:26:42  INFO      1993-06-30  |  qspread=+0.0027  IC=+0.020  trees=  0  n_train=398,677  n_universe=3,651
+2026-05-21 19:26:42  INFO      1993-07-31  |  qspread=-0.0026  IC=-0.013  trees=  0  n_train=398,677  n_universe=3,673
+2026-05-21 19:26:42  INFO      1993-08-31  |  qspread=-0.0078  IC=-0.012  trees=  0  n_train=398,677  n_universe=3,693
+2026-05-21 19:26:42  INFO      1993-09-30  |  qspread=-0.0129  IC=+0.003  trees=  0  n_train=398,677  n_universe=3,729
+2026-05-21 19:26:42  INFO      1993-10-31  |  qspread=+0.0059  IC=+0.005  trees=  0  n_train=398,677  n_universe=3,755
+2026-05-21 19:26:42  INFO      1993-11-30  |  qspread=+0.0093  IC=+0.006  trees=  0  n_train=398,677  n_universe=3,783
+2026-05-21 19:26:42  INFO      1993-12-31  |  qspread=-0.0020  IC=+0.011  trees=  0  n_train=398,677  n_universe=3,854
+2026-05-21 19:26:46  DEBUG         XGBoost: best_iteration=0  top_feature=ret_24_12
+2026-05-21 19:26:46  INFO        [retrain]  1994-01-31  n_train=442,581  n_features=265
+2026-05-21 19:26:46  INFO      1994-01-31  |  qspread=-0.0043  IC=+0.026  trees=  0  n_train=442,581  n_universe=3,878
+2026-05-21 19:26:46  INFO        ✓ checkpoint saved  (1994-01-31)  elapsed=0m
+2026-05-21 19:26:46  INFO      1994-02-28  |  qspread=-0.0015  IC=-0.018  trees=  0  n_train=442,581  n_universe=3,902
+2026-05-21 19:26:46  INFO      1994-03-31  |  qspread=+0.0035  IC=-0.002  trees=  0  n_train=442,581  n_universe=3,941
+2026-05-21 19:26:46  INFO      1994-04-30  |  qspread=+0.0034  IC=-0.019  trees=  0  n_train=442,581  n_universe=3,970
+2026-05-21 19:26:46  INFO      1994-05-31  |  qspread=-0.0264  IC=-0.078  trees=  0  n_train=442,581  n_universe=3,992
+2026-05-21 19:26:46  INFO      1994-06-30  |  qspread=+0.0149  IC=+0.037  trees=  0  n_train=442,581  n_universe=4,027
+2026-05-21 19:26:46  INFO      1994-07-31  |  qspread=+0.0257  IC=+0.054  trees=  0  n_train=442,581  n_universe=4,023
+2026-05-21 19:26:46  INFO      1994-08-31  |  qspread=+0.0151  IC=-0.002  trees=  0  n_train=442,581  n_universe=4,036
+2026-05-21 19:26:46  INFO      1994-09-30  |  qspread=+0.0353  IC=+0.073  trees=  0  n_train=442,581  n_universe=4,063
+2026-05-21 19:26:46  INFO      1994-10-31  |  qspread=-0.0038  IC=+0.012  trees=  0  n_train=442,581  n_universe=4,072
+2026-05-21 19:26:46  INFO      1994-11-30  |  qspread=+0.0012  IC=+0.051  trees=  0  n_train=442,581  n_universe=4,083
+2026-05-21 19:26:46  INFO      1994-12-31  |  qspread=+0.0070  IC=+0.004  trees=  0  n_train=442,581  n_universe=4,080
+2026-05-21 19:26:56  DEBUG         XGBoost: best_iteration=95  top_feature=ret_24_1
+2026-05-21 19:26:56  INFO        [retrain]  1995-01-31  n_train=490,648  n_features=264
+2026-05-21 19:26:57  INFO      1995-01-31  |  qspread=+0.0157  IC=+0.044  trees= 95  n_train=490,648  n_universe=4,101
+2026-05-21 19:26:57  INFO        ✓ checkpoint saved  (1995-01-31)  elapsed=0m
+2026-05-21 19:26:57  INFO      1995-02-28  |  qspread=+0.0106  IC=+0.010  trees= 95  n_train=490,648  n_universe=4,109
+2026-05-21 19:26:57  INFO      1995-03-31  |  qspread=+0.0222  IC=+0.066  trees= 95  n_train=490,648  n_universe=4,115
+2026-05-21 19:26:57  INFO      1995-04-30  |  qspread=+0.0054  IC=-0.004  trees= 95  n_train=490,648  n_universe=4,125
+2026-05-21 19:26:57  INFO      1995-05-31  |  qspread=-0.0130  IC=+0.036  trees= 95  n_train=490,648  n_universe=4,131
+2026-05-21 19:26:57  INFO      1995-06-30  |  qspread=+0.0379  IC=+0.060  trees= 95  n_train=490,648  n_universe=4,149
+2026-05-21 19:26:57  INFO      1995-07-31  |  qspread=+0.0109  IC=-0.001  trees= 95  n_train=490,648  n_universe=4,170
+2026-05-21 19:26:57  INFO      1995-08-31  |  qspread=+0.0204  IC=+0.050  trees= 95  n_train=490,648  n_universe=4,192
+2026-05-21 19:26:57  INFO      1995-09-30  |  qspread=+0.0299  IC=+0.084  trees= 95  n_train=490,648  n_universe=4,199
+2026-05-21 19:26:57  INFO      1995-10-31  |  qspread=+0.0032  IC=+0.053  trees= 95  n_train=490,648  n_universe=4,227
+2026-05-21 19:26:57  INFO      1995-11-30  |  qspread=-0.0354  IC=-0.084  trees= 95  n_train=490,648  n_universe=4,249
+2026-05-21 19:26:57  INFO      1995-12-31  |  qspread=+0.0198  IC=+0.010  trees= 95  n_train=490,648  n_universe=4,259
+2026-05-21 19:27:12  DEBUG         XGBoost: best_iteration=125  top_feature=lt_gr1
+2026-05-21 19:27:12  INFO        [retrain]  1996-01-31  n_train=540,674  n_features=266
+2026-05-21 19:27:13  INFO      1996-01-31  |  qspread=+0.0004  IC=+0.032  trees=125  n_train=540,674  n_universe=4,281
+2026-05-21 19:27:13  INFO        ✓ checkpoint saved  (1996-01-31)  elapsed=1m
+2026-05-21 19:27:13  INFO      1996-02-29  |  qspread=+0.0134  IC=+0.046  trees=125  n_train=540,674  n_universe=4,289
+2026-05-21 19:27:13  INFO      1996-03-31  |  qspread=+0.0427  IC=+0.082  trees=125  n_train=540,674  n_universe=4,307
+2026-05-21 19:27:13  INFO      1996-04-30  |  qspread=+0.0428  IC=+0.060  trees=125  n_train=540,674  n_universe=4,337
+2026-05-21 19:27:13  INFO      1996-05-31  |  qspread=+0.0161  IC=+0.023  trees=125  n_train=540,674  n_universe=4,378
+2026-05-21 19:27:13  INFO      1996-06-30  |  qspread=+0.0389  IC=+0.055  trees=125  n_train=540,674  n_universe=4,407
+2026-05-21 19:27:13  INFO      1996-07-31  |  qspread=+0.0071  IC=+0.022  trees=125  n_train=540,674  n_universe=4,428
+2026-05-21 19:27:13  INFO      1996-08-31  |  qspread=+0.0225  IC=+0.047  trees=125  n_train=540,674  n_universe=4,429
+2026-05-21 19:27:13  INFO      1996-09-30  |  qspread=+0.0453  IC=+0.080  trees=125  n_train=540,674  n_universe=4,456
+2026-05-21 19:27:13  INFO      1996-10-31  |  qspread=+0.0357  IC=+0.068  trees=125  n_train=540,674  n_universe=4,498
+2026-05-21 19:27:13  INFO      1996-11-30  |  qspread=+0.0361  IC=+0.060  trees=125  n_train=540,674  n_universe=4,520
+2026-05-21 19:27:13  INFO      1996-12-31  |  qspread=+0.0529  IC=+0.079  trees=125  n_train=540,674  n_universe=4,536
+2026-05-21 19:27:36  DEBUG         XGBoost: best_iteration=218  top_feature=be_gr1
+2026-05-21 19:27:36  INFO        [retrain]  1997-01-31  n_train=593,540  n_features=283
+2026-05-21 19:27:36  INFO      1997-01-31  |  qspread=+0.0218  IC=+0.005  trees=218  n_train=593,540  n_universe=4,546
+2026-05-21 19:27:36  INFO        ✓ checkpoint saved  (1997-01-31)  elapsed=1m
+2026-05-21 19:27:36  INFO      1997-02-28  |  qspread=+0.0372  IC=+0.074  trees=218  n_train=593,540  n_universe=4,561
+2026-05-21 19:27:36  INFO      1997-03-31  |  qspread=+0.0255  IC=+0.003  trees=218  n_train=593,540  n_universe=4,572
+2026-05-21 19:27:36  INFO      1997-04-30  |  qspread=-0.0093  IC=-0.013  trees=218  n_train=593,540  n_universe=4,567
+2026-05-21 19:27:36  INFO      1997-05-31  |  qspread=+0.0435  IC=+0.083  trees=218  n_train=593,540  n_universe=4,578
+2026-05-21 19:27:36  INFO      1997-06-30  |  qspread=+0.0383  IC=+0.082  trees=218  n_train=593,540  n_universe=4,577
+2026-05-21 19:27:36  INFO      1997-07-31  |  qspread=+0.0409  IC=+0.096  trees=218  n_train=593,540  n_universe=4,588
+2026-05-21 19:27:36  INFO      1997-08-31  |  qspread=+0.0187  IC=+0.010  trees=218  n_train=593,540  n_universe=4,576
+2026-05-21 19:27:36  INFO      1997-09-30  |  qspread=+0.0457  IC=+0.090  trees=218  n_train=593,540  n_universe=4,585
+2026-05-21 19:27:36  INFO      1997-10-31  |  qspread=+0.0519  IC=+0.079  trees=218  n_train=593,540  n_universe=4,593
+2026-05-21 19:27:36  INFO      1997-11-30  |  qspread=+0.0183  IC=+0.042  trees=218  n_train=593,540  n_universe=4,604
+2026-05-21 19:27:36  INFO      1997-12-31  |  qspread=+0.0595  IC=+0.101  trees=218  n_train=593,540  n_universe=4,586
+2026-05-21 19:27:55  DEBUG         XGBoost: best_iteration=142  top_feature=fnl_gr1a
+2026-05-21 19:27:55  INFO        [retrain]  1998-01-31  n_train=648,473  n_features=284
+2026-05-21 19:27:55  INFO      1998-01-31  |  qspread=+0.0402  IC=+0.082  trees=142  n_train=648,473  n_universe=4,565
+2026-05-21 19:27:55  INFO        ✓ checkpoint saved  (1998-01-31)  elapsed=1m
+2026-05-21 19:27:55  INFO      1998-02-28  |  qspread=+0.0308  IC=+0.035  trees=142  n_train=648,473  n_universe=4,571
+2026-05-21 19:27:55  INFO      1998-03-31  |  qspread=+0.0281  IC=+0.088  trees=142  n_train=648,473  n_universe=4,591
+2026-05-21 19:27:55  INFO      1998-04-30  |  qspread=+0.0050  IC=-0.028  trees=142  n_train=648,473  n_universe=4,614
+2026-05-21 19:27:55  INFO      1998-05-31  |  qspread=+0.0044  IC=+0.003  trees=142  n_train=648,473  n_universe=4,608
+2026-05-21 19:27:55  INFO      1998-06-30  |  qspread=+0.0166  IC=+0.017  trees=142  n_train=648,473  n_universe=4,581
+2026-05-21 19:27:55  INFO      1998-07-31  |  qspread=+0.0315  IC=+0.019  trees=142  n_train=648,473  n_universe=4,567
+2026-05-21 19:27:55  INFO      1998-08-31  |  qspread=+0.0367  IC=+0.049  trees=142  n_train=648,473  n_universe=4,544
+2026-05-21 19:27:55  INFO      1998-09-30  |  qspread=+0.0760  IC=+0.132  trees=142  n_train=648,473  n_universe=4,519
+2026-05-21 19:27:55  INFO      1998-10-31  |  qspread=+0.0269  IC=+0.035  trees=142  n_train=648,473  n_universe=4,460
+2026-05-21 19:27:56  INFO      1998-11-30  |  qspread=+0.0356  IC=+0.044  trees=142  n_train=648,473  n_universe=4,471
+2026-05-21 19:27:56  INFO      1998-12-31  |  qspread=+0.0690  IC=+0.123  trees=142  n_train=648,473  n_universe=4,464
+2026-05-21 19:28:10  DEBUG         XGBoost: best_iteration=70  top_feature=inv_gr1
+2026-05-21 19:28:10  INFO        [retrain]  1999-01-31  n_train=703,028  n_features=287
+2026-05-21 19:28:10  INFO      1999-01-31  |  qspread=+0.0471  IC=+0.029  trees= 70  n_train=703,028  n_universe=4,475
+2026-05-21 19:28:10  INFO        ✓ checkpoint saved  (1999-01-31)  elapsed=1m
+2026-05-21 19:28:10  INFO      1999-02-28  |  qspread=+0.0007  IC=-0.014  trees= 70  n_train=703,028  n_universe=4,466
+2026-05-21 19:28:10  INFO      1999-03-31  |  qspread=+0.0375  IC=+0.042  trees= 70  n_train=703,028  n_universe=4,437
+2026-05-21 19:28:10  INFO      1999-04-30  |  qspread=+0.0755  IC=+0.114  trees= 70  n_train=703,028  n_universe=4,434
+2026-05-21 19:28:10  INFO      1999-05-31  |  qspread=+0.0482  IC=+0.100  trees= 70  n_train=703,028  n_universe=4,445
+2026-05-21 19:28:10  INFO      1999-06-30  |  qspread=+0.0518  IC=+0.059  trees= 70  n_train=703,028  n_universe=4,424
+2026-05-21 19:28:11  INFO      1999-07-31  |  qspread=+0.0142  IC=+0.007  trees= 70  n_train=703,028  n_universe=4,411
+2026-05-21 19:28:11  INFO      1999-08-31  |  qspread=+0.0031  IC=-0.015  trees= 70  n_train=703,028  n_universe=4,384
+2026-05-21 19:28:11  INFO      1999-09-30  |  qspread=+0.0182  IC=+0.012  trees= 70  n_train=703,028  n_universe=4,369
+2026-05-21 19:28:11  INFO      1999-10-31  |  qspread=+0.0337  IC=+0.121  trees= 70  n_train=703,028  n_universe=4,338
+2026-05-21 19:28:11  INFO      1999-11-30  |  qspread=-0.0255  IC=+0.034  trees= 70  n_train=703,028  n_universe=4,299
+2026-05-21 19:28:11  INFO      1999-12-31  |  qspread=+0.0723  IC=+0.077  trees= 70  n_train=703,028  n_universe=4,383
+2026-05-21 19:28:26  DEBUG         XGBoost: best_iteration=75  top_feature=nfna_gr1a
+2026-05-21 19:28:26  INFO        [retrain]  2000-01-31  n_train=755,893  n_features=287
+2026-05-21 19:28:26  INFO      2000-01-31  |  qspread=-0.1461  IC=-0.151  trees= 75  n_train=755,893  n_universe=4,293
+2026-05-21 19:28:26  INFO        ✓ checkpoint saved  (2000-01-31)  elapsed=2m
+2026-05-21 19:28:26  INFO      2000-02-29  |  qspread=+0.1957  IC=+0.158  trees= 75  n_train=755,893  n_universe=4,382
+2026-05-21 19:28:27  INFO      2000-03-31  |  qspread=+0.1887  IC=+0.223  trees= 75  n_train=755,893  n_universe=4,377
+2026-05-21 19:28:27  INFO      2000-04-30  |  qspread=+0.0454  IC=+0.064  trees= 75  n_train=755,893  n_universe=4,370
+2026-05-21 19:28:27  INFO      2000-05-31  |  qspread=+0.0531  IC=+0.015  trees= 75  n_train=755,893  n_universe=4,306
+2026-05-21 19:28:27  INFO      2000-06-30  |  qspread=+0.0754  IC=+0.065  trees= 75  n_train=755,893  n_universe=4,339
+2026-05-21 19:28:27  INFO      2000-07-31  |  qspread=-0.0117  IC=-0.005  trees= 75  n_train=755,893  n_universe=4,322
+2026-05-21 19:28:27  INFO      2000-08-31  |  qspread=+0.0592  IC=+0.067  trees= 75  n_train=755,893  n_universe=4,316
+2026-05-21 19:28:27  INFO      2000-09-30  |  qspread=+0.0669  IC=+0.073  trees= 75  n_train=755,893  n_universe=4,290
+2026-05-21 19:28:27  INFO      2000-10-31  |  qspread=+0.1027  IC=+0.091  trees= 75  n_train=755,893  n_universe=4,273
+2026-05-21 19:28:27  INFO      2000-11-30  |  qspread=-0.0669  IC=-0.097  trees= 75  n_train=755,893  n_universe=4,235
+2026-05-21 19:28:27  INFO      2000-12-31  |  qspread=+0.2061  IC=+0.263  trees= 75  n_train=755,893  n_universe=4,094
+2026-05-21 19:28:49  DEBUG         XGBoost: best_iteration=122  top_feature=nfna_gr1a
+2026-05-21 19:28:49  INFO        [retrain]  2001-01-31  n_train=807,490  n_features=289
+2026-05-21 19:28:49  INFO      2001-01-31  |  qspread=+0.1731  IC=+0.283  trees=122  n_train=807,490  n_universe=4,181
+2026-05-21 19:28:49  INFO        ✓ checkpoint saved  (2001-01-31)  elapsed=2m
+2026-05-21 19:28:49  INFO      2001-02-28  |  qspread=+0.0863  IC=+0.140  trees=122  n_train=807,490  n_universe=4,160
+2026-05-21 19:28:49  INFO      2001-03-31  |  qspread=+0.0693  IC=-0.008  trees=122  n_train=807,490  n_universe=4,120
+2026-05-21 19:28:49  INFO      2001-04-30  |  qspread=+0.0582  IC=+0.093  trees=122  n_train=807,490  n_universe=4,138
+2026-05-21 19:28:49  INFO      2001-05-31  |  qspread=+0.0029  IC=+0.056  trees=122  n_train=807,490  n_universe=4,127
+2026-05-21 19:28:49  INFO      2001-06-30  |  qspread=+0.1384  IC=+0.227  trees=122  n_train=807,490  n_universe=4,112
+2026-05-21 19:28:49  INFO      2001-07-31  |  qspread=+0.0429  IC=+0.090  trees=122  n_train=807,490  n_universe=4,096
+2026-05-21 19:28:49  INFO      2001-08-31  |  qspread=-0.0456  IC=+0.003  trees=122  n_train=807,490  n_universe=4,071
+2026-05-21 19:28:49  INFO      2001-09-30  |  qspread=+0.0741  IC=+0.043  trees=122  n_train=807,490  n_universe=4,024
+2026-05-21 19:28:49  INFO      2001-10-31  |  qspread=-0.0136  IC=-0.011  trees=122  n_train=807,490  n_universe=4,026
+2026-05-21 19:28:49  INFO      2001-11-30  |  qspread=+0.0368  IC=+0.057  trees=122  n_train=807,490  n_universe=4,010
+2026-05-21 19:28:49  INFO      2001-12-31  |  qspread=+0.1408  IC=+0.225  trees=122  n_train=807,490  n_universe=3,990
+2026-05-21 19:29:14  DEBUG         XGBoost: best_iteration=143  top_feature=be_gr1a
+2026-05-21 19:29:14  INFO        [retrain]  2002-01-31  n_train=856,545  n_features=290
+2026-05-21 19:29:14  INFO      2002-01-31  |  qspread=+0.0982  IC=+0.174  trees=143  n_train=856,545  n_universe=3,978
+2026-05-21 19:29:14  INFO        ✓ checkpoint saved  (2002-01-31)  elapsed=3m
+2026-05-21 19:29:14  INFO      2002-02-28  |  qspread=+0.0397  IC=+0.042  trees=143  n_train=856,545  n_universe=3,966
+2026-05-21 19:29:14  INFO      2002-03-31  |  qspread=+0.0803  IC=+0.162  trees=143  n_train=856,545  n_universe=3,958
+2026-05-21 19:29:14  INFO      2002-04-30  |  qspread=+0.0523  IC=+0.121  trees=143  n_train=856,545  n_universe=3,954
+2026-05-21 19:29:14  INFO      2002-05-31  |  qspread=+0.0143  IC=+0.096  trees=143  n_train=856,545  n_universe=3,962
+2026-05-21 19:29:14  INFO      2002-06-30  |  qspread=+0.0797  IC=+0.146  trees=143  n_train=856,545  n_universe=3,959
+2026-05-21 19:29:14  INFO      2002-07-31  |  qspread=+0.0558  IC=+0.063  trees=143  n_train=856,545  n_universe=3,944
+2026-05-21 19:29:14  INFO      2002-08-31  |  qspread=-0.0143  IC=-0.037  trees=143  n_train=856,545  n_universe=3,945
+2026-05-21 19:29:14  INFO      2002-09-30  |  qspread=+0.0910  IC=+0.103  trees=143  n_train=856,545  n_universe=3,933
+2026-05-21 19:29:14  INFO      2002-10-31  |  qspread=+0.0463  IC=+0.059  trees=143  n_train=856,545  n_universe=3,901
+2026-05-21 19:29:15  INFO      2002-11-30  |  qspread=+0.0795  IC=+0.118  trees=143  n_train=856,545  n_universe=3,938
+2026-05-21 19:29:15  INFO      2002-12-31  |  qspread=+0.0569  IC=+0.085  trees=143  n_train=856,545  n_universe=3,929
+2026-05-21 19:29:30  DEBUG         XGBoost: best_iteration=43  top_feature=ret_24_12
+2026-05-21 19:29:30  INFO        [retrain]  2003-01-31  n_train=903,912  n_features=293
+2026-05-21 19:29:30  INFO      2003-01-31  |  qspread=+0.0099  IC=+0.015  trees= 43  n_train=903,912  n_universe=3,926
+2026-05-21 19:29:30  INFO        ✓ checkpoint saved  (2003-01-31)  elapsed=3m
+2026-05-21 19:29:30  INFO      2003-02-28  |  qspread=+0.0084  IC=-0.023  trees= 43  n_train=903,912  n_universe=3,909
+2026-05-21 19:29:30  INFO      2003-03-31  |  qspread=+0.0593  IC=+0.061  trees= 43  n_train=903,912  n_universe=3,890
+2026-05-21 19:29:30  INFO      2003-04-30  |  qspread=+0.0130  IC=-0.009  trees= 43  n_train=903,912  n_universe=3,859
+2026-05-21 19:29:30  INFO      2003-05-31  |  qspread=+0.0405  IC=+0.051  trees= 43  n_train=903,912  n_universe=3,879
+2026-05-21 19:29:30  INFO      2003-06-30  |  qspread=+0.0039  IC=+0.029  trees= 43  n_train=903,912  n_universe=3,865
+2026-05-21 19:29:30  INFO      2003-07-31  |  qspread=+0.0383  IC=+0.041  trees= 43  n_train=903,912  n_universe=3,872
+2026-05-21 19:29:30  INFO      2003-08-31  |  qspread=+0.0289  IC=+0.076  trees= 43  n_train=903,912  n_universe=3,847
+2026-05-21 19:29:31  INFO      2003-09-30  |  qspread=+0.0391  IC=+0.075  trees= 43  n_train=903,912  n_universe=3,845
+2026-05-21 19:29:31  INFO      2003-10-31  |  qspread=+0.0115  IC=+0.019  trees= 43  n_train=903,912  n_universe=3,838
+2026-05-21 19:29:31  INFO      2003-11-30  |  qspread=+0.0124  IC=+0.007  trees= 43  n_train=903,912  n_universe=3,844
+2026-05-21 19:29:31  INFO      2003-12-31  |  qspread=+0.0353  IC=+0.060  trees= 43  n_train=903,912  n_universe=3,843
+2026-05-21 19:29:44  DEBUG         XGBoost: best_iteration=17  top_feature=fna_gr3a
+2026-05-21 19:29:44  INFO        [retrain]  2004-01-31  n_train=950,329  n_features=302
+2026-05-21 19:29:44  INFO      2004-01-31  |  qspread=-0.0329  IC=-0.116  trees= 17  n_train=950,329  n_universe=3,844
+2026-05-21 19:29:44  INFO        ✓ checkpoint saved  (2004-01-31)  elapsed=3m
+2026-05-21 19:29:44  INFO      2004-02-29  |  qspread=-0.0129  IC=-0.090  trees= 17  n_train=950,329  n_universe=3,843
+2026-05-21 19:29:44  INFO      2004-03-31  |  qspread=-0.0337  IC=-0.076  trees= 17  n_train=950,329  n_universe=3,835
+2026-05-21 19:29:44  INFO      2004-04-30  |  qspread=-0.0003  IC=-0.023  trees= 17  n_train=950,329  n_universe=3,825
+2026-05-21 19:29:44  INFO      2004-05-31  |  qspread=+0.0057  IC=-0.009  trees= 17  n_train=950,329  n_universe=3,817
+2026-05-21 19:29:44  INFO      2004-06-30  |  qspread=-0.0530  IC=-0.157  trees= 17  n_train=950,329  n_universe=3,815
+2026-05-21 19:29:44  INFO      2004-07-31  |  qspread=-0.0267  IC=-0.114  trees= 17  n_train=950,329  n_universe=3,808
+2026-05-21 19:29:44  INFO      2004-08-31  |  qspread=+0.0367  IC=+0.044  trees= 17  n_train=950,329  n_universe=3,802
+2026-05-21 19:29:44  INFO      2004-09-30  |  qspread=+0.0168  IC=-0.000  trees= 17  n_train=950,329  n_universe=3,800
+2026-05-21 19:29:45  INFO      2004-10-31  |  qspread=+0.0601  IC=+0.088  trees= 17  n_train=950,329  n_universe=3,795
+2026-05-21 19:29:45  INFO      2004-11-30  |  qspread=+0.0635  IC=+0.070  trees= 17  n_train=950,329  n_universe=3,804
+2026-05-21 19:29:45  INFO      2004-12-31  |  qspread=-0.0071  IC=+0.016  trees= 17  n_train=950,329  n_universe=3,813
+2026-05-21 19:30:32  DEBUG         XGBoost: best_iteration=278  top_feature=fna_gr3a
+2026-05-21 19:30:32  INFO        [retrain]  2005-01-31  n_train=996,130  n_features=312
+2026-05-21 19:30:32  INFO      2005-01-31  |  qspread=+0.0089  IC=+0.020  trees=278  n_train=996,130  n_universe=3,811
+2026-05-21 19:30:32  INFO        ✓ checkpoint saved  (2005-01-31)  elapsed=4m
+2026-05-21 19:30:32  INFO      2005-02-28  |  qspread=+0.0030  IC=-0.020  trees=278  n_train=996,130  n_universe=3,819
+2026-05-21 19:30:32  INFO      2005-03-31  |  qspread=-0.0040  IC=-0.082  trees=278  n_train=996,130  n_universe=3,812
+2026-05-21 19:30:32  INFO      2005-04-30  |  qspread=+0.0565  IC=+0.138  trees=278  n_train=996,130  n_universe=3,799
+2026-05-21 19:30:32  INFO      2005-05-31  |  qspread=+0.0144  IC=+0.044  trees=278  n_train=996,130  n_universe=3,793
+2026-05-21 19:30:32  INFO      2005-06-30  |  qspread=+0.0218  IC=+0.043  trees=278  n_train=996,130  n_universe=3,796
+2026-05-21 19:30:32  INFO      2005-07-31  |  qspread=+0.0063  IC=+0.020  trees=278  n_train=996,130  n_universe=3,795
+2026-05-21 19:30:32  INFO      2005-08-31  |  qspread=+0.0153  IC=+0.078  trees=278  n_train=996,130  n_universe=3,795
+2026-05-21 19:30:32  INFO      2005-09-30  |  qspread=+0.0108  IC=+0.031  trees=278  n_train=996,130  n_universe=3,787
+2026-05-21 19:30:33  INFO      2005-10-31  |  qspread=+0.0491  IC=+0.090  trees=278  n_train=996,130  n_universe=3,784
+2026-05-21 19:30:33  INFO      2005-11-30  |  qspread=+0.0010  IC=+0.017  trees=278  n_train=996,130  n_universe=3,783
+2026-05-21 19:30:33  INFO      2005-12-31  |  qspread=+0.0256  IC=+0.040  trees=278  n_train=996,130  n_universe=3,771
+2026-05-21 19:30:51  DEBUG         XGBoost: best_iteration=50  top_feature=ocf_be
+2026-05-21 19:30:51  INFO        [retrain]  2006-01-31  n_train=1,041,675  n_features=317
+2026-05-21 19:30:51  INFO      2006-01-31  |  qspread=+0.0136  IC=-0.007  trees= 50  n_train=1,041,675  n_universe=3,761
+2026-05-21 19:30:51  INFO        ✓ checkpoint saved  (2006-01-31)  elapsed=4m
+2026-05-21 19:30:52  INFO      2006-02-28  |  qspread=+0.0482  IC=+0.073  trees= 50  n_train=1,041,675  n_universe=3,759
+2026-05-21 19:30:52  INFO      2006-03-31  |  qspread=+0.0172  IC=+0.082  trees= 50  n_train=1,041,675  n_universe=3,742
+2026-05-21 19:30:52  INFO      2006-04-30  |  qspread=-0.0053  IC=-0.060  trees= 50  n_train=1,041,675  n_universe=3,747
+2026-05-21 19:30:52  INFO      2006-05-31  |  qspread=+0.0137  IC=+0.001  trees= 50  n_train=1,041,675  n_universe=3,754
+2026-05-21 19:30:52  INFO      2006-06-30  |  qspread=+0.0107  IC=-0.039  trees= 50  n_train=1,041,675  n_universe=3,746
+2026-05-21 19:30:52  INFO      2006-07-31  |  qspread=+0.0221  IC=-0.023  trees= 50  n_train=1,041,675  n_universe=3,738
+2026-05-21 19:30:52  INFO      2006-08-31  |  qspread=+0.0227  IC=+0.035  trees= 50  n_train=1,041,675  n_universe=3,726
+2026-05-21 19:30:52  INFO      2006-09-30  |  qspread=+0.0174  IC=+0.018  trees= 50  n_train=1,041,675  n_universe=3,728
+2026-05-21 19:30:52  INFO      2006-10-31  |  qspread=-0.0186  IC=-0.015  trees= 50  n_train=1,041,675  n_universe=3,716
+2026-05-21 19:30:52  INFO      2006-11-30  |  qspread=+0.0222  IC=+0.053  trees= 50  n_train=1,041,675  n_universe=3,713
+2026-05-21 19:30:52  INFO      2006-12-31  |  qspread=+0.0197  IC=+0.038  trees= 50  n_train=1,041,675  n_universe=3,699
+2026-05-21 19:31:15  DEBUG         XGBoost: best_iteration=69  top_feature=at_gr3
+2026-05-21 19:31:15  INFO        [retrain]  2007-01-31  n_train=1,086,504  n_features=319
+2026-05-21 19:31:15  INFO      2007-01-31  |  qspread=+0.0199  IC=+0.043  trees= 69  n_train=1,086,504  n_universe=3,684
+2026-05-21 19:31:15  INFO        ✓ checkpoint saved  (2007-01-31)  elapsed=5m
+2026-05-21 19:31:15  INFO      2007-02-28  |  qspread=+0.0042  IC=+0.081  trees= 69  n_train=1,086,504  n_universe=3,675
+2026-05-21 19:31:15  INFO      2007-03-31  |  qspread=+0.0066  IC=+0.085  trees= 69  n_train=1,086,504  n_universe=3,661
+2026-05-21 19:31:15  INFO      2007-04-30  |  qspread=+0.0161  IC=+0.022  trees= 69  n_train=1,086,504  n_universe=3,650
+2026-05-21 19:31:16  INFO      2007-05-31  |  qspread=+0.0043  IC=+0.045  trees= 69  n_train=1,086,504  n_universe=3,646
+2026-05-21 19:31:16  INFO      2007-06-30  |  qspread=+0.0047  IC=+0.033  trees= 69  n_train=1,086,504  n_universe=3,635
+2026-05-21 19:31:16  INFO      2007-07-31  |  qspread=-0.0260  IC=-0.085  trees= 69  n_train=1,086,504  n_universe=3,627
+2026-05-21 19:31:16  INFO      2007-08-31  |  qspread=-0.0176  IC=-0.012  trees= 69  n_train=1,086,504  n_universe=3,611
+2026-05-21 19:31:16  INFO      2007-09-30  |  qspread=+0.0115  IC=+0.046  trees= 69  n_train=1,086,504  n_universe=3,582
+2026-05-21 19:31:16  INFO      2007-10-31  |  qspread=+0.0082  IC=+0.028  trees= 69  n_train=1,086,504  n_universe=3,571
+2026-05-21 19:31:16  INFO      2007-11-30  |  qspread=+0.0214  IC=+0.088  trees= 69  n_train=1,086,504  n_universe=3,572
+2026-05-21 19:31:16  INFO      2007-12-31  |  qspread=+0.0397  IC=+0.014  trees= 69  n_train=1,086,504  n_universe=3,566
+2026-05-21 19:31:41  DEBUG         XGBoost: best_iteration=81  top_feature=fna_gr3a
+2026-05-21 19:31:41  INFO        [retrain]  2008-01-31  n_train=1,129,984  n_features=319
+2026-05-21 19:31:41  INFO      2008-01-31  |  qspread=+0.0351  IC=+0.077  trees= 81  n_train=1,129,984  n_universe=3,562
+2026-05-21 19:31:41  INFO        ✓ checkpoint saved  (2008-01-31)  elapsed=5m
+2026-05-21 19:31:41  INFO      2008-02-29  |  qspread=+0.0144  IC=-0.010  trees= 81  n_train=1,129,984  n_universe=3,547
+2026-05-21 19:31:41  INFO      2008-03-31  |  qspread=+0.0140  IC=+0.013  trees= 81  n_train=1,129,984  n_universe=3,536
+2026-05-21 19:31:41  INFO      2008-04-30  |  qspread=+0.0307  IC=+0.059  trees= 81  n_train=1,129,984  n_universe=3,525
+2026-05-21 19:31:41  INFO      2008-05-31  |  qspread=+0.0183  IC=+0.044  trees= 81  n_train=1,129,984  n_universe=3,520
+2026-05-21 19:31:41  INFO      2008-06-30  |  qspread=+0.0643  IC=+0.059  trees= 81  n_train=1,129,984  n_universe=3,509
+2026-05-21 19:31:41  INFO      2008-07-31  |  qspread=+0.0667  IC=+0.091  trees= 81  n_train=1,129,984  n_universe=3,496
+2026-05-21 19:31:41  INFO      2008-08-31  |  qspread=-0.0236  IC=-0.069  trees= 81  n_train=1,129,984  n_universe=3,490
+2026-05-21 19:31:41  INFO      2008-09-30  |  qspread=-0.0247  IC=-0.080  trees= 81  n_train=1,129,984  n_universe=3,476
+2026-05-21 19:31:41  INFO      2008-10-31  |  qspread=-0.0304  IC=-0.132  trees= 81  n_train=1,129,984  n_universe=3,454
+2026-05-21 19:31:41  INFO      2008-11-30  |  qspread=+0.1265  IC=+0.166  trees= 81  n_train=1,129,984  n_universe=3,427
+2026-05-21 19:31:41  INFO      2008-12-31  |  qspread=+0.0561  IC=+0.066  trees= 81  n_train=1,129,984  n_universe=3,416
+2026-05-21 19:31:59  DEBUG         XGBoost: best_iteration=14  top_feature=lt_gr3
+2026-05-21 19:31:59  INFO        [retrain]  2009-01-31  n_train=1,171,942  n_features=320
+2026-05-21 19:31:59  INFO      2009-01-31  |  qspread=-0.0499  IC=-0.110  trees= 14  n_train=1,171,942  n_universe=3,422
+2026-05-21 19:31:59  INFO        ✓ checkpoint saved  (2009-01-31)  elapsed=5m
+2026-05-21 19:31:59  INFO      2009-02-28  |  qspread=+0.0953  IC=+0.157  trees= 14  n_train=1,171,942  n_universe=3,387
+2026-05-21 19:31:59  INFO      2009-03-31  |  qspread=+0.2266  IC=+0.362  trees= 14  n_train=1,171,942  n_universe=3,315
+2026-05-21 19:31:59  INFO      2009-04-30  |  qspread=+0.0546  IC=+0.136  trees= 14  n_train=1,171,942  n_universe=3,369
+2026-05-21 19:31:59  INFO      2009-05-31  |  qspread=+0.0457  IC=+0.035  trees= 14  n_train=1,171,942  n_universe=3,387
+2026-05-21 19:31:59  INFO      2009-06-30  |  qspread=+0.0525  IC=+0.109  trees= 14  n_train=1,171,942  n_universe=3,386
+2026-05-21 19:31:59  INFO      2009-07-31  |  qspread=+0.0950  IC=+0.155  trees= 14  n_train=1,171,942  n_universe=3,373
+2026-05-21 19:31:59  INFO      2009-08-31  |  qspread=+0.0313  IC=+0.075  trees= 14  n_train=1,171,942  n_universe=3,389
+2026-05-21 19:31:59  INFO      2009-09-30  |  qspread=+0.0287  IC=+0.005  trees= 14  n_train=1,171,942  n_universe=3,388
+2026-05-21 19:31:59  INFO      2009-10-31  |  qspread=+0.0032  IC=-0.017  trees= 14  n_train=1,171,942  n_universe=3,374
+2026-05-21 19:31:59  INFO      2009-11-30  |  qspread=+0.0505  IC=+0.064  trees= 14  n_train=1,171,942  n_universe=3,362
+2026-05-21 19:31:59  INFO      2009-12-31  |  qspread=+0.0457  IC=+0.063  trees= 14  n_train=1,171,942  n_universe=3,354
+2026-05-21 19:32:25  DEBUG         XGBoost: best_iteration=66  top_feature=ocf_mev
+2026-05-21 19:32:25  INFO        [retrain]  2010-01-31  n_train=1,212,448  n_features=321
+2026-05-21 19:32:25  INFO      2010-01-31  |  qspread=+0.0381  IC=+0.098  trees= 66  n_train=1,212,448  n_universe=3,359
+2026-05-21 19:32:25  INFO        ✓ checkpoint saved  (2010-01-31)  elapsed=6m
+2026-05-21 19:32:25  INFO      2010-02-28  |  qspread=+0.0573  IC=+0.147  trees= 66  n_train=1,212,448  n_universe=3,339
+2026-05-21 19:32:25  INFO      2010-03-31  |  qspread=+0.1079  IC=+0.195  trees= 66  n_train=1,212,448  n_universe=3,342
+2026-05-21 19:32:25  INFO      2010-04-30  |  qspread=-0.0152  IC=-0.085  trees= 66  n_train=1,212,448  n_universe=3,347
+2026-05-21 19:32:25  INFO      2010-05-31  |  qspread=-0.0291  IC=-0.151  trees= 66  n_train=1,212,448  n_universe=3,344
+2026-05-21 19:32:25  INFO      2010-06-30  |  qspread=+0.0405  IC=+0.099  trees= 66  n_train=1,212,448  n_universe=3,339
+2026-05-21 19:32:25  INFO      2010-07-31  |  qspread=-0.0309  IC=-0.128  trees= 66  n_train=1,212,448  n_universe=3,333
+2026-05-21 19:32:25  INFO      2010-08-31  |  qspread=+0.0407  IC=+0.084  trees= 66  n_train=1,212,448  n_universe=3,323
+2026-05-21 19:32:25  INFO      2010-09-30  |  qspread=+0.0164  IC=+0.037  trees= 66  n_train=1,212,448  n_universe=3,317
+2026-05-21 19:32:25  INFO      2010-10-31  |  qspread=+0.0268  IC=+0.053  trees= 66  n_train=1,212,448  n_universe=3,318
+2026-05-21 19:32:25  INFO      2010-11-30  |  qspread=+0.0274  IC=+0.050  trees= 66  n_train=1,212,448  n_universe=3,309
+2026-05-21 19:32:25  INFO      2010-12-31  |  qspread=+0.0453  IC=+0.062  trees= 66  n_train=1,212,448  n_universe=3,302
+2026-05-21 19:32:52  DEBUG         XGBoost: best_iteration=56  top_feature=fna_gr3a
+2026-05-21 19:32:52  INFO        [retrain]  2011-01-31  n_train=1,252,420  n_features=325
+2026-05-21 19:32:52  INFO      2011-01-31  |  qspread=+0.0265  IC=+0.000  trees= 56  n_train=1,252,420  n_universe=3,307
+2026-05-21 19:32:52  INFO        ✓ checkpoint saved  (2011-01-31)  elapsed=6m
+2026-05-21 19:32:52  INFO      2011-02-28  |  qspread=-0.0073  IC=-0.046  trees= 56  n_train=1,252,420  n_universe=3,301
+2026-05-21 19:32:52  INFO      2011-03-31  |  qspread=+0.0091  IC=-0.033  trees= 56  n_train=1,252,420  n_universe=3,296
+2026-05-21 19:32:52  INFO      2011-04-30  |  qspread=-0.0035  IC=-0.046  trees= 56  n_train=1,252,420  n_universe=3,301
+2026-05-21 19:32:52  INFO      2011-05-31  |  qspread=+0.0066  IC=-0.001  trees= 56  n_train=1,252,420  n_universe=3,293
+2026-05-21 19:32:52  INFO      2011-06-30  |  qspread=+0.0339  IC=+0.033  trees= 56  n_train=1,252,420  n_universe=3,274
+2026-05-21 19:32:52  INFO      2011-07-31  |  qspread=+0.0005  IC=-0.068  trees= 56  n_train=1,252,420  n_universe=3,277
+2026-05-21 19:32:52  INFO      2011-08-31  |  qspread=-0.0154  IC=-0.077  trees= 56  n_train=1,252,420  n_universe=3,266
+2026-05-21 19:32:52  INFO      2011-09-30  |  qspread=+0.0668  IC=+0.115  trees= 56  n_train=1,252,420  n_universe=3,263
+2026-05-21 19:32:52  INFO      2011-10-31  |  qspread=+0.0107  IC=-0.002  trees= 56  n_train=1,252,420  n_universe=3,288
+2026-05-21 19:32:52  INFO      2011-11-30  |  qspread=+0.0033  IC=-0.015  trees= 56  n_train=1,252,420  n_universe=3,283
+2026-05-21 19:32:52  INFO      2011-12-31  |  qspread=+0.0495  IC=+0.094  trees= 56  n_train=1,252,420  n_universe=3,283
+2026-05-21 19:33:30  DEBUG         XGBoost: best_iteration=122  top_feature=fna_gr3a
+2026-05-21 19:33:30  INFO        [retrain]  2012-01-31  n_train=1,291,852  n_features=325
+2026-05-21 19:33:30  INFO      2012-01-31  |  qspread=+0.0433  IC=+0.096  trees=122  n_train=1,291,852  n_universe=3,282
+2026-05-21 19:33:30  INFO        ✓ checkpoint saved  (2012-01-31)  elapsed=7m
+2026-05-21 19:33:30  INFO      2012-02-29  |  qspread=+0.0784  IC=+0.119  trees=122  n_train=1,291,852  n_universe=3,278
+2026-05-21 19:33:30  INFO      2012-03-31  |  qspread=+0.0072  IC=-0.043  trees=122  n_train=1,291,852  n_universe=3,285
+2026-05-21 19:33:30  INFO      2012-04-30  |  qspread=+0.0182  IC=+0.041  trees=122  n_train=1,291,852  n_universe=3,290
+2026-05-21 19:33:30  INFO      2012-05-31  |  qspread=+0.0045  IC=-0.020  trees=122  n_train=1,291,852  n_universe=3,285
+2026-05-21 19:33:30  INFO      2012-06-30  |  qspread=-0.0083  IC=-0.061  trees=122  n_train=1,291,852  n_universe=3,281
+2026-05-21 19:33:30  INFO      2012-07-31  |  qspread=+0.0168  IC=+0.045  trees=122  n_train=1,291,852  n_universe=3,280
+2026-05-21 19:33:30  INFO      2012-08-31  |  qspread=+0.0265  IC=+0.021  trees=122  n_train=1,291,852  n_universe=3,272
+2026-05-21 19:33:30  INFO      2012-09-30  |  qspread=+0.0295  IC=+0.023  trees=122  n_train=1,291,852  n_universe=3,272
+2026-05-21 19:33:30  INFO      2012-10-31  |  qspread=+0.0009  IC=+0.003  trees=122  n_train=1,291,852  n_universe=3,268
+2026-05-21 19:33:30  INFO      2012-11-30  |  qspread=+0.0305  IC=+0.047  trees=122  n_train=1,291,852  n_universe=3,267
+2026-05-21 19:33:30  INFO      2012-12-31  |  qspread=+0.0729  IC=+0.072  trees=122  n_train=1,291,852  n_universe=3,256
+2026-05-21 19:34:12  DEBUG         XGBoost: best_iteration=146  top_feature=ocf_sale
+2026-05-21 19:34:12  INFO        [retrain]  2013-01-31  n_train=1,331,168  n_features=327
+2026-05-21 19:34:12  INFO      2013-01-31  |  qspread=+0.0342  IC=+0.059  trees=146  n_train=1,331,168  n_universe=3,252
+2026-05-21 19:34:12  INFO        ✓ checkpoint saved  (2013-01-31)  elapsed=8m
+2026-05-21 19:34:12  INFO      2013-02-28  |  qspread=+0.0157  IC=+0.027  trees=146  n_train=1,331,168  n_universe=3,245
+2026-05-21 19:34:12  INFO      2013-03-31  |  qspread=+0.0237  IC=+0.007  trees=146  n_train=1,331,168  n_universe=3,240
+2026-05-21 19:34:13  INFO      2013-04-30  |  qspread=+0.0390  IC=+0.133  trees=146  n_train=1,331,168  n_universe=3,236
+2026-05-21 19:34:13  INFO      2013-05-31  |  qspread=+0.0185  IC=+0.080  trees=146  n_train=1,331,168  n_universe=3,239
+2026-05-21 19:34:13  INFO      2013-06-30  |  qspread=+0.0390  IC=+0.154  trees=146  n_train=1,331,168  n_universe=3,234
+2026-05-21 19:34:13  INFO      2013-07-31  |  qspread=+0.0382  IC=+0.040  trees=146  n_train=1,331,168  n_universe=3,235
+2026-05-21 19:34:13  INFO      2013-08-31  |  qspread=-0.0001  IC=-0.032  trees=146  n_train=1,331,168  n_universe=3,238
+2026-05-21 19:34:13  INFO      2013-09-30  |  qspread=+0.0564  IC=+0.050  trees=146  n_train=1,331,168  n_universe=3,247
+2026-05-21 19:34:13  INFO      2013-10-31  |  qspread=+0.0405  IC=+0.141  trees=146  n_train=1,331,168  n_universe=3,242
+2026-05-21 19:34:13  INFO      2013-11-30  |  qspread=+0.0202  IC=+0.036  trees=146  n_train=1,331,168  n_universe=3,241
+2026-05-21 19:34:13  INFO      2013-12-31  |  qspread=+0.0123  IC=-0.021  trees=146  n_train=1,331,168  n_universe=3,236
+2026-05-21 19:34:59  DEBUG         XGBoost: best_iteration=164  top_feature=fna_gr3a
+2026-05-21 19:34:59  INFO        [retrain]  2014-01-31  n_train=1,370,053  n_features=329
+2026-05-21 19:35:00  INFO      2014-01-31  |  qspread=+0.0357  IC=+0.030  trees=164  n_train=1,370,053  n_universe=3,241
+2026-05-21 19:35:00  INFO        ✓ checkpoint saved  (2014-01-31)  elapsed=8m
+2026-05-21 19:35:00  INFO      2014-02-28  |  qspread=+0.0291  IC=+0.085  trees=164  n_train=1,370,053  n_universe=3,238
+2026-05-21 19:35:00  INFO      2014-03-31  |  qspread=+0.0061  IC=-0.059  trees=164  n_train=1,370,053  n_universe=3,240
+2026-05-21 19:35:00  INFO      2014-04-30  |  qspread=-0.0143  IC=-0.050  trees=164  n_train=1,370,053  n_universe=3,248
+2026-05-21 19:35:00  INFO      2014-05-31  |  qspread=+0.0089  IC=-0.013  trees=164  n_train=1,370,053  n_universe=3,256
+2026-05-21 19:35:00  INFO      2014-06-30  |  qspread=+0.0448  IC=+0.096  trees=164  n_train=1,370,053  n_universe=3,264
+2026-05-21 19:35:00  INFO      2014-07-31  |  qspread=-0.0199  IC=-0.049  trees=164  n_train=1,370,053  n_universe=3,268
+2026-05-21 19:35:00  INFO      2014-08-31  |  qspread=+0.0154  IC=+0.064  trees=164  n_train=1,370,053  n_universe=3,271
+2026-05-21 19:35:00  INFO      2014-09-30  |  qspread=-0.0165  IC=-0.035  trees=164  n_train=1,370,053  n_universe=3,273
+2026-05-21 19:35:00  INFO      2014-10-31  |  qspread=+0.0157  IC=+0.028  trees=164  n_train=1,370,053  n_universe=3,276
+2026-05-21 19:35:00  INFO      2014-11-30  |  qspread=-0.0098  IC=+0.038  trees=164  n_train=1,370,053  n_universe=3,276
+2026-05-21 19:35:00  INFO      2014-12-31  |  qspread=+0.0317  IC=-0.019  trees=164  n_train=1,370,053  n_universe=3,275
+2026-05-21 19:35:58  DEBUG         XGBoost: best_iteration=226  top_feature=fna_gr3a
+2026-05-21 19:35:58  INFO        [retrain]  2015-01-31  n_train=1,409,179  n_features=329
+2026-05-21 19:35:58  INFO      2015-01-31  |  qspread=+0.0010  IC=+0.010  trees=226  n_train=1,409,179  n_universe=3,261
+2026-05-21 19:35:58  INFO        ✓ checkpoint saved  (2015-01-31)  elapsed=9m
+2026-05-21 19:35:59  INFO      2015-02-28  |  qspread=+0.0069  IC=+0.007  trees=226  n_train=1,409,179  n_universe=3,253
+2026-05-21 19:35:59  INFO      2015-03-31  |  qspread=+0.0381  IC=+0.074  trees=226  n_train=1,409,179  n_universe=3,250
+2026-05-21 19:35:59  INFO      2015-04-30  |  qspread=+0.0127  IC=+0.033  trees=226  n_train=1,409,179  n_universe=3,248
+2026-05-21 19:35:59  INFO      2015-05-31  |  qspread=+0.0190  IC=+0.105  trees=226  n_train=1,409,179  n_universe=3,253
+2026-05-21 19:35:59  INFO      2015-06-30  |  qspread=-0.0254  IC=-0.031  trees=226  n_train=1,409,179  n_universe=3,257
+2026-05-21 19:35:59  INFO      2015-07-31  |  qspread=+0.0518  IC=+0.122  trees=226  n_train=1,409,179  n_universe=3,242
+2026-05-21 19:35:59  INFO      2015-08-31  |  qspread=+0.0131  IC=+0.066  trees=226  n_train=1,409,179  n_universe=3,239
+2026-05-21 19:35:59  INFO      2015-09-30  |  qspread=+0.0374  IC=-0.002  trees=226  n_train=1,409,179  n_universe=3,233
+2026-05-21 19:35:59  INFO      2015-10-31  |  qspread=-0.0141  IC=+0.042  trees=226  n_train=1,409,179  n_universe=3,225
+2026-05-21 19:35:59  INFO      2015-11-30  |  qspread=+0.0096  IC=+0.009  trees=226  n_train=1,409,179  n_universe=3,230
+2026-05-21 19:35:59  INFO      2015-12-31  |  qspread=+0.0492  IC=+0.011  trees=226  n_train=1,409,179  n_universe=3,206
+2026-05-21 19:36:26  DEBUG         XGBoost: best_iteration=49  top_feature=cop_me
+2026-05-21 19:36:26  INFO        [retrain]  2016-01-31  n_train=1,448,076  n_features=329
+2026-05-21 19:36:26  INFO      2016-01-31  |  qspread=+0.0394  IC=+0.032  trees= 49  n_train=1,448,076  n_universe=3,194
+2026-05-21 19:36:26  INFO        ✓ checkpoint saved  (2016-01-31)  elapsed=10m
+2026-05-21 19:36:26  INFO      2016-02-29  |  qspread=+0.0257  IC=-0.051  trees= 49  n_train=1,448,076  n_universe=3,173
+2026-05-21 19:36:26  INFO      2016-03-31  |  qspread=+0.0211  IC=-0.004  trees= 49  n_train=1,448,076  n_universe=3,159
+2026-05-21 19:36:26  INFO      2016-04-30  |  qspread=-0.0112  IC=-0.046  trees= 49  n_train=1,448,076  n_universe=3,153
+2026-05-21 19:36:26  INFO      2016-05-31  |  qspread=+0.0269  IC=+0.034  trees= 49  n_train=1,448,076  n_universe=3,150
+2026-05-21 19:36:26  INFO      2016-06-30  |  qspread=+0.0185  IC=+0.028  trees= 49  n_train=1,448,076  n_universe=3,138
+2026-05-21 19:36:26  INFO      2016-07-31  |  qspread=-0.0042  IC=-0.029  trees= 49  n_train=1,448,076  n_universe=3,133
+2026-05-21 19:36:26  INFO      2016-08-31  |  qspread=-0.0074  IC=+0.049  trees= 49  n_train=1,448,076  n_universe=3,119
+2026-05-21 19:36:26  INFO      2016-09-30  |  qspread=+0.0327  IC=+0.058  trees= 49  n_train=1,448,076  n_universe=3,106
+2026-05-21 19:36:26  INFO      2016-10-31  |  qspread=+0.0398  IC=+0.071  trees= 49  n_train=1,448,076  n_universe=3,107
+2026-05-21 19:36:26  INFO      2016-11-30  |  qspread=+0.0109  IC=+0.029  trees= 49  n_train=1,448,076  n_universe=3,099
+2026-05-21 19:36:26  INFO      2016-12-31  |  qspread=+0.0293  IC=+0.022  trees= 49  n_train=1,448,076  n_universe=3,090
+2026-05-21 19:36:54  DEBUG         XGBoost: best_iteration=50  top_feature=gp_me
+2026-05-21 19:36:54  INFO        [retrain]  2017-01-31  n_train=1,485,697  n_features=334
+2026-05-21 19:36:54  INFO      2017-01-31  |  qspread=-0.0374  IC=-0.111  trees= 50  n_train=1,485,697  n_universe=3,085
+2026-05-21 19:36:54  INFO        ✓ checkpoint saved  (2017-01-31)  elapsed=10m
+2026-05-21 19:36:54  INFO      2017-02-28  |  qspread=+0.0141  IC=+0.011  trees= 50  n_train=1,485,697  n_universe=3,084
+2026-05-21 19:36:54  INFO      2017-03-31  |  qspread=-0.0087  IC=+0.002  trees= 50  n_train=1,485,697  n_universe=3,076
+2026-05-21 19:36:54  INFO      2017-04-30  |  qspread=-0.0072  IC=-0.014  trees= 50  n_train=1,485,697  n_universe=3,071
+2026-05-21 19:36:54  INFO      2017-05-31  |  qspread=+0.0089  IC=-0.026  trees= 50  n_train=1,485,697  n_universe=3,063
+2026-05-21 19:36:54  INFO      2017-06-30  |  qspread=+0.0014  IC=+0.025  trees= 50  n_train=1,485,697  n_universe=3,054
+2026-05-21 19:36:54  INFO      2017-07-31  |  qspread=+0.0014  IC=-0.000  trees= 50  n_train=1,485,697  n_universe=3,045
+2026-05-21 19:36:54  INFO      2017-08-31  |  qspread=+0.0260  IC=+0.024  trees= 50  n_train=1,485,697  n_universe=3,041
+2026-05-21 19:36:54  INFO      2017-09-30  |  qspread=+0.0111  IC=+0.081  trees= 50  n_train=1,485,697  n_universe=3,022
+2026-05-21 19:36:54  INFO      2017-10-31  |  qspread=+0.0374  IC=+0.002  trees= 50  n_train=1,485,697  n_universe=3,013
+2026-05-21 19:36:55  INFO      2017-11-30  |  qspread=+0.0188  IC=+0.002  trees= 50  n_train=1,485,697  n_universe=3,017
+2026-05-21 19:36:55  INFO      2017-12-31  |  qspread=+0.0090  IC=+0.046  trees= 50  n_train=1,485,697  n_universe=3,004
+2026-05-21 19:37:53  DEBUG         XGBoost: best_iteration=205  top_feature=gp_mev
+2026-05-21 19:37:53  INFO        [retrain]  2018-01-31  n_train=1,522,272  n_features=334
+2026-05-21 19:37:53  INFO      2018-01-31  |  qspread=+0.0222  IC=+0.072  trees=205  n_train=1,522,272  n_universe=3,014
+2026-05-21 19:37:53  INFO        ✓ checkpoint saved  (2018-01-31)  elapsed=11m
+2026-05-21 19:37:53  INFO      2018-02-28  |  qspread=+0.0057  IC=-0.036  trees=205  n_train=1,522,272  n_universe=3,008
+2026-05-21 19:37:53  INFO      2018-03-31  |  qspread=+0.0205  IC=+0.010  trees=205  n_train=1,522,272  n_universe=2,996
+2026-05-21 19:37:53  INFO      2018-04-30  |  qspread=+0.0225  IC=+0.015  trees=205  n_train=1,522,272  n_universe=2,998
+2026-05-21 19:37:53  INFO      2018-05-31  |  qspread=-0.0194  IC=-0.050  trees=205  n_train=1,522,272  n_universe=2,997
+2026-05-21 19:37:54  INFO      2018-06-30  |  qspread=+0.0006  IC=-0.023  trees=205  n_train=1,522,272  n_universe=2,988
+2026-05-21 19:37:54  INFO      2018-07-31  |  qspread=+0.0019  IC=+0.004  trees=205  n_train=1,522,272  n_universe=2,979
+2026-05-21 19:37:54  INFO      2018-08-31  |  qspread=+0.0108  IC=-0.032  trees=205  n_train=1,522,272  n_universe=2,976
+2026-05-21 19:37:54  INFO      2018-09-30  |  qspread=+0.0441  IC=+0.035  trees=205  n_train=1,522,272  n_universe=2,970
+2026-05-21 19:37:54  INFO      2018-10-31  |  qspread=-0.0110  IC=-0.103  trees=205  n_train=1,522,272  n_universe=2,956
+2026-05-21 19:37:54  INFO      2018-11-30  |  qspread=-0.0124  IC=-0.010  trees=205  n_train=1,522,272  n_universe=2,944
+2026-05-21 19:37:54  INFO      2018-12-31  |  qspread=+0.0782  IC=+0.114  trees=205  n_train=1,522,272  n_universe=2,918
+2026-05-21 19:38:59  DEBUG         XGBoost: best_iteration=207  top_feature=cop_mev
+2026-05-21 19:38:59  INFO        [retrain]  2019-01-31  n_train=1,558,016  n_features=336
+2026-05-21 19:38:59  INFO      2019-01-31  |  qspread=+0.0185  IC=+0.015  trees=207  n_train=1,558,016  n_universe=2,906
+2026-05-21 19:38:59  INFO        ✓ checkpoint saved  (2019-01-31)  elapsed=12m
+2026-05-21 19:38:59  INFO      2019-02-28  |  qspread=-0.0054  IC=-0.011  trees=207  n_train=1,558,016  n_universe=2,893
+2026-05-21 19:38:59  INFO      2019-03-31  |  qspread=-0.0182  IC=-0.061  trees=207  n_train=1,558,016  n_universe=2,886
+2026-05-21 19:38:59  INFO      2019-04-30  |  qspread=-0.0452  IC=-0.116  trees=207  n_train=1,558,016  n_universe=2,884
+2026-05-21 19:38:59  INFO      2019-05-31  |  qspread=-0.0067  IC=+0.003  trees=207  n_train=1,558,016  n_universe=2,878
+2026-05-21 19:38:59  INFO      2019-06-30  |  qspread=+0.0178  IC=-0.031  trees=207  n_train=1,558,016  n_universe=2,874
+2026-05-21 19:38:59  INFO      2019-07-31  |  qspread=-0.0212  IC=-0.034  trees=207  n_train=1,558,016  n_universe=2,866
+2026-05-21 19:38:59  INFO      2019-08-31  |  qspread=+0.0218  IC=+0.042  trees=207  n_train=1,558,016  n_universe=2,862
+2026-05-21 19:38:59  INFO      2019-09-30  |  qspread=-0.0016  IC=-0.039  trees=207  n_train=1,558,016  n_universe=2,846
+2026-05-21 19:38:59  INFO      2019-10-31  |  qspread=-0.0130  IC=-0.035  trees=207  n_train=1,558,016  n_universe=2,829
+2026-05-21 19:38:59  INFO      2019-11-30  |  qspread=+0.0478  IC=+0.041  trees=207  n_train=1,558,016  n_universe=2,821
+2026-05-21 19:38:59  INFO      2019-12-31  |  qspread=-0.0458  IC=-0.162  trees=207  n_train=1,558,016  n_universe=2,811
+2026-05-21 19:39:37  DEBUG         XGBoost: best_iteration=73  top_feature=gp_me
+2026-05-21 19:39:37  INFO        [retrain]  2020-01-31  n_train=1,592,372  n_features=337
+2026-05-21 19:39:37  INFO      2020-01-31  |  qspread=-0.0208  IC=-0.123  trees= 73  n_train=1,592,372  n_universe=2,802
+2026-05-21 19:39:37  INFO        ✓ checkpoint saved  (2020-01-31)  elapsed=13m
+2026-05-21 19:39:37  INFO      2020-02-29  |  qspread=-0.0978  IC=-0.125  trees= 73  n_train=1,592,372  n_universe=2,808
+2026-05-21 19:39:37  INFO      2020-03-31  |  qspread=+0.0449  IC=-0.013  trees= 73  n_train=1,592,372  n_universe=2,770
+2026-05-21 19:39:37  INFO      2020-04-30  |  qspread=+0.0051  IC=-0.007  trees= 73  n_train=1,592,372  n_universe=2,782
+2026-05-21 19:39:37  INFO      2020-05-31  |  qspread=+0.0659  IC=+0.144  trees= 73  n_train=1,592,372  n_universe=2,778
+2026-05-21 19:39:38  INFO      2020-06-30  |  qspread=+0.0226  IC=+0.061  trees= 73  n_train=1,592,372  n_universe=2,773
+2026-05-21 19:39:38  INFO      2020-07-31  |  qspread=+0.0393  IC=+0.062  trees= 73  n_train=1,592,372  n_universe=2,773
+2026-05-21 19:39:38  INFO      2020-08-31  |  qspread=-0.0405  IC=-0.122  trees= 73  n_train=1,592,372  n_universe=2,779
+2026-05-21 19:39:38  INFO      2020-09-30  |  qspread=+0.0133  IC=+0.032  trees= 73  n_train=1,592,372  n_universe=2,778
+2026-05-21 19:39:38  INFO      2020-10-31  |  qspread=+0.1732  IC=+0.216  trees= 73  n_train=1,592,372  n_universe=2,767
+2026-05-21 19:39:38  INFO      2020-11-30  |  qspread=+0.0483  IC=+0.034  trees= 73  n_train=1,592,372  n_universe=2,780
+2026-05-21 19:39:38  INFO      2020-12-31  |  qspread=+0.0908  IC=+0.185  trees= 73  n_train=1,592,372  n_universe=2,764
+2026-05-21 19:40:06  DEBUG         XGBoost: best_iteration=18  top_feature=debtst_gr3a
+2026-05-21 19:40:06  INFO        [retrain]  2021-01-31  n_train=1,625,726  n_features=339
+2026-05-21 19:40:06  INFO      2021-01-31  |  qspread=+0.0899  IC=+0.116  trees= 18  n_train=1,625,726  n_universe=2,787
+2026-05-21 19:40:06  INFO        ✓ checkpoint saved  (2021-01-31)  elapsed=13m
+2026-05-21 19:40:06  INFO      2021-02-28  |  qspread=+0.0430  IC=+0.109  trees= 18  n_train=1,625,726  n_universe=2,792
+2026-05-21 19:40:06  INFO      2021-03-31  |  qspread=+0.0339  IC=-0.034  trees= 18  n_train=1,625,726  n_universe=2,819
+2026-05-21 19:40:06  INFO      2021-04-30  |  qspread=+0.0800  IC=+0.219  trees= 18  n_train=1,625,726  n_universe=2,846
+2026-05-21 19:40:06  INFO      2021-05-31  |  qspread=+0.0137  IC=-0.063  trees= 18  n_train=1,625,726  n_universe=2,854
+2026-05-21 19:40:06  INFO      2021-06-30  |  qspread=-0.0117  IC=-0.174  trees= 18  n_train=1,625,726  n_universe=2,855
+2026-05-21 19:40:06  INFO      2021-07-31  |  qspread=+0.0157  IC=+0.035  trees= 18  n_train=1,625,726  n_universe=2,864
+2026-05-21 19:40:06  INFO      2021-08-31  |  qspread=+0.0764  IC=+0.189  trees= 18  n_train=1,625,726  n_universe=2,861
+2026-05-21 19:40:06  INFO      2021-09-30  |  qspread=+0.0065  IC=-0.044  trees= 18  n_train=1,625,726  n_universe=2,859
+2026-05-21 19:40:06  INFO      2021-10-31  |  qspread=+0.0444  IC=+0.017  trees= 18  n_train=1,625,726  n_universe=2,856
+2026-05-21 19:40:06  INFO      2021-11-30  |  qspread=+0.0111  IC=-0.020  trees= 18  n_train=1,625,726  n_universe=2,869
+2026-05-21 19:40:07  INFO      2021-12-31  |  qspread=+0.0823  IC=+0.231  trees= 18  n_train=1,625,726  n_universe=2,894
+2026-05-21 19:40:33  DEBUG         XGBoost: best_iteration=21  top_feature=gp_mev
+2026-05-21 19:40:33  INFO        [retrain]  2022-01-31  n_train=1,659,882  n_features=340
+2026-05-21 19:40:34  INFO      2022-01-31  |  qspread=+0.0446  IC=+0.096  trees= 21  n_train=1,659,882  n_universe=2,902
+2026-05-21 19:40:34  INFO        ✓ checkpoint saved  (2022-01-31)  elapsed=14m
+2026-05-21 19:40:34  INFO      2022-02-28  |  qspread=+0.0349  IC=+0.005  trees= 21  n_train=1,659,882  n_universe=2,901
+2026-05-21 19:40:34  INFO      2022-03-31  |  qspread=+0.0593  IC=+0.072  trees= 21  n_train=1,659,882  n_universe=2,898
+2026-05-21 19:40:34  INFO      2022-04-30  |  qspread=+0.0588  IC=+0.136  trees= 21  n_train=1,659,882  n_universe=2,902
+2026-05-21 19:40:34  INFO      2022-05-31  |  qspread=-0.0252  IC=-0.122  trees= 21  n_train=1,659,882  n_universe=2,894
+2026-05-21 19:40:34  INFO      2022-06-30  |  qspread=+0.0072  IC=-0.037  trees= 21  n_train=1,659,882  n_universe=2,882
+2026-05-21 19:40:34  INFO      2022-07-31  |  qspread=+0.0321  IC=+0.115  trees= 21  n_train=1,659,882  n_universe=2,875
+2026-05-21 19:40:34  INFO      2022-08-31  |  qspread=-0.0109  IC=+0.006  trees= 21  n_train=1,659,882  n_universe=2,866
+2026-05-21 19:40:34  INFO      2022-09-30  |  qspread=+0.0381  IC=+0.136  trees= 21  n_train=1,659,882  n_universe=2,860
+2026-05-21 19:40:34  INFO      2022-10-31  |  qspread=+0.0098  IC=-0.036  trees= 21  n_train=1,659,882  n_universe=2,838
+2026-05-21 19:40:34  INFO      2022-11-30  |  qspread=-0.0089  IC=-0.042  trees= 21  n_train=1,659,882  n_universe=2,822
+2026-05-21 19:40:34  INFO      2022-12-31  |  qspread=+0.0838  IC=+0.061  trees= 21  n_train=1,659,882  n_universe=2,779
+2026-05-21 19:41:04  DEBUG         XGBoost: best_iteration=21  top_feature=gp_me
+2026-05-21 19:41:04  INFO        [retrain]  2023-01-31  n_train=1,694,301  n_features=340
+2026-05-21 19:41:04  INFO      2023-01-31  |  qspread=+0.0099  IC=+0.042  trees= 21  n_train=1,694,301  n_universe=2,780
+2026-05-21 19:41:04  INFO        ✓ checkpoint saved  (2023-01-31)  elapsed=14m
+2026-05-21 19:41:04  INFO      2023-02-28  |  qspread=-0.0631  IC=-0.145  trees= 21  n_train=1,694,301  n_universe=2,761
+2026-05-21 19:41:04  INFO      2023-03-31  |  qspread=+0.0052  IC=-0.052  trees= 21  n_train=1,694,301  n_universe=2,746
+2026-05-21 19:41:04  INFO      2023-04-30  |  qspread=-0.0171  IC=-0.066  trees= 21  n_train=1,694,301  n_universe=2,741
+2026-05-21 19:41:04  INFO      2023-05-31  |  qspread=+0.0120  IC=+0.091  trees= 21  n_train=1,694,301  n_universe=2,737
+2026-05-21 19:41:04  INFO      2023-06-30  |  qspread=+0.0394  IC=+0.126  trees= 21  n_train=1,694,301  n_universe=2,721
+2026-05-21 19:41:04  INFO      2023-07-31  |  qspread=+0.0283  IC=+0.059  trees= 21  n_train=1,694,301  n_universe=2,706
+2026-05-21 19:41:04  INFO      2023-08-31  |  qspread=+0.0374  IC=+0.136  trees= 21  n_train=1,694,301  n_universe=2,698
+2026-05-21 19:41:04  INFO      2023-09-30  |  qspread=+0.0079  IC=-0.024  trees= 21  n_train=1,694,301  n_universe=2,690
+2026-05-21 19:41:04  INFO      2023-10-31  |  qspread=+0.0196  IC=-0.023  trees= 21  n_train=1,694,301  n_universe=2,674
+2026-05-21 19:41:04  INFO      2023-11-30  |  qspread=+0.0085  IC=-0.026  trees= 21  n_train=1,694,301  n_universe=2,655
+2026-05-21 19:41:05  INFO      2023-12-31  |  qspread=+0.0372  IC=+0.130  trees= 21  n_train=1,694,301  n_universe=2,641
+2026-05-21 19:41:40  DEBUG         XGBoost: best_iteration=22  top_feature=nfna_gr3a
+2026-05-21 19:41:40  INFO        [retrain]  2024-01-31  n_train=1,726,851  n_features=341
+2026-05-21 19:41:40  INFO      2024-01-31  |  qspread=-0.0483  IC=-0.084  trees= 22  n_train=1,726,851  n_universe=2,287
+2026-05-21 19:41:40  INFO        ✓ checkpoint saved  (2024-01-31)  elapsed=15m
+2026-05-21 19:41:40  INFO      2024-02-29  |  qspread=+0.0688  IC=+0.227  trees= 22  n_train=1,726,851  n_universe=2,290
+2026-05-21 19:41:40  INFO      2024-03-31  |  qspread=+0.0357  IC=+0.085  trees= 22  n_train=1,726,851  n_universe=2,261
+2026-05-21 19:41:40  INFO      2024-04-30  |  qspread=+0.0387  IC=+0.085  trees= 22  n_train=1,726,851  n_universe=2,243
+2026-05-21 19:41:40  INFO      2024-05-31  |  qspread=-0.0058  IC=-0.108  trees= 22  n_train=1,726,851  n_universe=2,225
+2026-05-21 19:41:40  INFO      2024-06-30  |  qspread=+0.0172  IC=+0.094  trees= 22  n_train=1,726,851  n_universe=2,230
+2026-05-21 19:41:40  INFO      2024-07-31  |  qspread=-0.0031  IC=-0.053  trees= 22  n_train=1,726,851  n_universe=2,225
+2026-05-21 19:41:40  INFO      2024-08-31  |  qspread=-0.0121  IC=-0.056  trees= 22  n_train=1,726,851  n_universe=2,214
+2026-05-21 19:41:40  INFO      2024-09-30  |  qspread=-0.0416  IC=-0.039  trees= 22  n_train=1,726,851  n_universe=2,205
+2026-05-21 19:41:40  INFO      2024-10-31  |  qspread=+0.0029  IC=+0.022  trees= 22  n_train=1,726,851  n_universe=2,223
+2026-05-21 19:41:40  INFO      2024-11-30  |  qspread=+0.0485  IC=+0.087  trees= 22  n_train=1,726,851  n_universe=2,175
+2026-05-21 19:41:40  INFO      2024-12-31  |  qspread=-0.0194  IC=+nan  trees= 22  n_train=1,726,851  n_universe=3
+2026-05-21 19:42:12  DEBUG         XGBoost: best_iteration=17  top_feature=gp_me
+2026-05-21 19:42:12  INFO        [retrain]  2025-01-31  n_train=1,751,432  n_features=341
+2026-05-21 19:42:12  INFO      2025-01-31  |  qspread=+0.0120  IC=-0.043  trees= 17  n_train=1,751,432  n_universe=2,574
+2026-05-21 19:42:12  INFO        ✓ checkpoint saved  (2025-01-31)  elapsed=16m
+2026-05-21 19:42:12  INFO      2025-02-28  |  qspread=-0.0169  IC=-0.040  trees= 17  n_train=1,751,432  n_universe=2,571
+2026-05-21 19:42:12  INFO      2025-03-31  |  qspread=-0.0391  IC=-0.077  trees= 17  n_train=1,751,432  n_universe=2,565
+2026-05-21 19:42:12  INFO      2025-04-30  |  qspread=+0.0313  IC=+0.017  trees= 17  n_train=1,751,432  n_universe=2,541
+2026-05-21 19:42:12  INFO      2025-05-31  |  qspread=+0.0173  IC=+0.043  trees= 17  n_train=1,751,432  n_universe=2,548
+2026-05-21 19:42:12  INFO      2025-06-30  |  qspread=+0.0105  IC=+0.055  trees= 17  n_train=1,751,432  n_universe=2,558
+2026-05-21 19:42:12  INFO      2025-07-31  |  qspread=+0.0416  IC=+0.076  trees= 17  n_train=1,751,432  n_universe=2,557
+2026-05-21 19:42:12  INFO      2025-08-31  |  qspread=+0.0214  IC=+0.050  trees= 17  n_train=1,751,432  n_universe=2,556
+2026-05-21 19:42:12  INFO      2025-09-30  |  qspread=-0.0119  IC=-0.035  trees= 17  n_train=1,751,432  n_universe=2,557
+2026-05-21 19:42:12  INFO      2025-10-31  |  qspread=+0.0413  IC=+0.093  trees= 17  n_train=1,751,432  n_universe=2,559
+2026-05-21 19:42:13  WARNING   2025-11-30  skipped — insufficient stocks with forward returns
+2026-05-21 19:42:13  WARNING   2025-12-31  skipped — insufficient stocks with forward returns
+2026-05-21 19:42:13  INFO      Finalising outputs …
+2026-05-21 19:42:13  INFO        → /Users/tungyuenlok/Desktop/MLII Project/data/backtest/xgboost_expanding/monthly_returns.csv  (537 rows)
+2026-05-21 19:42:13  INFO        → /Users/tungyuenlok/Desktop/MLII Project/data/backtest/xgboost_expanding/portfolios.csv
+2026-05-21 19:42:13  INFO        → /Users/tungyuenlok/Desktop/MLII Project/data/backtest/xgboost_expanding/feature_importance.csv
+2026-05-21 19:42:13  INFO        → /Users/tungyuenlok/Desktop/MLII Project/data/backtest/xgboost_expanding/performance.csv
+2026-05-21 19:42:13  INFO      ==============================================================
+2026-05-21 19:42:13  INFO        XGBOOST (EXPANDING WINDOW) — PERFORMANCE SUMMARY
+2026-05-21 19:42:13  INFO      ==============================================================
+2026-05-21 19:42:13  INFO        Period         : 1981-02-28 → 2025-10-31
+2026-05-21 19:42:13  INFO        Months         : 537
+2026-05-21 19:42:13  INFO        TC             : 10.0 bps one-way
+2026-05-21 19:42:13  INFO        Window         : expanding (all history)
+2026-05-21 19:42:13  INFO        ── Gross Q-spread ──────────────────────────────
+2026-05-21 19:42:13  INFO        Ann. Return    :   22.99%
+2026-05-21 19:42:13  INFO        Ann. Volatility:   12.79%
+2026-05-21 19:42:13  INFO        Sharpe Ratio   :     1.80
+2026-05-21 19:42:13  INFO        Max Drawdown   :  -23.08%
+2026-05-21 19:42:13  INFO        Win Rate       :   74.67%
+2026-05-21 19:42:13  INFO        ── Net Q-spread (after 10.0 bps TC) ─────────────
+2026-05-21 19:42:13  INFO        Ann. Return    :   22.05%
+2026-05-21 19:42:13  INFO        Ann. Volatility:   12.78%
+2026-05-21 19:42:13  INFO        Sharpe Ratio   :     1.73
+2026-05-21 19:42:13  INFO        Max Drawdown   :  -23.32%
+2026-05-21 19:42:13  INFO        Win Rate       :   73.37%
+2026-05-21 19:42:13  INFO        ── Information Coefficient ─────────────────────
+2026-05-21 19:42:13  INFO        Mean IC (Pearson)  :   0.0453
+2026-05-21 19:42:13  INFO        Mean IC (Spearman) :   0.0291
+2026-05-21 19:42:13  INFO        ICIR (Spearman)    :     1.37
+2026-05-21 19:42:13  INFO      ==============================================================
+2026-05-21 19:42:13  INFO      Total elapsed: 16 min
+2026-05-21 19:42:13  INFO        → /Users/tungyuenlok/Desktop/MLII Project/data/backtest/xgboost_expanding/cumulative_returns.png
+2026-05-21 19:42:13  INFO      checkpoint.pkl removed (run complete)
