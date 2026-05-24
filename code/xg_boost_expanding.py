@@ -1,33 +1,28 @@
 """
 Cross-sectional XGBoost equity backtest with expanding training window — JKP 2023 USA data.
 
-Timing (no look-ahead bias):
-  Training at month t (retrained every January):
-      y  = ret_exc_lead1m[s]   for ALL s in [start, t-1]  — expanding window
-      X  = characteristics[s]  for ALL s in [start, t-1]
-      Early-stopping val set = LAST VAL_FRAC of the time-ordered training
-      rows (temporal split, not random shuffle — avoids tuning the model
-      to recent patterns before signal generation).
-  Signal at month t:
-      X  = characteristics[t]  — signals known at end of month t
-      ŷ  = predicted return at month t+1
-  Portfolio held during t+1:
-      realized = ret_exc_lead1m[t]
+Timing (matches diagram exactly — no look-ahead bias):
 
-Difference vs xg_boost.py (rolling window):
-  Rolling:   train on (X[t-1], y[t-1]) only — one cross-section per month.
-  Expanding: train on (X[s], y[s]) for all s from the first available month
-             up to t-1.  The training set grows monotonically, giving the
-             model more observations as time progresses and making early-period
-             predictions more stable.
+  Burn-in: data from [data_start .. start_year-1] is used ONLY for training.
+           No portfolio returns are generated during this period.
 
-Everything else (features, portfolio construction, checkpointing, output format)
-is identical to xg_boost.py so results are directly comparable.
+  For each scoring year Y (starting at start_year):
+    1. TRAIN:  fit model on ALL cross-sections from data_start through Dec(Y-1).
+               Training window expands by one full year each iteration.
+    2. SCORE:  for each month t in Jan(Y) .. Dec(Y):
+                   X  = characteristics[t]        (known at end of month t)
+                   ŷ  = model.predict(X[t])
+                   realized = ret_exc_lead1m[t]    (return earned in month t+1)
+
+  Example (start_year=1986, burn_in_years=5 so data_start=1981):
+    Train Model 1 on [1981-01 .. 1985-12]  →  score 1986-01 .. 1986-12
+    Train Model 2 on [1981-01 .. 1986-12]  →  score 1987-01 .. 1987-12
+    ...
 
 Usage:
-    python code/xg_boost_expanding.py                       # fresh run
-    python code/xg_boost_expanding.py --resume              # continue from checkpoint
-    python code/xg_boost_expanding.py --start 1995 --tc 5
+    python code/xg_boost_expanding.py                        # fresh run
+    python code/xg_boost_expanding.py --resume               # continue from checkpoint
+    python code/xg_boost_expanding.py --start 1986 --tc 5 --burn-in 5
 """
 
 import argparse
@@ -75,7 +70,7 @@ VAL_FRAC              = 0.20
 DECILE           = 0.10
 MIN_STOCKS       = 100
 MAX_NAN_FRAC     = 0.30
-CHECKPOINT_EVERY = 12
+CHECKPOINT_EVERY = 12   # flush to disk every N scored months
 RET_CAP          = 1.0
 
 # Identifier / flag columns — never used as predictors
@@ -84,13 +79,14 @@ _META = {
     "obs_main", "exch_main", "primary_sec", "gvkey", "iid",
     "permno", "permco", "excntry", "curcd", "fx", "common",
     "comp_tpci", "crsp_shrcd", "comp_exchg", "crsp_exchcd",
-    "adjfct", "shares", "me_lag1", "gics", "sic", "naics", "ff49",
+    "adjfct", "shares", "me_lag1", "gics", "sic", "naics", "ff49", 'ret_lag_dif'
 }
-# ret_1_0 is byte-for-byte identical to ret; drop the duplicate so the
-# current-month return doesn't receive double feature weight.
-_LOOKAHEAD = {"ret_exc_lead1m", "ret_1_0", "ret"}
+# ret_1_0 is byte-for-byte identical to ret; drop it so the current-month
+# return doesn't receive double feature weight.
+_LOOKAHEAD = {"ret_exc_lead1m"}
 
 Y_COL = "ret_exc_lead1m"
+
 
 # ══════════════════════════════════════════════════════════════════════════════
 # LOGGING SETUP
@@ -147,8 +143,7 @@ def load_data(
     ]
     # NaN filtering is NOT done here — computing nan_frac over the full sample
     # (including future dates) would introduce look-ahead bias.  Feature
-    # selection is deferred to the annual retraining step, where it uses only
-    # the expanding training data available at that point in time.
+    # selection is deferred to each annual retraining step.
 
     df = df[["id", "eom", Y_COL] + char_cols].copy()
     logger.info(
@@ -176,15 +171,13 @@ def train_model(
     """
     Fit XGBRegressor with early stopping on a temporal validation split.
 
-    We hold out the LAST VAL_FRAC of the expanding window as validation so
-    that early stopping is calibrated on the most recent historical period —
-    not on a random mix of past and recent months (which would let the model
-    tune itself to recent data patterns before prediction, causing inflated
-    win rates).  XGBoost handles NaN natively so no imputation is needed.
+    The LAST VAL_FRAC rows (by time order) are held out as the validation set
+    so early stopping is calibrated on the most recent historical period rather
+    than a random mix of past and recent months.  XGBoost handles NaN natively.
     """
     n = len(y_train)
     split = max(MIN_STOCKS, int(n * (1 - VAL_FRAC)))
-    split = min(split, n - 1)           # need at least 1 row in val
+    split = min(split, n - 1)
     X_tr, X_val = X_train[:split], X_train[split:]
     y_tr, y_val = y_train[:split], y_train[split:]
 
@@ -223,7 +216,7 @@ def generate_signals(
 
     X_raw     = signal_df[char_cols].values.astype(np.float32)
     pred      = model.predict(X_raw)
-    predicted = pd.Series(pred,               index=signal_df.index, name="predicted_ret")
+    predicted = pd.Series(pred, index=signal_df.index, name="predicted_ret")
     realized  = signal_df[Y_COL].rename("realized_ret")
     return predicted, realized
 
@@ -405,27 +398,17 @@ _CKPT_PATH = BACKTEST / "checkpoint.pkl"
 
 
 def _save_checkpoint(
-    step: int,
-    t: pd.Timestamp,
+    scoring_year: int,
     prev_long_ids: set,
     prev_short_ids: set,
     n_train_rows: int,
-    nan_sum: np.ndarray,
-    obs_count: np.ndarray,
-    current_indices: np.ndarray | None,
-    current_cols: list[str] | None,
 ) -> None:
     with open(_CKPT_PATH, "wb") as f:
         pickle.dump({
-            "step":            step,
-            "eom":             t,
-            "prev_long_ids":   prev_long_ids  or set(),
-            "prev_short_ids":  prev_short_ids or set(),
-            "n_train_rows":    n_train_rows,
-            "nan_sum":         nan_sum,
-            "obs_count":       obs_count,
-            "current_indices": current_indices,
-            "current_cols":    current_cols,
+            "scoring_year":  scoring_year,
+            "prev_long_ids":  prev_long_ids  or set(),
+            "prev_short_ids": prev_short_ids or set(),
+            "n_train_rows":   n_train_rows,
         }, f)
 
 
@@ -460,29 +443,80 @@ def _flush(
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# 8. BACKTEST LOOP
+# 8. HELPER: build training arrays for all months up to (and including) end_year
+# ══════════════════════════════════════════════════════════════════════════════
+
+def _build_train_arrays(
+    slices: dict[pd.Timestamp, pd.DataFrame],
+    months: list[pd.Timestamp],
+    char_cols: list[str],
+    end_year: int,
+) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    """
+    Stack (X, y) for every month whose eom falls in any year <= end_year.
+
+    Also returns per-column nan_sum and obs_count accumulators so that
+    feature selection at training time uses only in-sample data.
+    """
+    X_list:    list[np.ndarray] = []
+    y_list:    list[np.ndarray] = []
+    nan_sum   = np.zeros(len(char_cols), dtype=np.float64)
+    obs_count = np.zeros(len(char_cols), dtype=np.float64)
+
+    for m in months:
+        if m.year > end_year:
+            break
+        if m not in slices:
+            continue
+        frame = slices[m].dropna(subset=[Y_COL])
+        frame = frame[frame[Y_COL].abs() <= RET_CAP]
+        if len(frame) == 0:
+            continue
+        X_raw = frame[char_cols].values.astype(np.float32)
+        nan_sum   += np.isnan(X_raw).sum(axis=0)
+        obs_count += X_raw.shape[0]
+        X_list.append(X_raw)
+        y_list.append(frame[Y_COL].values.astype(np.float32))
+
+    if not X_list:
+        return np.empty((0, len(char_cols)), dtype=np.float32), np.empty(0, dtype=np.float32), nan_sum, obs_count
+
+    return np.vstack(X_list), np.concatenate(y_list), nan_sum, obs_count
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# 9. BACKTEST LOOP
 # ══════════════════════════════════════════════════════════════════════════════
 
 def run_backtest(
-    start_year: int = 1981,
-    tc_bps: float = 10.0,
-    resume: bool = False,
+    start_year: int   = 1986,
+    burn_in_years: int = 5,
+    tc_bps: float     = 10.0,
+    resume: bool      = False,
 ) -> pd.DataFrame:
     """
-    Execute the full expanding-window XGBoost cross-sectional backtest.
+    Expanding-window XGBoost backtest.
 
-    At each month t the model is retrained on every cross-section from the
-    start of the sample through month t-1.  The training set grows each month,
-    so early-period models benefit from a small but growing dataset and
-    later-period models leverage the full history.
+    Structure (matches diagram):
+      data_start = start_year - burn_in_years
 
-    Results are flushed to CSV every CHECKPOINT_EVERY months.
-    All output is also written to data/backtest/xgboost_expanding/run.log.
+      For scoring_year in [start_year, start_year+1, ...]:
+          train_end_year = scoring_year - 1
+          Train on ALL months in [data_start .. train_end_year]
+          Score every month t in scoring_year:
+              predict using characteristics[t]
+              realized = ret_exc_lead1m[t]  (return in t+1)
+
+    The training window grows by 12 months each year; no data from the
+    scoring year (or beyond) ever enters the training set.
     """
     BACKTEST.mkdir(parents=True, exist_ok=True)
     logger = setup_logger(BACKTEST)
+
+    data_start_year = start_year - burn_in_years
     logger.info(
-        f"Config: start_year={start_year}  tc={tc_bps} bps  "
+        f"Config: data_start={data_start_year}  start_year={start_year}  "
+        f"burn_in={burn_in_years}yr  tc={tc_bps}bps  "
         f"max_depth={XGB_PARAMS['max_depth']}  "
         f"lr={XGB_PARAMS['learning_rate']}  "
         f"n_estimators={XGB_PARAMS['n_estimators']}  "
@@ -491,218 +525,178 @@ def run_backtest(
     )
 
     slices, char_cols = load_data(logger)
-    months   = sorted(slices.keys())
-    start_ts = pd.Timestamp(f"{start_year}-01-01")
-    valid    = [(i, t) for i, t in enumerate(months) if i >= 1 and t >= start_ts]
+    months     = sorted(slices.keys())
+    data_years = sorted({m.year for m in months})
+
+    # Scoring years: from start_year up to the last full year in the data.
+    # We need at least one scoring month, so the last year must have data.
+    last_data_year  = max(m.year for m in months)
+    scoring_years   = [y for y in range(start_year, last_data_year + 1)]
+
+    logger.info(
+        f"Scoring years: {scoring_years[0]} → {scoring_years[-1]}  "
+        f"({len(scoring_years)} annual retrains)"
+    )
 
     # ── Resume logic ──────────────────────────────────────────────────────────
-    prev_long_ids:   set | None          = None
-    prev_short_ids:  set | None          = None
-    resume_after:    pd.Timestamp | None = None
-    first_flush    = True
-    n_train_rows   = 0
-
-    # NaN accumulators for bias-free feature selection: we track cumulative
-    # NaN counts and total observations over the expanding training window so
-    # that at each annual retraining we can select features based solely on
-    # data available up to that point — no full-sample look-ahead.
-    nan_sum         = np.zeros(len(char_cols), dtype=np.float64)
-    obs_count       = np.zeros(len(char_cols), dtype=np.float64)
-    current_indices: np.ndarray | None = None   # selected col indices into char_cols
-    current_cols:    list[str]  | None = None   # names of currently active features
+    resume_from_year: int | None = None
+    prev_long_ids:   set | None  = None
+    prev_short_ids:  set | None  = None
+    first_flush = True
 
     if resume:
         ckpt = _load_checkpoint()
         if ckpt is None:
             logger.info("No checkpoint found — starting fresh.")
         else:
-            resume_after    = ckpt["eom"]
-            prev_long_ids   = ckpt["prev_long_ids"]
-            prev_short_ids  = ckpt["prev_short_ids"]
-            n_train_rows    = ckpt.get("n_train_rows", 0)
-            nan_sum         = ckpt.get("nan_sum",         nan_sum)
-            obs_count       = ckpt.get("obs_count",       obs_count)
-            current_indices = ckpt.get("current_indices", None)
-            current_cols    = ckpt.get("current_cols",    None)
-            first_flush     = False
+            # resume_from_year is the next year to process (already completed
+            # years up to scoring_year saved in checkpoint)
+            resume_from_year = ckpt["scoring_year"] + 1
+            prev_long_ids    = ckpt["prev_long_ids"]
+            prev_short_ids   = ckpt["prev_short_ids"]
+            first_flush      = False
             logger.info(
-                f"Resuming from checkpoint: last completed = {resume_after.date()}  "
-                f"n_train_rows={n_train_rows:,}  "
-                f"n_active_features={len(current_cols) if current_cols else 0}"
+                f"Resuming from checkpoint: next scoring_year={resume_from_year}  "
+                f"n_train_rows={ckpt['n_train_rows']:,}"
             )
-
-    logger.info(
-        f"Backtest: {valid[0][1].date()} → {valid[-1][1].date()}  "
-        f"|  {len(valid)} months  |  TC = {tc_bps} bps one-way"
-    )
-
-    # ── Training data accumulator ─────────────────────────────────────────────
-    # Each entry is one month's cleaned (X, y) arrays.  We stack lazily at
-    # training time so numpy works on a contiguous block without repeated copies.
-    X_list: list[np.ndarray] = []
-    y_list: list[np.ndarray] = []
-
-    # When resuming, fast-forward the accumulator to the checkpoint month
-    # without fitting any models.
-    if resume_after is not None:
-        logger.info("Rebuilding expanding training data for resume …")
-        for k, m in enumerate(months):
-            if k == 0:
-                continue
-            m_prev = months[k - 1]
-            if m_prev in slices:
-                frame = slices[m_prev].dropna(subset=[Y_COL])
-                frame = frame[frame[Y_COL].abs() <= RET_CAP]
-                if len(frame) > 0:
-                    X_raw = frame[char_cols].values.astype(np.float32)
-                    nan_sum   += np.isnan(X_raw).sum(axis=0)
-                    obs_count += X_raw.shape[0]
-                    X_list.append(X_raw)
-                    y_list.append(frame[Y_COL].values.astype(np.float32))
-            if m == resume_after:
-                break
-        logger.info(
-            f"  Resume data rebuilt: {sum(len(y) for y in y_list):,} rows"
-        )
 
     rows_buf: list[dict]         = []
     port_buf: list[pd.DataFrame] = []
     imp_buf:  list[pd.Series]    = []
     t_start = datetime.now()
+    scored_months = 0
 
-    model:        XGBRegressor | None = None
-    feat_imp:     pd.Series    | None = None
-    n_train_last: int                 = 0
+    # ── Main loop: one iteration = one scoring year ───────────────────────────
+    for scoring_year in scoring_years:
 
-    for step, (i, t) in enumerate(valid):
-        t_prev = months[i - 1]
-
-        # Skip months already handled by the pre-fill resume loop.
-        # The pre-fill already built X_list / y_list through resume_after,
-        # so re-appending t_prev here would double-count those months.
-        if resume_after is not None and t <= resume_after:
+        # Skip years already completed when resuming
+        if resume_from_year is not None and scoring_year < resume_from_year:
             continue
 
-        # ── Append t_prev's cross-section to the expanding training set ───────
-        if t_prev in slices:
-            frame = slices[t_prev].dropna(subset=[Y_COL])
-            frame = frame[frame[Y_COL].abs() <= RET_CAP]
-            if len(frame) > 0:
-                X_raw = frame[char_cols].values.astype(np.float32)
-                nan_sum   += np.isnan(X_raw).sum(axis=0)
-                obs_count += X_raw.shape[0]
-                X_list.append(X_raw)
-                y_list.append(frame[Y_COL].values.astype(np.float32))
+        train_end_year = scoring_year - 1   # train on all data up to Dec(Y-1)
 
-        if not X_list:
-            continue
-
-        # ── Retrain once per calendar year (or when no model exists yet) ───────
-        if model is None or t.month == 1:
-            X_train_all = np.vstack(X_list)
-            y_train     = np.concatenate(y_list)
-
-            if len(y_train) >= MIN_STOCKS:
-                try:
-                    # Feature selection: use only columns whose NaN fraction
-                    # in the expanding training data is within the threshold.
-                    # This avoids look-ahead bias from the full-sample filter.
-                    nan_frac_tr     = np.where(obs_count > 0, nan_sum / obs_count, 1.0)
-                    sel_mask        = nan_frac_tr <= MAX_NAN_FRAC
-                    current_indices = np.where(sel_mask)[0]
-                    current_cols    = [char_cols[i] for i in current_indices]
-                    X_train         = X_train_all[:, current_indices]
-
-                    model, feat_imp = train_model(X_train, y_train, current_cols, logger)
-                    n_train_last = len(y_train)
-                    logger.info(
-                        f"  [retrain]  {t.date()}  n_train={n_train_last:,}  "
-                        f"n_features={len(current_cols)}"
-                    )
-                except Exception as exc:
-                    logger.error(f"{t.date()}  model training failed: {exc}")
-                    if model is None:
-                        continue   # no fallback model yet
-            else:
-                logger.warning(
-                    f"{t.date()}  not enough training rows ({len(y_train)}), "
-                    f"{'skipping' if model is None else 'keeping last model'}"
-                )
-                if model is None:
-                    continue
-
-        if model is None or current_cols is None:
-            continue
-
-        # ── Signal DataFrame ──────────────────────────────────────────────────
-        if t not in slices:
-            continue
-        signal_df = slices[t][current_cols + [Y_COL]]
-
-        # ── Signal generation ─────────────────────────────────────────────────
-        predicted, realized = generate_signals(model, signal_df, current_cols)
-        if predicted is None:
-            logger.warning(f"{t.date()}  skipped — empty signal DataFrame")
-            continue
-
-        # ── IC ────────────────────────────────────────────────────────────────
-        ic_p, ic_s = compute_ic(predicted, realized)
-
-        # ── Portfolio ─────────────────────────────────────────────────────────
-        port_df, summary = construct_portfolio(
-            predicted, realized, prev_long_ids, prev_short_ids, tc_bps
-        )
-        if port_df is None:
+        # Verify there is training data available
+        if train_end_year < data_start_year:
             logger.warning(
-                f"{t.date()}  skipped — insufficient stocks with forward returns"
+                f"scoring_year={scoring_year}: train_end_year={train_end_year} "
+                f"< data_start_year={data_start_year}, skipping."
             )
             continue
 
-        prev_long_ids  = set(port_df.loc[port_df["leg"] == "long",  "id"])
-        prev_short_ids = set(port_df.loc[port_df["leg"] == "short", "id"])
-
-        # ── Buffer ────────────────────────────────────────────────────────────
-        row = {
-            "eom":            t,
-            "ic_pearson":     ic_p,
-            "ic_spearman":    ic_s,
-            "best_iteration": model.best_iteration,
-            "n_train":        n_train_last,
-            **summary,
-        }
-        rows_buf.append(row)
-
-        port_df["eom"] = t
-        port_buf.append(port_df)
-
-        imp_row      = feat_imp.copy()
-        imp_row.name = t
-        imp_buf.append(imp_row)
-
-        # ── Log progress ──────────────────────────────────────────────────────
+        # ── Build full expanding training set ─────────────────────────────────
+        # All cross-sections from data_start_year through train_end_year.
+        # This is the "expanding" part: each year adds 12 more months.
         logger.info(
-            f"{t.date()}  |  "
-            f"qspread={summary['qspread']:+.4f}  "
-            f"IC={ic_s:+.3f}  "
-            f"trees={model.best_iteration:>3d}  "
-            f"n_train={n_train_last:,}  "
-            f"n_universe={summary['n_universe']:,}"
+            f"[{scoring_year}]  Training on [{data_start_year}-01 .. "
+            f"{train_end_year}-12] …"
+        )
+        X_all, y_all, nan_sum, obs_count = _build_train_arrays(
+            slices, months, char_cols, end_year=train_end_year
         )
 
-        # ── Checkpoint flush ──────────────────────────────────────────────────
-        if len(rows_buf) % CHECKPOINT_EVERY == 0:
-            _flush(rows_buf, port_buf, imp_buf, first_flush)
-            _save_checkpoint(
-                step, t, prev_long_ids, prev_short_ids, n_train_last,
-                nan_sum, obs_count, current_indices, current_cols,
+        if len(y_all) < MIN_STOCKS:
+            logger.warning(
+                f"[{scoring_year}]  Only {len(y_all)} training rows — skipping."
             )
+            continue
+
+        # ── Feature selection: NaN fraction computed over training data only ──
+        nan_frac_tr     = np.where(obs_count > 0, nan_sum / obs_count, 1.0)
+        sel_mask        = nan_frac_tr <= MAX_NAN_FRAC
+        current_indices = np.where(sel_mask)[0]
+        current_cols    = [char_cols[j] for j in current_indices]
+        X_train         = X_all[:, current_indices]
+
+        # ── Train model for this scoring year ─────────────────────────────────
+        try:
+            model, feat_imp = train_model(X_train, y_all, current_cols, logger)
+            n_train_rows = len(y_all)
+            logger.info(
+                f"[{scoring_year}]  Model trained  "
+                f"n_train={n_train_rows:,}  "
+                f"n_features={len(current_cols)}  "
+                f"best_iter={model.best_iteration}"
+            )
+        except Exception as exc:
+            logger.error(f"[{scoring_year}]  Training failed: {exc}")
+            continue
+
+        # ── Score every month in scoring_year ─────────────────────────────────
+        # Month t uses characteristics[t] to predict the return in t+1.
+        # The realized return is ret_exc_lead1m[t].
+        score_months = [m for m in months if m.year == scoring_year]
+
+        for t in score_months:
+            if t not in slices:
+                continue
+
+            signal_df = slices[t][current_cols + [Y_COL]]
+
+            # Drop penny stocks (price < $5). CRSP uses negative prc to record
+            # bid-ask midpoints when a closing price is unavailable, so filter
+            # on the absolute value. Apply only at portfolio formation — training
+            # data keeps all stocks so the model learns the full return distribution.
+            if "prc" in slices[t].columns:
+                prc = slices[t]["prc"].reindex(signal_df.index)
+                signal_df = signal_df[(prc.abs() >= 5.0) | prc.isna()]
+
+            predicted, realized = generate_signals(model, signal_df, current_cols)
+            if predicted is None:
+                logger.warning(f"  {t.date()}  skipped — empty signal DataFrame")
+                continue
+
+            ic_p, ic_s = compute_ic(predicted, realized)
+
+            port_df, summary = construct_portfolio(
+                predicted, realized, prev_long_ids, prev_short_ids, tc_bps
+            )
+            if port_df is None:
+                logger.warning(
+                    f"  {t.date()}  skipped — insufficient stocks with forward returns"
+                )
+                continue
+
+            prev_long_ids  = set(port_df.loc[port_df["leg"] == "long",  "id"])
+            prev_short_ids = set(port_df.loc[port_df["leg"] == "short", "id"])
+
+            row = {
+                "eom":            t,
+                "ic_pearson":     ic_p,
+                "ic_spearman":    ic_s,
+                "best_iteration": model.best_iteration,
+                "n_train":        n_train_rows,
+                "scoring_year":   scoring_year,
+                "train_end_year": train_end_year,
+                **summary,
+            }
+            rows_buf.append(row)
+            port_df["eom"] = t
+            port_buf.append(port_df)
+            imp_row      = feat_imp.copy()
+            imp_row.name = t
+            imp_buf.append(imp_row)
+
+            scored_months += 1
+            logger.info(
+                f"  {t.date()}  |  "
+                f"qspread={summary['qspread']:+.4f}  "
+                f"IC={ic_s:+.3f}  "
+                f"n_universe={summary['n_universe']:,}"
+            )
+
+        # ── Checkpoint + flush at end of each scoring year ────────────────────
+        if rows_buf:
+            _flush(rows_buf, port_buf, imp_buf, first_flush)
+            _save_checkpoint(scoring_year, prev_long_ids or set(), prev_short_ids or set(), n_train_rows)
             elapsed = (datetime.now() - t_start).seconds // 60
-            logger.info(f"  ✓ checkpoint saved  ({t.date()})  elapsed={elapsed}m")
-            rows_buf, port_buf, imp_buf = (
-                [], [], [])
+            logger.info(
+                f"  ✓ checkpoint saved after scoring_year={scoring_year}  "
+                f"scored_months={scored_months}  elapsed={elapsed}m"
+            )
+            rows_buf, port_buf, imp_buf = [], [], []
             first_flush = False
 
-    # ── Final flush ────────────────────────────────────────────────────────────
+    # ── Final flush (any remaining buffer) ────────────────────────────────────
     if rows_buf:
         _flush(rows_buf, port_buf, imp_buf, first_flush)
 
@@ -727,7 +721,8 @@ def run_backtest(
     )
     logger.info(f"  Months         : {perf['n_months']}")
     logger.info(f"  TC             : {tc_bps} bps one-way")
-    logger.info(f"  Window         : expanding (all history)")
+    logger.info(f"  Burn-in        : {burn_in_years} years ({data_start_year}-{start_year-1})")
+    logger.info(f"  Window         : expanding (all history from {data_start_year})")
     logger.info("  ── Gross Q-spread ──────────────────────────────")
     logger.info(f"  Ann. Return    : {perf['gross_ann_ret']:>8.2%}")
     logger.info(f"  Ann. Volatility: {perf['gross_ann_vol']:>8.2%}")
@@ -765,8 +760,13 @@ if __name__ == "__main__":
         description="Cross-sectional XGBoost (expanding window) equity backtest on JKP USA data."
     )
     parser.add_argument(
-        "--start", type=int, default=1981,
-        help="First year for portfolio returns (default: 1981).",
+        "--start", type=int, default=1986,
+        help="First year for which portfolio returns are generated (default: 1986).",
+    )
+    parser.add_argument(
+        "--burn-in", type=int, default=5,
+        help="Number of years of burn-in before scoring begins (default: 5). "
+             "Data start = start - burn_in.",
     )
     parser.add_argument(
         "--tc", type=float, default=10.0,
@@ -777,4 +777,9 @@ if __name__ == "__main__":
         help="Resume from the last saved checkpoint instead of starting fresh.",
     )
     args = parser.parse_args()
-    run_backtest(start_year=args.start, tc_bps=args.tc, resume=args.resume)
+    run_backtest(
+        start_year=args.start,
+        burn_in_years=args.burn_in,
+        tc_bps=args.tc,
+        resume=args.resume,
+    )

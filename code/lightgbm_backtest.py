@@ -88,9 +88,9 @@ _META = {
     "obs_main", "exch_main", "primary_sec", "gvkey", "iid",
     "permno", "permco", "excntry", "curcd", "fx", "common",
     "comp_tpci", "crsp_shrcd", "comp_exchg", "crsp_exchcd",
-    "adjfct", "shares", "me_lag1", "gics", "sic", "naics", "ff49",
+    "adjfct", "shares", "me_lag1", "gics", "sic", "naics", "ff49", 'ret_lag_dif'
 }
-_LOOKAHEAD = {"ret_exc_lead1m"}
+_LOOKAHEAD = {"ret_exc_lead1m", 'ret', 'ret_1_0', 'ret_2_0', 'ret_3_0', 'ret_6_0', 'ret_9_0', 'ret_12_0'}
 
 Y_COL = "ret_exc_lead1m"
 
