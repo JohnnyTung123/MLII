@@ -1,0 +1,758 @@
+2026-05-25 16:35:40  INFO      ======================================================================
+2026-05-25 16:35:40  INFO      NEW RUN — 2026-05-25 16:35:40
+2026-05-25 16:35:40  INFO      ======================================================================
+2026-05-25 16:35:40  INFO      Config: data_start=1981  start_year=1986  burn_in=5yr  tc=10.0bps  sharpe_threshold=0.8  max_depth=4  lr=0.05  n_estimators=500  early_stopping=30  val_frac=0.2  window=expanding
+2026-05-25 16:35:40  INFO      Loading data.parquet …
+2026-05-25 16:35:55  INFO        2,256,068 rows  |  409 candidate predictors  |  540 months
+2026-05-25 16:36:09  INFO      Scoring years: 1986 → 2025  (40 annual retrains)
+2026-05-25 16:36:09  INFO      [1986]  Training on [1981-01 .. 1985-12] …
+2026-05-25 16:36:09  INFO      [1986]  Screening 250 factors for Sharpe >= 0.8 …
+2026-05-25 16:36:11  INFO      [1986]  83/250 factors passed Sharpe filter  (NaN-filtered pool: 250)
+2026-05-25 16:36:11  DEBUG         XGBoost: best_iteration=5  top_feature=ret_12_1
+2026-05-25 16:36:11  INFO      [1986]  Model trained  n_train=149,779  n_features=83  best_iter=5
+2026-05-25 16:36:11  INFO        1986-01-31  |  qspread=+0.0217  IC=+0.093  n_features=83  n_universe=1,692
+2026-05-25 16:36:11  INFO        1986-02-28  |  qspread=+0.0346  IC=+0.127  n_features=83  n_universe=1,698
+2026-05-25 16:36:11  INFO        1986-03-31  |  qspread=-0.0423  IC=-0.037  n_features=83  n_universe=1,745
+2026-05-25 16:36:11  INFO        1986-04-30  |  qspread=+0.0148  IC=+0.066  n_features=83  n_universe=1,756
+2026-05-25 16:36:11  INFO        1986-05-31  |  qspread=+0.0298  IC=+0.039  n_features=83  n_universe=1,765
+2026-05-25 16:36:11  INFO        1986-06-30  |  qspread=+0.0286  IC=+0.006  n_features=83  n_universe=1,798
+2026-05-25 16:36:11  INFO        1986-07-31  |  qspread=-0.0166  IC=-0.036  n_features=83  n_universe=1,789
+2026-05-25 16:36:11  INFO        1986-08-31  |  qspread=-0.0171  IC=+0.012  n_features=83  n_universe=1,786
+2026-05-25 16:36:11  INFO        1986-09-30  |  qspread=-0.0348  IC=-0.025  n_features=83  n_universe=1,797
+2026-05-25 16:36:12  INFO        1986-10-31  |  qspread=+0.0049  IC=+0.015  n_features=83  n_universe=1,802
+2026-05-25 16:36:12  INFO        1986-11-30  |  qspread=-0.0036  IC=+0.030  n_features=83  n_universe=1,805
+2026-05-25 16:36:12  INFO        1986-12-31  |  qspread=-0.0659  IC=-0.111  n_features=83  n_universe=1,823
+2026-05-25 16:36:12  INFO        ✓ checkpoint  scoring_year=1986  scored_months=12  elapsed=0m
+2026-05-25 16:36:12  INFO      [1987]  Training on [1981-01 .. 1986-12] …
+2026-05-25 16:36:12  INFO      [1987]  Screening 251 factors for Sharpe >= 0.8 …
+2026-05-25 16:36:14  INFO      [1987]  89/251 factors passed Sharpe filter  (NaN-filtered pool: 251)
+2026-05-25 16:36:15  DEBUG         XGBoost: best_iteration=13  top_feature=ret_12_1
+2026-05-25 16:36:15  INFO      [1987]  Model trained  n_train=179,922  n_features=89  best_iter=13
+2026-05-25 16:36:15  INFO        1987-01-31  |  qspread=-0.0587  IC=-0.112  n_features=89  n_universe=1,857
+2026-05-25 16:36:15  INFO        1987-02-28  |  qspread=-0.0307  IC=+0.060  n_features=89  n_universe=1,880
+2026-05-25 16:36:15  INFO        1987-03-31  |  qspread=+0.0339  IC=+0.061  n_features=89  n_universe=1,933
+2026-05-25 16:36:15  INFO        1987-04-30  |  qspread=+0.0319  IC=+0.026  n_features=89  n_universe=1,936
+2026-05-25 16:36:15  INFO        1987-05-31  |  qspread=+0.0045  IC=+0.057  n_features=89  n_universe=1,942
+2026-05-25 16:36:15  INFO        1987-06-30  |  qspread=+0.0221  IC=+0.056  n_features=89  n_universe=1,967
+2026-05-25 16:36:15  INFO        1987-07-31  |  qspread=-0.0098  IC=+0.007  n_features=89  n_universe=1,993
+2026-05-25 16:36:15  INFO        1987-08-31  |  qspread=+0.0071  IC=+0.081  n_features=89  n_universe=2,004
+2026-05-25 16:36:15  INFO        1987-09-30  |  qspread=+0.0503  IC=+0.183  n_features=89  n_universe=2,026
+2026-05-25 16:36:15  INFO        1987-10-31  |  qspread=+0.0269  IC=+0.120  n_features=89  n_universe=1,894
+2026-05-25 16:36:15  INFO        1987-11-30  |  qspread=-0.0332  IC=-0.036  n_features=89  n_universe=1,857
+2026-05-25 16:36:15  INFO        1987-12-31  |  qspread=+0.0405  IC=+0.006  n_features=89  n_universe=1,897
+2026-05-25 16:36:15  INFO        ✓ checkpoint  scoring_year=1987  scored_months=24  elapsed=0m
+2026-05-25 16:36:15  INFO      [1988]  Training on [1981-01 .. 1987-12] …
+2026-05-25 16:36:15  INFO      [1988]  Screening 252 factors for Sharpe >= 0.8 …
+2026-05-25 16:36:18  INFO      [1988]  80/252 factors passed Sharpe filter  (NaN-filtered pool: 252)
+2026-05-25 16:36:18  DEBUG         XGBoost: best_iteration=0  top_feature=ret_12_1
+2026-05-25 16:36:18  INFO      [1988]  Model trained  n_train=213,202  n_features=80  best_iter=0
+2026-05-25 16:36:18  INFO        1988-01-31  |  qspread=-0.0380  IC=-0.095  n_features=80  n_universe=1,922
+2026-05-25 16:36:18  INFO        1988-02-29  |  qspread=-0.0145  IC=-0.045  n_features=80  n_universe=1,946
+2026-05-25 16:36:18  INFO        1988-03-31  |  qspread=+0.0164  IC=-0.009  n_features=80  n_universe=1,980
+2026-05-25 16:36:18  INFO        1988-04-30  |  qspread=-0.0081  IC=+0.037  n_features=80  n_universe=1,973
+2026-05-25 16:36:18  INFO        1988-05-31  |  qspread=-0.0097  IC=-0.025  n_features=80  n_universe=1,969
+2026-05-25 16:36:18  INFO        1988-06-30  |  qspread=+0.0125  IC=+0.049  n_features=80  n_universe=1,998
+2026-05-25 16:36:18  INFO        1988-07-31  |  qspread=+0.0064  IC=+0.048  n_features=80  n_universe=1,995
+2026-05-25 16:36:18  INFO        1988-08-31  |  qspread=+0.0097  IC=+0.039  n_features=80  n_universe=1,977
+2026-05-25 16:36:18  INFO        1988-09-30  |  qspread=+0.0128  IC=+0.082  n_features=80  n_universe=2,001
+2026-05-25 16:36:18  INFO        1988-10-31  |  qspread=+0.0003  IC=+0.050  n_features=80  n_universe=1,991
+2026-05-25 16:36:18  INFO        1988-11-30  |  qspread=-0.0327  IC=-0.093  n_features=80  n_universe=1,985
+2026-05-25 16:36:18  INFO        1988-12-31  |  qspread=-0.0113  IC=+0.021  n_features=80  n_universe=1,992
+2026-05-25 16:36:18  INFO        ✓ checkpoint  scoring_year=1988  scored_months=36  elapsed=0m
+2026-05-25 16:36:18  INFO      [1989]  Training on [1981-01 .. 1988-12] …
+2026-05-25 16:36:19  INFO      [1989]  Screening 255 factors for Sharpe >= 0.8 …
+2026-05-25 16:36:22  INFO      [1989]  81/255 factors passed Sharpe filter  (NaN-filtered pool: 255)
+2026-05-25 16:36:22  DEBUG         XGBoost: best_iteration=0  top_feature=ret_12_1
+2026-05-25 16:36:22  INFO      [1989]  Model trained  n_train=248,148  n_features=81  best_iter=0
+2026-05-25 16:36:22  INFO        1989-01-31  |  qspread=-0.0164  IC=+0.014  n_features=81  n_universe=2,030
+2026-05-25 16:36:22  INFO        1989-02-28  |  qspread=-0.0054  IC=+0.043  n_features=81  n_universe=2,025
+2026-05-25 16:36:22  INFO        1989-03-31  |  qspread=-0.0078  IC=-0.003  n_features=81  n_universe=2,040
+2026-05-25 16:36:22  INFO        1989-04-30  |  qspread=+0.0057  IC=-0.013  n_features=81  n_universe=2,043
+2026-05-25 16:36:22  INFO        1989-05-31  |  qspread=+0.0011  IC=-0.042  n_features=81  n_universe=2,048
+2026-05-25 16:36:22  INFO        1989-06-30  |  qspread=+0.0044  IC=+0.006  n_features=81  n_universe=2,044
+2026-05-25 16:36:22  INFO        1989-07-31  |  qspread=-0.0053  IC=-0.006  n_features=81  n_universe=2,055
+2026-05-25 16:36:22  INFO        1989-08-31  |  qspread=-0.0164  IC=-0.048  n_features=81  n_universe=2,046
+2026-05-25 16:36:22  INFO        1989-09-30  |  qspread=-0.0467  IC=-0.077  n_features=81  n_universe=2,051
+2026-05-25 16:36:22  INFO        1989-10-31  |  qspread=-0.0275  IC=-0.041  n_features=81  n_universe=2,031
+2026-05-25 16:36:22  INFO        1989-11-30  |  qspread=-0.0457  IC=-0.048  n_features=81  n_universe=2,030
+2026-05-25 16:36:22  INFO        1989-12-31  |  qspread=+0.0038  IC=+0.014  n_features=81  n_universe=2,025
+2026-05-25 16:36:22  INFO        ✓ checkpoint  scoring_year=1989  scored_months=48  elapsed=0m
+2026-05-25 16:36:22  INFO      [1990]  Training on [1981-01 .. 1989-12] …
+2026-05-25 16:36:23  INFO      [1990]  Screening 256 factors for Sharpe >= 0.8 …
+2026-05-25 16:36:26  INFO      [1990]  81/256 factors passed Sharpe filter  (NaN-filtered pool: 256)
+2026-05-25 16:36:27  DEBUG         XGBoost: best_iteration=0  top_feature=ap_turnover
+2026-05-25 16:36:27  INFO      [1990]  Model trained  n_train=283,891  n_features=81  best_iter=0
+2026-05-25 16:36:27  INFO        1990-01-31  |  qspread=+0.0115  IC=+0.051  n_features=81  n_universe=1,993
+2026-05-25 16:36:27  INFO        1990-02-28  |  qspread=+0.0265  IC=+0.089  n_features=81  n_universe=1,986
+2026-05-25 16:36:27  INFO        1990-03-31  |  qspread=+0.0029  IC=-0.045  n_features=81  n_universe=2,002
+2026-05-25 16:36:27  INFO        1990-04-30  |  qspread=-0.0109  IC=+0.066  n_features=81  n_universe=1,984
+2026-05-25 16:36:27  INFO        1990-05-31  |  qspread=+0.0100  IC=+0.024  n_features=81  n_universe=2,009
+2026-05-25 16:36:27  INFO        1990-06-30  |  qspread=-0.0180  IC=-0.024  n_features=81  n_universe=2,017
+2026-05-25 16:36:27  INFO        1990-07-31  |  qspread=-0.0497  IC=-0.124  n_features=81  n_universe=1,996
+2026-05-25 16:36:27  INFO        1990-08-31  |  qspread=-0.0339  IC=-0.072  n_features=81  n_universe=1,928
+2026-05-25 16:36:27  INFO        1990-09-30  |  qspread=+0.0044  IC=+0.018  n_features=81  n_universe=1,872
+2026-05-25 16:36:27  INFO        1990-10-31  |  qspread=+0.0487  IC=+0.085  n_features=81  n_universe=1,813
+2026-05-25 16:36:27  INFO        1990-11-30  |  qspread=+0.0249  IC=+0.086  n_features=81  n_universe=1,820
+2026-05-25 16:36:27  INFO        1990-12-31  |  qspread=+0.0438  IC=+0.162  n_features=81  n_universe=1,825
+2026-05-25 16:36:27  INFO        ✓ checkpoint  scoring_year=1990  scored_months=60  elapsed=0m
+2026-05-25 16:36:27  INFO      [1991]  Training on [1981-01 .. 1990-12] …
+2026-05-25 16:36:28  INFO      [1991]  Screening 256 factors for Sharpe >= 0.8 …
+2026-05-25 16:36:32  INFO      [1991]  90/256 factors passed Sharpe filter  (NaN-filtered pool: 256)
+2026-05-25 16:36:33  DEBUG         XGBoost: best_iteration=0  top_feature=ret_18_1
+2026-05-25 16:36:33  INFO      [1991]  Model trained  n_train=320,342  n_features=90  best_iter=0
+2026-05-25 16:36:33  INFO        1991-01-31  |  qspread=+0.0508  IC=+0.079  n_features=90  n_universe=1,860
+2026-05-25 16:36:33  INFO        1991-02-28  |  qspread=+0.0253  IC=+0.030  n_features=90  n_universe=1,946
+2026-05-25 16:36:33  INFO        1991-03-31  |  qspread=+0.0363  IC=+0.077  n_features=90  n_universe=1,975
+2026-05-25 16:36:33  INFO        1991-04-30  |  qspread=+0.0246  IC=+0.018  n_features=90  n_universe=1,993
+2026-05-25 16:36:33  INFO        1991-05-31  |  qspread=+0.0079  IC=+0.104  n_features=90  n_universe=2,005
+2026-05-25 16:36:33  INFO        1991-06-30  |  qspread=+0.0042  IC=-0.020  n_features=90  n_universe=1,997
+2026-05-25 16:36:33  INFO        1991-07-31  |  qspread=+0.0087  IC=-0.016  n_features=90  n_universe=2,016
+2026-05-25 16:36:33  INFO        1991-08-31  |  qspread=-0.0108  IC=-0.001  n_features=90  n_universe=2,021
+2026-05-25 16:36:33  INFO        1991-09-30  |  qspread=-0.0174  IC=-0.034  n_features=90  n_universe=2,030
+2026-05-25 16:36:33  INFO        1991-10-31  |  qspread=-0.0132  IC=+0.052  n_features=90  n_universe=2,049
+2026-05-25 16:36:33  INFO        1991-11-30  |  qspread=-0.0104  IC=-0.092  n_features=90  n_universe=2,056
+2026-05-25 16:36:33  INFO        1991-12-31  |  qspread=+0.0789  IC=+0.147  n_features=90  n_universe=2,089
+2026-05-25 16:36:33  INFO        ✓ checkpoint  scoring_year=1991  scored_months=72  elapsed=0m
+2026-05-25 16:36:33  INFO      [1992]  Training on [1981-01 .. 1991-12] …
+2026-05-25 16:36:33  INFO      [1992]  Screening 258 factors for Sharpe >= 0.8 …
+2026-05-25 16:36:38  INFO      [1992]  82/258 factors passed Sharpe filter  (NaN-filtered pool: 258)
+2026-05-25 16:36:39  DEBUG         XGBoost: best_iteration=19  top_feature=cash_gr1a
+2026-05-25 16:36:39  INFO      [1992]  Model trained  n_train=358,083  n_features=82  best_iter=19
+2026-05-25 16:36:39  INFO        1992-01-31  |  qspread=+0.0483  IC=+0.098  n_features=82  n_universe=2,172
+2026-05-25 16:36:39  INFO        1992-02-29  |  qspread=+0.0252  IC=+0.081  n_features=82  n_universe=2,208
+2026-05-25 16:36:39  INFO        1992-03-31  |  qspread=+0.0624  IC=+0.100  n_features=82  n_universe=2,240
+2026-05-25 16:36:39  INFO        1992-04-30  |  qspread=-0.0032  IC=-0.003  n_features=82  n_universe=2,229
+2026-05-25 16:36:39  INFO        1992-05-31  |  qspread=+0.0052  IC=-0.014  n_features=82  n_universe=2,244
+2026-05-25 16:36:39  INFO        1992-06-30  |  qspread=-0.0171  IC=-0.046  n_features=82  n_universe=2,237
+2026-05-25 16:36:39  INFO        1992-07-31  |  qspread=+0.0170  IC=+0.007  n_features=82  n_universe=2,257
+2026-05-25 16:36:39  INFO        1992-08-31  |  qspread=+0.0033  IC=-0.006  n_features=82  n_universe=2,239
+2026-05-25 16:36:39  INFO        1992-09-30  |  qspread=-0.0060  IC=-0.033  n_features=82  n_universe=2,254
+2026-05-25 16:36:39  INFO        1992-10-31  |  qspread=-0.0288  IC=+0.011  n_features=82  n_universe=2,277
+2026-05-25 16:36:39  INFO        1992-11-30  |  qspread=-0.0016  IC=+0.044  n_features=82  n_universe=2,309
+2026-05-25 16:36:39  INFO        1992-12-31  |  qspread=+0.0313  IC=+0.068  n_features=82  n_universe=2,354
+2026-05-25 16:36:39  INFO        ✓ checkpoint  scoring_year=1992  scored_months=84  elapsed=0m
+2026-05-25 16:36:39  INFO      [1993]  Training on [1981-01 .. 1992-12] …
+2026-05-25 16:36:41  INFO      [1993]  Screening 263 factors for Sharpe >= 0.8 …
+2026-05-25 16:36:46  INFO      [1993]  74/263 factors passed Sharpe filter  (NaN-filtered pool: 263)
+2026-05-25 16:36:47  DEBUG         XGBoost: best_iteration=5  top_feature=nfna_gr1a
+2026-05-25 16:36:47  INFO      [1993]  Model trained  n_train=398,677  n_features=74  best_iter=5
+2026-05-25 16:36:47  INFO        1993-01-31  |  qspread=+0.0245  IC=+0.057  n_features=74  n_universe=2,377
+2026-05-25 16:36:47  INFO        1993-02-28  |  qspread=+0.0196  IC=+0.020  n_features=74  n_universe=2,382
+2026-05-25 16:36:47  INFO        1993-03-31  |  qspread=-0.0032  IC=-0.044  n_features=74  n_universe=2,442
+2026-05-25 16:36:47  INFO        1993-04-30  |  qspread=-0.0242  IC=-0.039  n_features=74  n_universe=2,440
+2026-05-25 16:36:47  INFO        1993-05-31  |  qspread=+0.0124  IC=+0.036  n_features=74  n_universe=2,469
+2026-05-25 16:36:47  INFO        1993-06-30  |  qspread=+0.0131  IC=+0.049  n_features=74  n_universe=2,515
+2026-05-25 16:36:47  INFO        1993-07-31  |  qspread=-0.0119  IC=-0.052  n_features=74  n_universe=2,529
+2026-05-25 16:36:47  INFO        1993-08-31  |  qspread=+0.0078  IC=+0.025  n_features=74  n_universe=2,566
+2026-05-25 16:36:47  INFO        1993-09-30  |  qspread=-0.0086  IC=-0.045  n_features=74  n_universe=2,603
+2026-05-25 16:36:47  INFO        1993-10-31  |  qspread=+0.0018  IC=+0.050  n_features=74  n_universe=2,649
+2026-05-25 16:36:47  INFO        1993-11-30  |  qspread=+0.0204  IC=+0.041  n_features=74  n_universe=2,660
+2026-05-25 16:36:47  INFO        1993-12-31  |  qspread=-0.0080  IC=+0.017  n_features=74  n_universe=2,708
+2026-05-25 16:36:47  INFO        ✓ checkpoint  scoring_year=1993  scored_months=96  elapsed=0m
+2026-05-25 16:36:47  INFO      [1994]  Training on [1981-01 .. 1993-12] …
+2026-05-25 16:36:48  INFO      [1994]  Screening 266 factors for Sharpe >= 0.8 …
+2026-05-25 16:36:55  INFO      [1994]  72/266 factors passed Sharpe filter  (NaN-filtered pool: 266)
+2026-05-25 16:36:56  DEBUG         XGBoost: best_iteration=0  top_feature=ebit_mev
+2026-05-25 16:36:56  INFO      [1994]  Model trained  n_train=442,581  n_features=72  best_iter=0
+2026-05-25 16:36:56  INFO        1994-01-31  |  qspread=+0.0326  IC=+0.060  n_features=72  n_universe=2,745
+2026-05-25 16:36:56  INFO        1994-02-28  |  qspread=+0.0328  IC=+0.045  n_features=72  n_universe=2,755
+2026-05-25 16:36:56  INFO        1994-03-31  |  qspread=+0.0112  IC=+0.021  n_features=72  n_universe=2,759
+2026-05-25 16:36:56  INFO        1994-04-30  |  qspread=+0.0014  IC=+0.020  n_features=72  n_universe=2,782
+2026-05-25 16:36:56  INFO        1994-05-31  |  qspread=+0.0044  IC=+0.057  n_features=72  n_universe=2,785
+2026-05-25 16:36:56  INFO        1994-06-30  |  qspread=+0.0002  IC=+0.019  n_features=72  n_universe=2,791
+2026-05-25 16:36:56  INFO        1994-07-31  |  qspread=+0.0143  IC=+0.045  n_features=72  n_universe=2,796
+2026-05-25 16:36:56  INFO        1994-08-31  |  qspread=-0.0064  IC=+0.028  n_features=72  n_universe=2,817
+2026-05-25 16:36:56  INFO        1994-09-30  |  qspread=+0.0104  IC=+0.051  n_features=72  n_universe=2,833
+2026-05-25 16:36:56  INFO        1994-10-31  |  qspread=+0.0246  IC=+0.059  n_features=72  n_universe=2,833
+2026-05-25 16:36:56  INFO        1994-11-30  |  qspread=-0.0269  IC=-0.041  n_features=72  n_universe=2,812
+2026-05-25 16:36:56  INFO        1994-12-31  |  qspread=+0.0160  IC=+0.017  n_features=72  n_universe=2,795
+2026-05-25 16:36:56  INFO        ✓ checkpoint  scoring_year=1994  scored_months=108  elapsed=0m
+2026-05-25 16:36:56  INFO      [1995]  Training on [1981-01 .. 1994-12] …
+2026-05-25 16:36:58  INFO      [1995]  Screening 265 factors for Sharpe >= 0.8 …
+2026-05-25 16:37:04  INFO      [1995]  70/265 factors passed Sharpe filter  (NaN-filtered pool: 265)
+2026-05-25 16:37:07  DEBUG         XGBoost: best_iteration=62  top_feature=nfna_gr1a
+2026-05-25 16:37:07  INFO      [1995]  Model trained  n_train=490,648  n_features=70  best_iter=62
+2026-05-25 16:37:07  INFO        1995-01-31  |  qspread=+0.0044  IC=+0.010  n_features=70  n_universe=2,827
+2026-05-25 16:37:07  INFO        1995-02-28  |  qspread=-0.0036  IC=-0.001  n_features=70  n_universe=2,844
+2026-05-25 16:37:07  INFO        1995-03-31  |  qspread=+0.0193  IC=+0.090  n_features=70  n_universe=2,853
+2026-05-25 16:37:07  INFO        1995-04-30  |  qspread=+0.0110  IC=+0.004  n_features=70  n_universe=2,877
+2026-05-25 16:37:07  INFO        1995-05-31  |  qspread=-0.0064  IC=+0.051  n_features=70  n_universe=2,889
+2026-05-25 16:37:07  INFO        1995-06-30  |  qspread=+0.0268  IC=+0.070  n_features=70  n_universe=2,922
+2026-05-25 16:37:07  INFO        1995-07-31  |  qspread=+0.0035  IC=+0.007  n_features=70  n_universe=2,961
+2026-05-25 16:37:07  INFO        1995-08-31  |  qspread=+0.0185  IC=+0.048  n_features=70  n_universe=2,992
+2026-05-25 16:37:07  INFO        1995-09-30  |  qspread=+0.0436  IC=+0.071  n_features=70  n_universe=2,999
+2026-05-25 16:37:07  INFO        1995-10-31  |  qspread=-0.0110  IC=+0.036  n_features=70  n_universe=2,981
+2026-05-25 16:37:07  INFO        1995-11-30  |  qspread=-0.0438  IC=-0.082  n_features=70  n_universe=3,005
+2026-05-25 16:37:07  INFO        1995-12-31  |  qspread=-0.0112  IC=-0.036  n_features=70  n_universe=3,021
+2026-05-25 16:37:07  INFO        ✓ checkpoint  scoring_year=1995  scored_months=120  elapsed=0m
+2026-05-25 16:37:07  INFO      [1996]  Training on [1981-01 .. 1995-12] …
+2026-05-25 16:37:09  INFO      [1996]  Screening 267 factors for Sharpe >= 0.8 …
+2026-05-25 16:37:15  INFO      [1996]  65/267 factors passed Sharpe filter  (NaN-filtered pool: 267)
+2026-05-25 16:37:18  DEBUG         XGBoost: best_iteration=63  top_feature=nfna_gr1a
+2026-05-25 16:37:18  INFO      [1996]  Model trained  n_train=540,674  n_features=65  best_iter=63
+2026-05-25 16:37:18  INFO        1996-01-31  |  qspread=+0.0150  IC=+0.034  n_features=65  n_universe=3,046
+2026-05-25 16:37:18  INFO        1996-02-29  |  qspread=+0.0010  IC=+0.025  n_features=65  n_universe=3,048
+2026-05-25 16:37:18  INFO        1996-03-31  |  qspread=+0.0265  IC=+0.032  n_features=65  n_universe=3,082
+2026-05-25 16:37:18  INFO        1996-04-30  |  qspread=-0.0114  IC=+0.032  n_features=65  n_universe=3,136
+2026-05-25 16:37:18  INFO        1996-05-31  |  qspread=+0.0035  IC=+0.046  n_features=65  n_universe=3,192
+2026-05-25 16:37:18  INFO        1996-06-30  |  qspread=+0.0358  IC=+0.042  n_features=65  n_universe=3,197
+2026-05-25 16:37:18  INFO        1996-07-31  |  qspread=+0.0039  IC=-0.004  n_features=65  n_universe=3,158
+2026-05-25 16:37:18  INFO        1996-08-31  |  qspread=+0.0122  IC=+0.037  n_features=65  n_universe=3,185
+2026-05-25 16:37:18  INFO        1996-09-30  |  qspread=+0.0348  IC=+0.106  n_features=65  n_universe=3,201
+2026-05-25 16:37:18  INFO        1996-10-31  |  qspread=+0.0512  IC=+0.091  n_features=65  n_universe=3,209
+2026-05-25 16:37:18  INFO        1996-11-30  |  qspread=+0.0188  IC=+0.036  n_features=65  n_universe=3,229
+2026-05-25 16:37:18  INFO        1996-12-31  |  qspread=+0.0057  IC=+0.020  n_features=65  n_universe=3,225
+2026-05-25 16:37:18  INFO        ✓ checkpoint  scoring_year=1996  scored_months=132  elapsed=1m
+2026-05-25 16:37:18  INFO      [1997]  Training on [1981-01 .. 1996-12] …
+2026-05-25 16:37:20  INFO      [1997]  Screening 284 factors for Sharpe >= 0.8 …
+2026-05-25 16:37:29  INFO      [1997]  65/284 factors passed Sharpe filter  (NaN-filtered pool: 284)
+2026-05-25 16:37:31  DEBUG         XGBoost: best_iteration=41  top_feature=gp_mev
+2026-05-25 16:37:31  INFO      [1997]  Model trained  n_train=593,540  n_features=65  best_iter=41
+2026-05-25 16:37:31  INFO        1997-01-31  |  qspread=+0.0296  IC=+0.055  n_features=65  n_universe=3,266
+2026-05-25 16:37:31  INFO        1997-02-28  |  qspread=+0.0652  IC=+0.136  n_features=65  n_universe=3,261
+2026-05-25 16:37:31  INFO        1997-03-31  |  qspread=+0.0462  IC=+0.086  n_features=65  n_universe=3,228
+2026-05-25 16:37:31  INFO        1997-04-30  |  qspread=-0.0396  IC=-0.053  n_features=65  n_universe=3,199
+2026-05-25 16:37:31  INFO        1997-05-31  |  qspread=-0.0181  IC=+0.041  n_features=65  n_universe=3,245
+2026-05-25 16:37:31  INFO        1997-06-30  |  qspread=+0.0563  IC=+0.086  n_features=65  n_universe=3,251
+2026-05-25 16:37:31  INFO        1997-07-31  |  qspread=-0.0051  IC=+0.059  n_features=65  n_universe=3,269
+2026-05-25 16:37:31  INFO        1997-08-31  |  qspread=-0.0172  IC=+0.005  n_features=65  n_universe=3,293
+2026-05-25 16:37:31  INFO        1997-09-30  |  qspread=+0.0125  IC=+0.085  n_features=65  n_universe=3,344
+2026-05-25 16:37:31  INFO        1997-10-31  |  qspread=+0.0437  IC=+0.067  n_features=65  n_universe=3,339
+2026-05-25 16:37:31  INFO        1997-11-30  |  qspread=+0.0310  IC=+0.023  n_features=65  n_universe=3,325
+2026-05-25 16:37:31  INFO        1997-12-31  |  qspread=+0.0224  IC=+0.011  n_features=65  n_universe=3,273
+2026-05-25 16:37:31  INFO        ✓ checkpoint  scoring_year=1997  scored_months=144  elapsed=1m
+2026-05-25 16:37:31  INFO      [1998]  Training on [1981-01 .. 1997-12] …
+2026-05-25 16:37:33  INFO      [1998]  Screening 285 factors for Sharpe >= 0.8 …
+2026-05-25 16:37:42  INFO      [1998]  62/285 factors passed Sharpe filter  (NaN-filtered pool: 285)
+2026-05-25 16:37:44  DEBUG         XGBoost: best_iteration=32  top_feature=nfna_gr1a
+2026-05-25 16:37:44  INFO      [1998]  Model trained  n_train=648,473  n_features=62  best_iter=32
+2026-05-25 16:37:44  INFO        1998-01-31  |  qspread=+0.0107  IC=+0.066  n_features=62  n_universe=3,263
+2026-05-25 16:37:44  INFO        1998-02-28  |  qspread=-0.0212  IC=+0.038  n_features=62  n_universe=3,289
+2026-05-25 16:37:44  INFO        1998-03-31  |  qspread=+0.0170  IC=+0.090  n_features=62  n_universe=3,326
+2026-05-25 16:37:44  INFO        1998-04-30  |  qspread=+0.0156  IC=+0.024  n_features=62  n_universe=3,344
+2026-05-25 16:37:44  INFO        1998-05-31  |  qspread=+0.0038  IC=+0.038  n_features=62  n_universe=3,319
+2026-05-25 16:37:44  INFO        1998-06-30  |  qspread=+0.0345  IC=+0.062  n_features=62  n_universe=3,265
+2026-05-25 16:37:44  INFO        1998-07-31  |  qspread=+0.0497  IC=+0.075  n_features=62  n_universe=3,212
+2026-05-25 16:37:44  INFO        1998-08-31  |  qspread=-0.0236  IC=-0.033  n_features=62  n_universe=3,045
+2026-05-25 16:37:44  INFO        1998-09-30  |  qspread=+0.0552  IC=+0.056  n_features=62  n_universe=3,047
+2026-05-25 16:37:44  INFO        1998-10-31  |  qspread=+0.0213  IC=+0.092  n_features=62  n_universe=3,032
+2026-05-25 16:37:44  INFO        1998-11-30  |  qspread=+0.0117  IC=+0.031  n_features=62  n_universe=3,043
+2026-05-25 16:37:44  INFO        1998-12-31  |  qspread=+0.0137  IC=+0.046  n_features=62  n_universe=3,041
+2026-05-25 16:37:44  INFO        ✓ checkpoint  scoring_year=1998  scored_months=156  elapsed=1m
+2026-05-25 16:37:44  INFO      [1999]  Training on [1981-01 .. 1998-12] …
+2026-05-25 16:37:46  INFO      [1999]  Screening 288 factors for Sharpe >= 0.8 …
+2026-05-25 16:37:57  INFO      [1999]  57/288 factors passed Sharpe filter  (NaN-filtered pool: 288)
+2026-05-25 16:37:59  DEBUG         XGBoost: best_iteration=69  top_feature=gp_mev
+2026-05-25 16:37:59  INFO      [1999]  Model trained  n_train=703,028  n_features=57  best_iter=69
+2026-05-25 16:37:59  INFO        1999-01-31  |  qspread=+0.0061  IC=+0.006  n_features=57  n_universe=3,079
+2026-05-25 16:37:59  INFO        1999-02-28  |  qspread=+0.0058  IC=-0.039  n_features=57  n_universe=3,037
+2026-05-25 16:37:59  INFO        1999-03-31  |  qspread=-0.0147  IC=-0.007  n_features=57  n_universe=2,987
+2026-05-25 16:37:59  INFO        1999-04-30  |  qspread=+0.0491  IC=+0.111  n_features=57  n_universe=3,027
+2026-05-25 16:37:59  INFO        1999-05-31  |  qspread=+0.0334  IC=+0.075  n_features=57  n_universe=3,060
+2026-05-25 16:37:59  INFO        1999-06-30  |  qspread=+0.0152  IC=+0.052  n_features=57  n_universe=3,056
+2026-05-25 16:37:59  INFO        1999-07-31  |  qspread=+0.0065  IC=-0.007  n_features=57  n_universe=3,051
+2026-05-25 16:37:59  INFO        1999-08-31  |  qspread=-0.0096  IC=-0.007  n_features=57  n_universe=3,012
+2026-05-25 16:37:59  INFO        1999-09-30  |  qspread=+0.0081  IC=+0.001  n_features=57  n_universe=2,974
+2026-05-25 16:37:59  INFO        1999-10-31  |  qspread=+0.0205  IC=+0.077  n_features=57  n_universe=2,954
+2026-05-25 16:37:59  INFO        1999-11-30  |  qspread=+0.0202  IC=+0.064  n_features=57  n_universe=2,972
+2026-05-25 16:37:59  INFO        1999-12-31  |  qspread=-0.0383  IC=+0.009  n_features=57  n_universe=3,037
+2026-05-25 16:37:59  INFO        ✓ checkpoint  scoring_year=1999  scored_months=168  elapsed=1m
+2026-05-25 16:37:59  INFO      [2000]  Training on [1981-01 .. 1999-12] …
+2026-05-25 16:38:02  INFO      [2000]  Screening 288 factors for Sharpe >= 0.8 …
+2026-05-25 16:38:13  INFO      [2000]  47/288 factors passed Sharpe filter  (NaN-filtered pool: 288)
+2026-05-25 16:38:15  DEBUG         XGBoost: best_iteration=38  top_feature=gp_mev
+2026-05-25 16:38:15  INFO      [2000]  Model trained  n_train=755,893  n_features=47  best_iter=38
+2026-05-25 16:38:15  INFO        2000-01-31  |  qspread=-0.1713  IC=-0.081  n_features=47  n_universe=3,054
+2026-05-25 16:38:15  INFO        2000-02-29  |  qspread=+0.2736  IC=+0.146  n_features=47  n_universe=3,081
+2026-05-25 16:38:15  INFO        2000-03-31  |  qspread=+0.2184  IC=+0.190  n_features=47  n_universe=3,056
+2026-05-25 16:38:15  INFO        2000-04-30  |  qspread=+0.0997  IC=+0.050  n_features=47  n_universe=2,981
+2026-05-25 16:38:15  INFO        2000-05-31  |  qspread=-0.2028  IC=-0.061  n_features=47  n_universe=2,925
+2026-05-25 16:38:15  INFO        2000-06-30  |  qspread=+0.0794  IC=+0.090  n_features=47  n_universe=2,929
+2026-05-25 16:38:15  INFO        2000-07-31  |  qspread=+0.0011  IC=+0.003  n_features=47  n_universe=2,901
+2026-05-25 16:38:15  INFO        2000-08-31  |  qspread=+0.0806  IC=+0.057  n_features=47  n_universe=2,926
+2026-05-25 16:38:15  INFO        2000-09-30  |  qspread=+0.1507  IC=+0.144  n_features=47  n_universe=2,881
+2026-05-25 16:38:15  INFO        2000-10-31  |  qspread=+0.1705  IC=+0.121  n_features=47  n_universe=2,813
+2026-05-25 16:38:15  INFO        2000-11-30  |  qspread=+0.0382  IC=-0.000  n_features=47  n_universe=2,688
+2026-05-25 16:38:15  INFO        2000-12-31  |  qspread=+0.0282  IC=+0.090  n_features=47  n_universe=2,642
+2026-05-25 16:38:15  INFO        ✓ checkpoint  scoring_year=2000  scored_months=180  elapsed=2m
+2026-05-25 16:38:15  INFO      [2001]  Training on [1981-01 .. 2000-12] …
+2026-05-25 16:38:18  INFO      [2001]  Screening 290 factors for Sharpe >= 0.8 …
+2026-05-25 16:38:30  INFO      [2001]  43/290 factors passed Sharpe filter  (NaN-filtered pool: 290)
+2026-05-25 16:38:31  DEBUG         XGBoost: best_iteration=19  top_feature=cop_mev
+2026-05-25 16:38:31  INFO      [2001]  Model trained  n_train=807,490  n_features=43  best_iter=19
+2026-05-25 16:38:31  INFO        2001-01-31  |  qspread=+0.2324  IC=+0.283  n_features=43  n_universe=2,746
+2026-05-25 16:38:31  INFO        2001-02-28  |  qspread=+0.1827  IC=+0.249  n_features=43  n_universe=2,672
+2026-05-25 16:38:32  INFO        2001-03-31  |  qspread=-0.1391  IC=-0.161  n_features=43  n_universe=2,613
+2026-05-25 16:38:32  INFO        2001-04-30  |  qspread=+0.0378  IC=+0.084  n_features=43  n_universe=2,639
+2026-05-25 16:38:32  INFO        2001-05-31  |  qspread=+0.0224  IC=+0.060  n_features=43  n_universe=2,676
+2026-05-25 16:38:32  INFO        2001-06-30  |  qspread=+0.1530  IC=+0.274  n_features=43  n_universe=2,664
+2026-05-25 16:38:32  INFO        2001-07-31  |  qspread=+0.1051  IC=+0.174  n_features=43  n_universe=2,648
+2026-05-25 16:38:32  INFO        2001-08-31  |  qspread=+0.1128  IC=+0.241  n_features=43  n_universe=2,610
+2026-05-25 16:38:32  INFO        2001-09-30  |  qspread=-0.0526  IC=-0.088  n_features=43  n_universe=2,505
+2026-05-25 16:38:32  INFO        2001-10-31  |  qspread=-0.0359  IC=-0.084  n_features=43  n_universe=2,529
+2026-05-25 16:38:32  INFO        2001-11-30  |  qspread=+0.0506  IC=-0.014  n_features=43  n_universe=2,561
+2026-05-25 16:38:32  INFO        2001-12-31  |  qspread=+0.1017  IC=+0.255  n_features=43  n_universe=2,593
+2026-05-25 16:38:32  INFO        ✓ checkpoint  scoring_year=2001  scored_months=192  elapsed=2m
+2026-05-25 16:38:32  INFO      [2002]  Training on [1981-01 .. 2001-12] …
+2026-05-25 16:38:34  INFO      [2002]  Screening 291 factors for Sharpe >= 0.8 …
+2026-05-25 16:38:47  INFO      [2002]  44/291 factors passed Sharpe filter  (NaN-filtered pool: 291)
+2026-05-25 16:38:50  DEBUG         XGBoost: best_iteration=78  top_feature=ocf_me
+2026-05-25 16:38:50  INFO      [2002]  Model trained  n_train=856,545  n_features=44  best_iter=78
+2026-05-25 16:38:50  INFO        2002-01-31  |  qspread=+0.1481  IC=+0.219  n_features=44  n_universe=2,590
+2026-05-25 16:38:50  INFO        2002-02-28  |  qspread=+0.0247  IC=-0.002  n_features=44  n_universe=2,545
+2026-05-25 16:38:50  INFO        2002-03-31  |  qspread=+0.1286  IC=+0.263  n_features=44  n_universe=2,593
+2026-05-25 16:38:50  INFO        2002-04-30  |  qspread=+0.0443  IC=+0.196  n_features=44  n_universe=2,567
+2026-05-25 16:38:50  INFO        2002-05-31  |  qspread=+0.1055  IC=+0.236  n_features=44  n_universe=2,556
+2026-05-25 16:38:50  INFO        2002-06-30  |  qspread=+0.0494  IC=+0.205  n_features=44  n_universe=2,512
+2026-05-25 16:38:50  INFO        2002-07-31  |  qspread=+0.0342  IC=+0.087  n_features=44  n_universe=2,409
+2026-05-25 16:38:50  INFO        2002-08-31  |  qspread=+0.0237  IC=+0.137  n_features=44  n_universe=2,398
+2026-05-25 16:38:50  INFO        2002-09-30  |  qspread=+0.0069  IC=-0.002  n_features=44  n_universe=2,336
+2026-05-25 16:38:50  INFO        2002-10-31  |  qspread=+0.0363  IC=-0.028  n_features=44  n_universe=2,357
+2026-05-25 16:38:50  INFO        2002-11-30  |  qspread=+0.0683  IC=+0.188  n_features=44  n_universe=2,413
+2026-05-25 16:38:50  INFO        2002-12-31  |  qspread=-0.0071  IC=+0.109  n_features=44  n_universe=2,397
+2026-05-25 16:38:50  INFO        ✓ checkpoint  scoring_year=2002  scored_months=204  elapsed=2m
+2026-05-25 16:38:50  INFO      [2003]  Training on [1981-01 .. 2002-12] …
+2026-05-25 16:38:53  INFO      [2003]  Screening 294 factors for Sharpe >= 0.8 …
+2026-05-25 16:39:07  INFO      [2003]  50/294 factors passed Sharpe filter  (NaN-filtered pool: 294)
+2026-05-25 16:39:09  DEBUG         XGBoost: best_iteration=58  top_feature=gp_mev
+2026-05-25 16:39:09  INFO      [2003]  Model trained  n_train=903,912  n_features=50  best_iter=58
+2026-05-25 16:39:09  INFO        2003-01-31  |  qspread=-0.0282  IC=+0.006  n_features=50  n_universe=2,387
+2026-05-25 16:39:09  INFO        2003-02-28  |  qspread=+0.0128  IC=+0.011  n_features=50  n_universe=2,364
+2026-05-25 16:39:09  INFO        2003-03-31  |  qspread=+0.0216  IC=+0.011  n_features=50  n_universe=2,356
+2026-05-25 16:39:09  INFO        2003-04-30  |  qspread=+0.0206  IC=-0.047  n_features=50  n_universe=2,403
+2026-05-25 16:39:09  INFO        2003-05-31  |  qspread=+0.0346  IC=+0.076  n_features=50  n_universe=2,479
+2026-05-25 16:39:09  INFO        2003-06-30  |  qspread=+0.0147  IC=+0.048  n_features=50  n_universe=2,511
+2026-05-25 16:39:09  INFO        2003-07-31  |  qspread=+0.0271  IC=+0.052  n_features=50  n_universe=2,555
+2026-05-25 16:39:09  INFO        2003-08-31  |  qspread=+0.0293  IC=+0.098  n_features=50  n_universe=2,569
+2026-05-25 16:39:09  INFO        2003-09-30  |  qspread=+0.0172  IC=+0.098  n_features=50  n_universe=2,588
+2026-05-25 16:39:10  INFO        2003-10-31  |  qspread=+0.0002  IC=+0.032  n_features=50  n_universe=2,631
+2026-05-25 16:39:10  INFO        2003-11-30  |  qspread=+0.0033  IC=+0.018  n_features=50  n_universe=2,662
+2026-05-25 16:39:10  INFO        2003-12-31  |  qspread=+0.0105  IC=+0.038  n_features=50  n_universe=2,674
+2026-05-25 16:39:10  INFO        ✓ checkpoint  scoring_year=2003  scored_months=216  elapsed=3m
+2026-05-25 16:39:10  INFO      [2004]  Training on [1981-01 .. 2003-12] …
+2026-05-25 16:39:14  INFO      [2004]  Screening 303 factors for Sharpe >= 0.8 …
+2026-05-25 16:39:28  INFO      [2004]  44/303 factors passed Sharpe filter  (NaN-filtered pool: 303)
+2026-05-25 16:39:31  DEBUG         XGBoost: best_iteration=58  top_feature=gp_mev
+2026-05-25 16:39:31  INFO      [2004]  Model trained  n_train=950,329  n_features=44  best_iter=58
+2026-05-25 16:39:31  INFO        2004-01-31  |  qspread=-0.0295  IC=-0.068  n_features=44  n_universe=2,720
+2026-05-25 16:39:31  INFO        2004-02-29  |  qspread=-0.0052  IC=-0.071  n_features=44  n_universe=2,717
+2026-05-25 16:39:31  INFO        2004-03-31  |  qspread=-0.0021  IC=-0.005  n_features=44  n_universe=2,717
+2026-05-25 16:39:31  INFO        2004-04-30  |  qspread=+0.0172  IC=+0.020  n_features=44  n_universe=2,674
+2026-05-25 16:39:31  INFO        2004-05-31  |  qspread=+0.0148  IC=+0.041  n_features=44  n_universe=2,661
+2026-05-25 16:39:31  INFO        2004-06-30  |  qspread=-0.0659  IC=-0.177  n_features=44  n_universe=2,675
+2026-05-25 16:39:31  INFO        2004-07-31  |  qspread=-0.0606  IC=-0.180  n_features=44  n_universe=2,633
+2026-05-25 16:39:31  INFO        2004-08-31  |  qspread=+0.0192  IC=+0.091  n_features=44  n_universe=2,624
+2026-05-25 16:39:31  INFO        2004-09-30  |  qspread=+0.0123  IC=+0.006  n_features=44  n_universe=2,637
+2026-05-25 16:39:31  INFO        2004-10-31  |  qspread=+0.0283  IC=+0.069  n_features=44  n_universe=2,645
+2026-05-25 16:39:31  INFO        2004-11-30  |  qspread=+0.0147  IC=+0.081  n_features=44  n_universe=2,691
+2026-05-25 16:39:31  INFO        2004-12-31  |  qspread=-0.0021  IC=+0.022  n_features=44  n_universe=2,711
+2026-05-25 16:39:31  INFO        ✓ checkpoint  scoring_year=2004  scored_months=228  elapsed=3m
+2026-05-25 16:39:31  INFO      [2005]  Training on [1981-01 .. 2004-12] …
+2026-05-25 16:39:34  INFO      [2005]  Screening 313 factors for Sharpe >= 0.8 …
+2026-05-25 16:39:50  INFO      [2005]  43/313 factors passed Sharpe filter  (NaN-filtered pool: 313)
+2026-05-25 16:39:54  DEBUG         XGBoost: best_iteration=103  top_feature=gp_mev
+2026-05-25 16:39:54  INFO      [2005]  Model trained  n_train=996,130  n_features=43  best_iter=103
+2026-05-25 16:39:54  INFO        2005-01-31  |  qspread=+0.0151  IC=+0.061  n_features=43  n_universe=2,693
+2026-05-25 16:39:54  INFO        2005-02-28  |  qspread=+0.0116  IC=+0.026  n_features=43  n_universe=2,704
+2026-05-25 16:39:54  INFO        2005-03-31  |  qspread=-0.0288  IC=-0.110  n_features=43  n_universe=2,690
+2026-05-25 16:39:54  INFO        2005-04-30  |  qspread=+0.0312  IC=+0.099  n_features=43  n_universe=2,634
+2026-05-25 16:39:54  INFO        2005-05-31  |  qspread=-0.0040  IC=+0.026  n_features=43  n_universe=2,649
+2026-05-25 16:39:54  INFO        2005-06-30  |  qspread=+0.0191  IC=+0.037  n_features=43  n_universe=2,661
+2026-05-25 16:39:54  INFO        2005-07-31  |  qspread=+0.0129  IC=+0.021  n_features=43  n_universe=2,692
+2026-05-25 16:39:54  INFO        2005-08-31  |  qspread=+0.0255  IC=+0.088  n_features=43  n_universe=2,689
+2026-05-25 16:39:54  INFO        2005-09-30  |  qspread=+0.0111  IC=+0.032  n_features=43  n_universe=2,683
+2026-05-25 16:39:54  INFO        2005-10-31  |  qspread=+0.0369  IC=+0.077  n_features=43  n_universe=2,673
+2026-05-25 16:39:54  INFO        2005-11-30  |  qspread=+0.0086  IC=+0.057  n_features=43  n_universe=2,677
+2026-05-25 16:39:54  INFO        2005-12-31  |  qspread=+0.0235  IC=+0.034  n_features=43  n_universe=2,678
+2026-05-25 16:39:54  INFO        ✓ checkpoint  scoring_year=2005  scored_months=240  elapsed=3m
+2026-05-25 16:39:54  INFO      [2006]  Training on [1981-01 .. 2005-12] …
+2026-05-25 16:39:58  INFO      [2006]  Screening 318 factors for Sharpe >= 0.8 …
+2026-05-25 16:40:14  INFO      [2006]  42/318 factors passed Sharpe filter  (NaN-filtered pool: 318)
+2026-05-25 16:40:19  DEBUG         XGBoost: best_iteration=172  top_feature=cop_mev
+2026-05-25 16:40:19  INFO      [2006]  Model trained  n_train=1,041,675  n_features=42  best_iter=172
+2026-05-25 16:40:19  INFO        2006-01-31  |  qspread=-0.0108  IC=-0.004  n_features=42  n_universe=2,693
+2026-05-25 16:40:19  INFO        2006-02-28  |  qspread=-0.0028  IC=+0.027  n_features=42  n_universe=2,706
+2026-05-25 16:40:19  INFO        2006-03-31  |  qspread=+0.0154  IC=+0.043  n_features=42  n_universe=2,711
+2026-05-25 16:40:19  INFO        2006-04-30  |  qspread=-0.0104  IC=-0.079  n_features=42  n_universe=2,717
+2026-05-25 16:40:19  INFO        2006-05-31  |  qspread=+0.0098  IC=-0.002  n_features=42  n_universe=2,709
+2026-05-25 16:40:19  INFO        2006-06-30  |  qspread=-0.0016  IC=-0.078  n_features=42  n_universe=2,693
+2026-05-25 16:40:19  INFO        2006-07-31  |  qspread=-0.0065  IC=-0.023  n_features=42  n_universe=2,667
+2026-05-25 16:40:19  INFO        2006-08-31  |  qspread=+0.0209  IC=+0.083  n_features=42  n_universe=2,661
+2026-05-25 16:40:19  INFO        2006-09-30  |  qspread=-0.0011  IC=+0.041  n_features=42  n_universe=2,677
+2026-05-25 16:40:19  INFO        2006-10-31  |  qspread=-0.0007  IC=+0.021  n_features=42  n_universe=2,687
+2026-05-25 16:40:19  INFO        2006-11-30  |  qspread=+0.0097  IC=+0.019  n_features=42  n_universe=2,691
+2026-05-25 16:40:19  INFO        2006-12-31  |  qspread=+0.0105  IC=+0.048  n_features=42  n_universe=2,687
+2026-05-25 16:40:19  INFO        ✓ checkpoint  scoring_year=2006  scored_months=252  elapsed=4m
+2026-05-25 16:40:19  INFO      [2007]  Training on [1981-01 .. 2006-12] …
+2026-05-25 16:40:25  INFO      [2007]  Screening 320 factors for Sharpe >= 0.8 …
+2026-05-25 16:40:42  INFO      [2007]  41/320 factors passed Sharpe filter  (NaN-filtered pool: 320)
+2026-05-25 16:40:45  DEBUG         XGBoost: best_iteration=86  top_feature=cop_mev
+2026-05-25 16:40:45  INFO      [2007]  Model trained  n_train=1,086,504  n_features=41  best_iter=86
+2026-05-25 16:40:45  INFO        2007-01-31  |  qspread=+0.0111  IC=+0.064  n_features=41  n_universe=2,681
+2026-05-25 16:40:45  INFO        2007-02-28  |  qspread=+0.0182  IC=+0.070  n_features=41  n_universe=2,679
+2026-05-25 16:40:45  INFO        2007-03-31  |  qspread=+0.0318  IC=+0.120  n_features=41  n_universe=2,672
+2026-05-25 16:40:46  INFO        2007-04-30  |  qspread=+0.0121  IC=+0.065  n_features=41  n_universe=2,665
+2026-05-25 16:40:46  INFO        2007-05-31  |  qspread=+0.0116  IC=+0.041  n_features=41  n_universe=2,665
+2026-05-25 16:40:46  INFO        2007-06-30  |  qspread=-0.0007  IC=+0.002  n_features=41  n_universe=2,654
+2026-05-25 16:40:46  INFO        2007-07-31  |  qspread=-0.0206  IC=-0.107  n_features=41  n_universe=2,637
+2026-05-25 16:40:46  INFO        2007-08-31  |  qspread=-0.0269  IC=-0.055  n_features=41  n_universe=2,604
+2026-05-25 16:40:46  INFO        2007-09-30  |  qspread=+0.0052  IC=+0.005  n_features=41  n_universe=2,595
+2026-05-25 16:40:46  INFO        2007-10-31  |  qspread=+0.0170  IC=+0.015  n_features=41  n_universe=2,587
+2026-05-25 16:40:46  INFO        2007-11-30  |  qspread=+0.0010  IC=+0.057  n_features=41  n_universe=2,553
+2026-05-25 16:40:46  INFO        2007-12-31  |  qspread=+0.0181  IC=-0.005  n_features=41  n_universe=2,550
+2026-05-25 16:40:46  INFO        ✓ checkpoint  scoring_year=2007  scored_months=264  elapsed=4m
+2026-05-25 16:40:46  INFO      [2008]  Training on [1981-01 .. 2007-12] …
+2026-05-25 16:40:49  INFO      [2008]  Screening 320 factors for Sharpe >= 0.8 …
+2026-05-25 16:41:07  INFO      [2008]  40/320 factors passed Sharpe filter  (NaN-filtered pool: 320)
+2026-05-25 16:41:10  DEBUG         XGBoost: best_iteration=52  top_feature=cop_mev
+2026-05-25 16:41:10  INFO      [2008]  Model trained  n_train=1,129,984  n_features=40  best_iter=52
+2026-05-25 16:41:10  INFO        2008-01-31  |  qspread=+0.0084  IC=+0.043  n_features=40  n_universe=2,524
+2026-05-25 16:41:10  INFO        2008-02-29  |  qspread=-0.0120  IC=-0.018  n_features=40  n_universe=2,507
+2026-05-25 16:41:10  INFO        2008-03-31  |  qspread=+0.0139  IC=-0.007  n_features=40  n_universe=2,475
+2026-05-25 16:41:10  INFO        2008-04-30  |  qspread=+0.0102  IC=+0.065  n_features=40  n_universe=2,470
+2026-05-25 16:41:10  INFO        2008-05-31  |  qspread=+0.0024  IC=+0.024  n_features=40  n_universe=2,472
+2026-05-25 16:41:10  INFO        2008-06-30  |  qspread=+0.0324  IC=+0.063  n_features=40  n_universe=2,417
+2026-05-25 16:41:10  INFO        2008-07-31  |  qspread=+0.0156  IC=+0.074  n_features=40  n_universe=2,413
+2026-05-25 16:41:10  INFO        2008-08-31  |  qspread=-0.0198  IC=-0.083  n_features=40  n_universe=2,404
+2026-05-25 16:41:10  INFO        2008-09-30  |  qspread=+0.0050  IC=-0.061  n_features=40  n_universe=2,345
+2026-05-25 16:41:10  INFO        2008-10-31  |  qspread=-0.0256  IC=-0.089  n_features=40  n_universe=2,152
+2026-05-25 16:41:10  INFO        2008-11-30  |  qspread=+0.0605  IC=+0.129  n_features=40  n_universe=2,006
+2026-05-25 16:41:10  INFO        2008-12-31  |  qspread=+0.0083  IC=+0.040  n_features=40  n_universe=2,012
+2026-05-25 16:41:10  INFO        ✓ checkpoint  scoring_year=2008  scored_months=276  elapsed=5m
+2026-05-25 16:41:10  INFO      [2009]  Training on [1981-01 .. 2008-12] …
+2026-05-25 16:41:14  INFO      [2009]  Screening 321 factors for Sharpe >= 0.8 …
+2026-05-25 16:41:33  INFO      [2009]  41/321 factors passed Sharpe filter  (NaN-filtered pool: 321)
+2026-05-25 16:41:35  DEBUG         XGBoost: best_iteration=16  top_feature=cop_mev
+2026-05-25 16:41:35  INFO      [2009]  Model trained  n_train=1,171,942  n_features=41  best_iter=16
+2026-05-25 16:41:35  INFO        2009-01-31  |  qspread=+0.0051  IC=-0.030  n_features=41  n_universe=1,943
+2026-05-25 16:41:35  INFO        2009-02-28  |  qspread=+0.0429  IC=+0.115  n_features=41  n_universe=1,845
+2026-05-25 16:41:35  INFO        2009-03-31  |  qspread=+0.1874  IC=+0.267  n_features=41  n_universe=1,895
+2026-05-25 16:41:35  INFO        2009-04-30  |  qspread=+0.0542  IC=+0.135  n_features=41  n_universe=2,015
+2026-05-25 16:41:35  INFO        2009-05-31  |  qspread=+0.0264  IC=+0.025  n_features=41  n_universe=2,068
+2026-05-25 16:41:35  INFO        2009-06-30  |  qspread=+0.0405  IC=+0.169  n_features=41  n_universe=2,080
+2026-05-25 16:41:35  INFO        2009-07-31  |  qspread=+0.0257  IC=+0.112  n_features=41  n_universe=2,117
+2026-05-25 16:41:35  INFO        2009-08-31  |  qspread=+0.0321  IC=+0.110  n_features=41  n_universe=2,159
+2026-05-25 16:41:35  INFO        2009-09-30  |  qspread=+0.0006  IC=+0.015  n_features=41  n_universe=2,174
+2026-05-25 16:41:35  INFO        2009-10-31  |  qspread=-0.0240  IC=+0.018  n_features=41  n_universe=2,127
+2026-05-25 16:41:35  INFO        2009-11-30  |  qspread=+0.0400  IC=+0.092  n_features=41  n_universe=2,125
+2026-05-25 16:41:35  INFO        2009-12-31  |  qspread=+0.0041  IC=+0.021  n_features=41  n_universe=2,151
+2026-05-25 16:41:35  INFO        ✓ checkpoint  scoring_year=2009  scored_months=288  elapsed=5m
+2026-05-25 16:41:35  INFO      [2010]  Training on [1981-01 .. 2009-12] …
+2026-05-25 16:41:40  INFO      [2010]  Screening 322 factors for Sharpe >= 0.8 …
+2026-05-25 16:41:59  INFO      [2010]  38/322 factors passed Sharpe filter  (NaN-filtered pool: 322)
+2026-05-25 16:42:03  DEBUG         XGBoost: best_iteration=68  top_feature=gp_mev
+2026-05-25 16:42:03  INFO      [2010]  Model trained  n_train=1,212,448  n_features=38  best_iter=68
+2026-05-25 16:42:03  INFO        2010-01-31  |  qspread=+0.0235  IC=+0.075  n_features=38  n_universe=2,160
+2026-05-25 16:42:03  INFO        2010-02-28  |  qspread=+0.0369  IC=+0.075  n_features=38  n_universe=2,172
+2026-05-25 16:42:03  INFO        2010-03-31  |  qspread=+0.0020  IC=+0.054  n_features=38  n_universe=2,229
+2026-05-25 16:42:03  INFO        2010-04-30  |  qspread=+0.0113  IC=-0.033  n_features=38  n_universe=2,273
+2026-05-25 16:42:03  INFO        2010-05-31  |  qspread=-0.0440  IC=-0.163  n_features=38  n_universe=2,223
+2026-05-25 16:42:03  INFO        2010-06-30  |  qspread=+0.0169  IC=+0.112  n_features=38  n_universe=2,180
+2026-05-25 16:42:03  INFO        2010-07-31  |  qspread=-0.0512  IC=-0.139  n_features=38  n_universe=2,196
+2026-05-25 16:42:03  INFO        2010-08-31  |  qspread=+0.0753  IC=+0.227  n_features=38  n_universe=2,153
+2026-05-25 16:42:03  INFO        2010-09-30  |  qspread=+0.0101  IC=+0.059  n_features=38  n_universe=2,196
+2026-05-25 16:42:03  INFO        2010-10-31  |  qspread=+0.0189  IC=+0.081  n_features=38  n_universe=2,220
+2026-05-25 16:42:03  INFO        2010-11-30  |  qspread=+0.0061  IC=+0.032  n_features=38  n_universe=2,225
+2026-05-25 16:42:03  INFO        2010-12-31  |  qspread=+0.0122  IC=-0.002  n_features=38  n_universe=2,249
+2026-05-25 16:42:03  INFO        ✓ checkpoint  scoring_year=2010  scored_months=300  elapsed=5m
+2026-05-25 16:42:03  INFO      [2011]  Training on [1981-01 .. 2010-12] …
+2026-05-25 16:42:09  INFO      [2011]  Screening 326 factors for Sharpe >= 0.8 …
+2026-05-25 16:42:29  INFO      [2011]  37/326 factors passed Sharpe filter  (NaN-filtered pool: 326)
+2026-05-25 16:42:33  DEBUG         XGBoost: best_iteration=85  top_feature=cop_mev
+2026-05-25 16:42:33  INFO      [2011]  Model trained  n_train=1,252,420  n_features=37  best_iter=85
+2026-05-25 16:42:33  INFO        2011-01-31  |  qspread=-0.0051  IC=+0.022  n_features=37  n_universe=2,269
+2026-05-25 16:42:33  INFO        2011-02-28  |  qspread=-0.0073  IC=-0.030  n_features=37  n_universe=2,271
+2026-05-25 16:42:33  INFO        2011-03-31  |  qspread=+0.0233  IC=+0.005  n_features=37  n_universe=2,254
+2026-05-25 16:42:33  INFO        2011-04-30  |  qspread=+0.0117  IC=-0.000  n_features=37  n_universe=2,265
+2026-05-25 16:42:33  INFO        2011-05-31  |  qspread=+0.0051  IC=+0.026  n_features=37  n_universe=2,253
+2026-05-25 16:42:33  INFO        2011-06-30  |  qspread=-0.0278  IC=-0.044  n_features=37  n_universe=2,229
+2026-05-25 16:42:33  INFO        2011-07-31  |  qspread=-0.0108  IC=-0.047  n_features=37  n_universe=2,215
+2026-05-25 16:42:33  INFO        2011-08-31  |  qspread=+0.0215  IC=+0.006  n_features=37  n_universe=2,165
+2026-05-25 16:42:33  INFO        2011-09-30  |  qspread=+0.0382  IC=+0.118  n_features=37  n_universe=2,107
+2026-05-25 16:42:33  INFO        2011-10-31  |  qspread=-0.0170  IC=-0.001  n_features=37  n_universe=2,161
+2026-05-25 16:42:33  INFO        2011-11-30  |  qspread=+0.0078  IC=-0.001  n_features=37  n_universe=2,141
+2026-05-25 16:42:33  INFO        2011-12-31  |  qspread=+0.0425  IC=+0.122  n_features=37  n_universe=2,140
+2026-05-25 16:42:33  INFO        ✓ checkpoint  scoring_year=2011  scored_months=312  elapsed=6m
+2026-05-25 16:42:33  INFO      [2012]  Training on [1981-01 .. 2011-12] …
+2026-05-25 16:42:39  INFO      [2012]  Screening 326 factors for Sharpe >= 0.8 …
+2026-05-25 16:43:00  INFO      [2012]  39/326 factors passed Sharpe filter  (NaN-filtered pool: 326)
+2026-05-25 16:43:03  DEBUG         XGBoost: best_iteration=71  top_feature=gp_mev
+2026-05-25 16:43:03  INFO      [2012]  Model trained  n_train=1,291,852  n_features=39  best_iter=71
+2026-05-25 16:43:04  INFO        2012-01-31  |  qspread=+0.0233  IC=+0.085  n_features=39  n_universe=2,183
+2026-05-25 16:43:04  INFO        2012-02-29  |  qspread=+0.0064  IC=+0.075  n_features=39  n_universe=2,194
+2026-05-25 16:43:04  INFO        2012-03-31  |  qspread=-0.0346  IC=-0.121  n_features=39  n_universe=2,211
+2026-05-25 16:43:04  INFO        2012-04-30  |  qspread=-0.0124  IC=+0.005  n_features=39  n_universe=2,220
+2026-05-25 16:43:04  INFO        2012-05-31  |  qspread=-0.0072  IC=-0.010  n_features=39  n_universe=2,190
+2026-05-25 16:43:04  INFO        2012-06-30  |  qspread=-0.0283  IC=-0.028  n_features=39  n_universe=2,201
+2026-05-25 16:43:04  INFO        2012-07-31  |  qspread=+0.0070  IC=+0.039  n_features=39  n_universe=2,193
+2026-05-25 16:43:04  INFO        2012-08-31  |  qspread=-0.0068  IC=-0.004  n_features=39  n_universe=2,197
+2026-05-25 16:43:04  INFO        2012-09-30  |  qspread=+0.0060  IC=-0.004  n_features=39  n_universe=2,216
+2026-05-25 16:43:04  INFO        2012-10-31  |  qspread=+0.0297  IC=+0.098  n_features=39  n_universe=2,214
+2026-05-25 16:43:04  INFO        2012-11-30  |  qspread=+0.0232  IC=+0.076  n_features=39  n_universe=2,204
+2026-05-25 16:43:04  INFO        2012-12-31  |  qspread=+0.0354  IC=+0.034  n_features=39  n_universe=2,200
+2026-05-25 16:43:04  INFO        ✓ checkpoint  scoring_year=2012  scored_months=324  elapsed=6m
+2026-05-25 16:43:04  INFO      [2013]  Training on [1981-01 .. 2012-12] …
+2026-05-25 16:43:10  INFO      [2013]  Screening 328 factors for Sharpe >= 0.8 …
+2026-05-25 16:43:33  INFO      [2013]  40/328 factors passed Sharpe filter  (NaN-filtered pool: 328)
+2026-05-25 16:43:37  DEBUG         XGBoost: best_iteration=72  top_feature=cop_mev
+2026-05-25 16:43:37  INFO      [2013]  Model trained  n_train=1,331,168  n_features=40  best_iter=72
+2026-05-25 16:43:37  INFO        2013-01-31  |  qspread=+0.0094  IC=+0.031  n_features=40  n_universe=2,234
+2026-05-25 16:43:37  INFO        2013-02-28  |  qspread=+0.0202  IC=+0.021  n_features=40  n_universe=2,232
+2026-05-25 16:43:37  INFO        2013-03-31  |  qspread=+0.0021  IC=+0.004  n_features=40  n_universe=2,240
+2026-05-25 16:43:37  INFO        2013-04-30  |  qspread=+0.0522  IC=+0.182  n_features=40  n_universe=2,240
+2026-05-25 16:43:37  INFO        2013-05-31  |  qspread=-0.0084  IC=+0.070  n_features=40  n_universe=2,254
+2026-05-25 16:43:37  INFO        2013-06-30  |  qspread=+0.0339  IC=+0.156  n_features=40  n_universe=2,254
+2026-05-25 16:43:37  INFO        2013-07-31  |  qspread=-0.0092  IC=+0.018  n_features=40  n_universe=2,273
+2026-05-25 16:43:37  INFO        2013-08-31  |  qspread=-0.0036  IC=-0.020  n_features=40  n_universe=2,269
+2026-05-25 16:43:37  INFO        2013-09-30  |  qspread=+0.0446  IC=+0.071  n_features=40  n_universe=2,293
+2026-05-25 16:43:37  INFO        2013-10-31  |  qspread=+0.0552  IC=+0.150  n_features=40  n_universe=2,290
+2026-05-25 16:43:37  INFO        2013-11-30  |  qspread=-0.0146  IC=+0.048  n_features=40  n_universe=2,298
+2026-05-25 16:43:37  INFO        2013-12-31  |  qspread=-0.0434  IC=-0.069  n_features=40  n_universe=2,310
+2026-05-25 16:43:37  INFO        ✓ checkpoint  scoring_year=2013  scored_months=336  elapsed=7m
+2026-05-25 16:43:37  INFO      [2014]  Training on [1981-01 .. 2013-12] …
+2026-05-25 16:43:44  INFO      [2014]  Screening 330 factors for Sharpe >= 0.8 …
+2026-05-25 16:44:08  INFO      [2014]  39/330 factors passed Sharpe filter  (NaN-filtered pool: 330)
+2026-05-25 16:44:12  DEBUG         XGBoost: best_iteration=96  top_feature=gp_mev
+2026-05-25 16:44:12  INFO      [2014]  Model trained  n_train=1,370,053  n_features=39  best_iter=96
+2026-05-25 16:44:12  INFO        2014-01-31  |  qspread=+0.0067  IC=+0.004  n_features=39  n_universe=2,320
+2026-05-25 16:44:12  INFO        2014-02-28  |  qspread=+0.0540  IC=+0.128  n_features=39  n_universe=2,321
+2026-05-25 16:44:12  INFO        2014-03-31  |  qspread=+0.0167  IC=+0.027  n_features=39  n_universe=2,321
+2026-05-25 16:44:12  INFO        2014-04-30  |  qspread=+0.0038  IC=-0.003  n_features=39  n_universe=2,311
+2026-05-25 16:44:12  INFO        2014-05-31  |  qspread=-0.0160  IC=-0.057  n_features=39  n_universe=2,313
+2026-05-25 16:44:12  INFO        2014-06-30  |  qspread=+0.0144  IC=+0.056  n_features=39  n_universe=2,333
+2026-05-25 16:44:12  INFO        2014-07-31  |  qspread=+0.0093  IC=+0.033  n_features=39  n_universe=2,329
+2026-05-25 16:44:12  INFO        2014-08-31  |  qspread=+0.0086  IC=+0.061  n_features=39  n_universe=2,338
+2026-05-25 16:44:12  INFO        2014-09-30  |  qspread=+0.0020  IC=-0.003  n_features=39  n_universe=2,325
+2026-05-25 16:44:12  INFO        2014-10-31  |  qspread=+0.0122  IC=+0.080  n_features=39  n_universe=2,325
+2026-05-25 16:44:12  INFO        2014-11-30  |  qspread=-0.0033  IC=-0.007  n_features=39  n_universe=2,329
+2026-05-25 16:44:12  INFO        2014-12-31  |  qspread=-0.0256  IC=-0.062  n_features=39  n_universe=2,318
+2026-05-25 16:44:12  INFO        ✓ checkpoint  scoring_year=2014  scored_months=348  elapsed=8m
+2026-05-25 16:44:12  INFO      [2015]  Training on [1981-01 .. 2014-12] …
+2026-05-25 16:44:19  INFO      [2015]  Screening 330 factors for Sharpe >= 0.8 …
+2026-05-25 16:44:43  INFO      [2015]  40/330 factors passed Sharpe filter  (NaN-filtered pool: 330)
+2026-05-25 16:44:49  DEBUG         XGBoost: best_iteration=128  top_feature=cop_mev
+2026-05-25 16:44:49  INFO      [2015]  Model trained  n_train=1,409,179  n_features=40  best_iter=128
+2026-05-25 16:44:49  INFO        2015-01-31  |  qspread=-0.0012  IC=+0.042  n_features=40  n_universe=2,305
+2026-05-25 16:44:49  INFO        2015-02-28  |  qspread=-0.0110  IC=-0.069  n_features=40  n_universe=2,304
+2026-05-25 16:44:49  INFO        2015-03-31  |  qspread=+0.0332  IC=+0.077  n_features=40  n_universe=2,301
+2026-05-25 16:44:49  INFO        2015-04-30  |  qspread=-0.0089  IC=-0.011  n_features=40  n_universe=2,305
+2026-05-25 16:44:49  INFO        2015-05-31  |  qspread=-0.0363  IC=-0.055  n_features=40  n_universe=2,305
+2026-05-25 16:44:49  INFO        2015-06-30  |  qspread=-0.0160  IC=-0.082  n_features=40  n_universe=2,307
+2026-05-25 16:44:49  INFO        2015-07-31  |  qspread=+0.0166  IC=+0.025  n_features=40  n_universe=2,281
+2026-05-25 16:44:49  INFO        2015-08-31  |  qspread=+0.0124  IC=-0.027  n_features=40  n_universe=2,272
+2026-05-25 16:44:49  INFO        2015-09-30  |  qspread=+0.0206  IC=+0.055  n_features=40  n_universe=2,248
+2026-05-25 16:44:49  INFO        2015-10-31  |  qspread=-0.0167  IC=-0.054  n_features=40  n_universe=2,257
+2026-05-25 16:44:49  INFO        2015-11-30  |  qspread=-0.0294  IC=-0.052  n_features=40  n_universe=2,253
+2026-05-25 16:44:49  INFO        2015-12-31  |  qspread=-0.0079  IC=-0.015  n_features=40  n_universe=2,227
+2026-05-25 16:44:49  INFO        ✓ checkpoint  scoring_year=2015  scored_months=360  elapsed=8m
+2026-05-25 16:44:49  INFO      [2016]  Training on [1981-01 .. 2015-12] …
+2026-05-25 16:44:57  INFO      [2016]  Screening 330 factors for Sharpe >= 0.8 …
+2026-05-25 16:45:26  INFO      [2016]  38/330 factors passed Sharpe filter  (NaN-filtered pool: 330)
+2026-05-25 16:45:31  DEBUG         XGBoost: best_iteration=87  top_feature=cop_mev
+2026-05-25 16:45:31  INFO      [2016]  Model trained  n_train=1,448,076  n_features=38  best_iter=87
+2026-05-25 16:45:31  INFO        2016-01-31  |  qspread=+0.0353  IC=+0.101  n_features=38  n_universe=2,185
+2026-05-25 16:45:31  INFO        2016-02-29  |  qspread=+0.0230  IC=+0.023  n_features=38  n_universe=2,180
+2026-05-25 16:45:31  INFO        2016-03-31  |  qspread=-0.0376  IC=-0.048  n_features=38  n_universe=2,193
+2026-05-25 16:45:31  INFO        2016-04-30  |  qspread=-0.0347  IC=-0.051  n_features=38  n_universe=2,201
+2026-05-25 16:45:31  INFO        2016-05-31  |  qspread=-0.0340  IC=-0.033  n_features=38  n_universe=2,193
+2026-05-25 16:45:31  INFO        2016-06-30  |  qspread=+0.0314  IC=+0.088  n_features=38  n_universe=2,194
+2026-05-25 16:45:31  INFO        2016-07-31  |  qspread=+0.0134  IC=-0.002  n_features=38  n_universe=2,206
+2026-05-25 16:45:31  INFO        2016-08-31  |  qspread=+0.0061  IC=+0.031  n_features=38  n_universe=2,191
+2026-05-25 16:45:31  INFO        2016-09-30  |  qspread=+0.0108  IC=-0.012  n_features=38  n_universe=2,191
+2026-05-25 16:45:31  INFO        2016-10-31  |  qspread=+0.0349  IC=+0.065  n_features=38  n_universe=2,183
+2026-05-25 16:45:31  INFO        2016-11-30  |  qspread=-0.0144  IC=-0.055  n_features=38  n_universe=2,192
+2026-05-25 16:45:31  INFO        2016-12-31  |  qspread=+0.0171  IC=+0.057  n_features=38  n_universe=2,189
+2026-05-25 16:45:31  INFO        ✓ checkpoint  scoring_year=2016  scored_months=372  elapsed=9m
+2026-05-25 16:45:31  INFO      [2017]  Training on [1981-01 .. 2016-12] …
+2026-05-25 16:45:40  INFO      [2017]  Screening 335 factors for Sharpe >= 0.8 …
+2026-05-25 16:46:08  INFO      [2017]  36/335 factors passed Sharpe filter  (NaN-filtered pool: 335)
+2026-05-25 16:46:11  DEBUG         XGBoost: best_iteration=22  top_feature=cop_mev
+2026-05-25 16:46:11  INFO      [2017]  Model trained  n_train=1,485,697  n_features=36  best_iter=22
+2026-05-25 16:46:11  INFO        2017-01-31  |  qspread=-0.0202  IC=-0.105  n_features=36  n_universe=2,200
+2026-05-25 16:46:11  INFO        2017-02-28  |  qspread=+0.0220  IC=+0.061  n_features=36  n_universe=2,196
+2026-05-25 16:46:11  INFO        2017-03-31  |  qspread=+0.0004  IC=+0.011  n_features=36  n_universe=2,186
+2026-05-25 16:46:11  INFO        2017-04-30  |  qspread=+0.0072  IC=+0.002  n_features=36  n_universe=2,181
+2026-05-25 16:46:11  INFO        2017-05-31  |  qspread=-0.0181  IC=-0.036  n_features=36  n_universe=2,170
+2026-05-25 16:46:11  INFO        2017-06-30  |  qspread=+0.0238  IC=+0.071  n_features=36  n_universe=2,169
+2026-05-25 16:46:11  INFO        2017-07-31  |  qspread=-0.0025  IC=+0.003  n_features=36  n_universe=2,165
+2026-05-25 16:46:11  INFO        2017-08-31  |  qspread=+0.0197  IC=+0.059  n_features=36  n_universe=2,147
+2026-05-25 16:46:11  INFO        2017-09-30  |  qspread=+0.0090  IC=+0.043  n_features=36  n_universe=2,146
+2026-05-25 16:46:11  INFO        2017-10-31  |  qspread=+0.0303  IC=+0.045  n_features=36  n_universe=2,137
+2026-05-25 16:46:11  INFO        2017-11-30  |  qspread=+0.0488  IC=+0.127  n_features=36  n_universe=2,147
+2026-05-25 16:46:11  INFO        2017-12-31  |  qspread=+0.0342  IC=+0.063  n_features=36  n_universe=2,145
+2026-05-25 16:46:11  INFO        ✓ checkpoint  scoring_year=2017  scored_months=384  elapsed=10m
+2026-05-25 16:46:11  INFO      [2018]  Training on [1981-01 .. 2017-12] …
+2026-05-25 16:46:18  INFO      [2018]  Screening 335 factors for Sharpe >= 0.8 …
+2026-05-25 16:46:44  INFO      [2018]  36/335 factors passed Sharpe filter  (NaN-filtered pool: 335)
+2026-05-25 16:46:46  DEBUG         XGBoost: best_iteration=18  top_feature=cop_mev
+2026-05-25 16:46:46  INFO      [2018]  Model trained  n_train=1,522,272  n_features=36  best_iter=18
+2026-05-25 16:46:46  INFO        2018-01-31  |  qspread=+0.0017  IC=-0.018  n_features=36  n_universe=2,146
+2026-05-25 16:46:46  INFO        2018-02-28  |  qspread=-0.0070  IC=-0.053  n_features=36  n_universe=2,141
+2026-05-25 16:46:46  INFO        2018-03-31  |  qspread=+0.0021  IC=-0.003  n_features=36  n_universe=2,128
+2026-05-25 16:46:46  INFO        2018-04-30  |  qspread=-0.0035  IC=-0.038  n_features=36  n_universe=2,136
+2026-05-25 16:46:46  INFO        2018-05-31  |  qspread=-0.0038  IC=-0.042  n_features=36  n_universe=2,141
+2026-05-25 16:46:46  INFO        2018-06-30  |  qspread=+0.0000  IC=+0.042  n_features=36  n_universe=2,137
+2026-05-25 16:46:46  INFO        2018-07-31  |  qspread=-0.0259  IC=-0.037  n_features=36  n_universe=2,128
+2026-05-25 16:46:47  INFO        2018-08-31  |  qspread=+0.0098  IC=+0.016  n_features=36  n_universe=2,121
+2026-05-25 16:46:47  INFO        2018-09-30  |  qspread=+0.0172  IC=+0.029  n_features=36  n_universe=2,117
+2026-05-25 16:46:47  INFO        2018-10-31  |  qspread=-0.0229  IC=-0.069  n_features=36  n_universe=2,085
+2026-05-25 16:46:47  INFO        2018-11-30  |  qspread=-0.0103  IC=-0.046  n_features=36  n_universe=2,064
+2026-05-25 16:46:47  INFO        2018-12-31  |  qspread=+0.0136  IC=+0.104  n_features=36  n_universe=2,021
+2026-05-25 16:46:47  INFO        ✓ checkpoint  scoring_year=2018  scored_months=396  elapsed=10m
+2026-05-25 16:46:47  INFO      [2019]  Training on [1981-01 .. 2018-12] …
+2026-05-25 16:46:55  INFO      [2019]  Screening 337 factors for Sharpe >= 0.8 …
+2026-05-25 16:47:24  INFO      [2019]  37/337 factors passed Sharpe filter  (NaN-filtered pool: 337)
+2026-05-25 16:47:27  DEBUG         XGBoost: best_iteration=24  top_feature=gp_mev
+2026-05-25 16:47:27  INFO      [2019]  Model trained  n_train=1,558,016  n_features=37  best_iter=24
+2026-05-25 16:47:27  INFO        2019-01-31  |  qspread=-0.0257  IC=-0.087  n_features=37  n_universe=2,045
+2026-05-25 16:47:27  INFO        2019-02-28  |  qspread=-0.0164  IC=-0.051  n_features=37  n_universe=2,045
+2026-05-25 16:47:27  INFO        2019-03-31  |  qspread=+0.0153  IC=-0.021  n_features=37  n_universe=2,041
+2026-05-25 16:47:27  INFO        2019-04-30  |  qspread=-0.0982  IC=-0.242  n_features=37  n_universe=2,038
+2026-05-25 16:47:27  INFO        2019-05-31  |  qspread=+0.0375  IC=+0.116  n_features=37  n_universe=2,013
+2026-05-25 16:47:27  INFO        2019-06-30  |  qspread=-0.0207  IC=-0.085  n_features=37  n_universe=2,022
+2026-05-25 16:47:27  INFO        2019-07-31  |  qspread=-0.0662  IC=-0.150  n_features=37  n_universe=2,014
+2026-05-25 16:47:27  INFO        2019-08-31  |  qspread=+0.0618  IC=+0.166  n_features=37  n_universe=1,996
+2026-05-25 16:47:27  INFO        2019-09-30  |  qspread=-0.0102  IC=-0.060  n_features=37  n_universe=1,989
+2026-05-25 16:47:27  INFO        2019-10-31  |  qspread=-0.0238  IC=-0.012  n_features=37  n_universe=1,979
+2026-05-25 16:47:27  INFO        2019-11-30  |  qspread=+0.0258  IC=+0.036  n_features=37  n_universe=1,965
+2026-05-25 16:47:27  INFO        2019-12-31  |  qspread=-0.0533  IC=-0.161  n_features=37  n_universe=1,976
+2026-05-25 16:47:27  INFO        ✓ checkpoint  scoring_year=2019  scored_months=408  elapsed=11m
+2026-05-25 16:47:27  INFO      [2020]  Training on [1981-01 .. 2019-12] …
+2026-05-25 16:47:35  INFO      [2020]  Screening 338 factors for Sharpe >= 0.8 …
+2026-05-25 16:48:04  INFO      [2020]  35/338 factors passed Sharpe filter  (NaN-filtered pool: 338)
+2026-05-25 16:48:06  DEBUG         XGBoost: best_iteration=12  top_feature=gp_mev
+2026-05-25 16:48:06  INFO      [2020]  Model trained  n_train=1,592,372  n_features=35  best_iter=12
+2026-05-25 16:48:07  INFO        2020-01-31  |  qspread=-0.0425  IC=-0.143  n_features=35  n_universe=1,961
+2026-05-25 16:48:07  INFO        2020-02-29  |  qspread=-0.1351  IC=-0.135  n_features=35  n_universe=1,937
+2026-05-25 16:48:07  INFO        2020-03-31  |  qspread=+0.0908  IC=+0.168  n_features=35  n_universe=1,802
+2026-05-25 16:48:07  INFO        2020-04-30  |  qspread=-0.0567  IC=+0.003  n_features=35  n_universe=1,861
+2026-05-25 16:48:07  INFO        2020-05-31  |  qspread=+0.0493  IC=+0.060  n_features=35  n_universe=1,869
+2026-05-25 16:48:07  INFO        2020-06-30  |  qspread=-0.0144  IC=+0.015  n_features=35  n_universe=1,879
+2026-05-25 16:48:07  INFO        2020-07-31  |  qspread=+0.0292  IC=+0.118  n_features=35  n_universe=1,881
+2026-05-25 16:48:07  INFO        2020-08-31  |  qspread=-0.0382  IC=-0.085  n_features=35  n_universe=1,909
+2026-05-25 16:48:07  INFO        2020-09-30  |  qspread=+0.0077  IC=+0.017  n_features=35  n_universe=1,898
+2026-05-25 16:48:07  INFO        2020-10-31  |  qspread=+0.1018  IC=+0.135  n_features=35  n_universe=1,893
+2026-05-25 16:48:07  INFO        2020-11-30  |  qspread=+0.0123  IC=-0.005  n_features=35  n_universe=1,953
+2026-05-25 16:48:07  INFO        2020-12-31  |  qspread=+0.0701  IC=+0.147  n_features=35  n_universe=1,967
+2026-05-25 16:48:07  INFO        ✓ checkpoint  scoring_year=2020  scored_months=420  elapsed=11m
+2026-05-25 16:48:07  INFO      [2021]  Training on [1981-01 .. 2020-12] …
+2026-05-25 16:48:15  INFO      [2021]  Screening 340 factors for Sharpe >= 0.8 …
+2026-05-25 16:48:51  INFO      [2021]  28/340 factors passed Sharpe filter  (NaN-filtered pool: 340)
+2026-05-25 16:48:53  DEBUG         XGBoost: best_iteration=19  top_feature=cop_mev
+2026-05-25 16:48:53  INFO      [2021]  Model trained  n_train=1,625,726  n_features=28  best_iter=19
+2026-05-25 16:48:53  INFO        2021-01-31  |  qspread=+0.0825  IC=+0.101  n_features=28  n_universe=2,005
+2026-05-25 16:48:53  INFO        2021-02-28  |  qspread=+0.0626  IC=+0.155  n_features=28  n_universe=2,033
+2026-05-25 16:48:53  INFO        2021-03-31  |  qspread=-0.0160  IC=-0.032  n_features=28  n_universe=2,054
+2026-05-25 16:48:53  INFO        2021-04-30  |  qspread=+0.0714  IC=+0.214  n_features=28  n_universe=2,075
+2026-05-25 16:48:53  INFO        2021-05-31  |  qspread=-0.0289  IC=-0.062  n_features=28  n_universe=2,094
+2026-05-25 16:48:53  INFO        2021-06-30  |  qspread=-0.0370  IC=-0.088  n_features=28  n_universe=2,112
+2026-05-25 16:48:53  INFO        2021-07-31  |  qspread=+0.0182  IC=-0.013  n_features=28  n_universe=2,105
+2026-05-25 16:48:53  INFO        2021-08-31  |  qspread=+0.0303  IC=+0.099  n_features=28  n_universe=2,102
+2026-05-25 16:48:53  INFO        2021-09-30  |  qspread=-0.0317  IC=-0.099  n_features=28  n_universe=2,101
+2026-05-25 16:48:53  INFO        2021-10-31  |  qspread=+0.0272  IC=+0.033  n_features=28  n_universe=2,101
+2026-05-25 16:48:53  INFO        2021-11-30  |  qspread=+0.0077  IC=-0.002  n_features=28  n_universe=2,092
+2026-05-25 16:48:53  INFO        2021-12-31  |  qspread=+0.0927  IC=+0.262  n_features=28  n_universe=2,109
+2026-05-25 16:48:54  INFO        ✓ checkpoint  scoring_year=2021  scored_months=432  elapsed=12m
+2026-05-25 16:48:54  INFO      [2022]  Training on [1981-01 .. 2021-12] …
+2026-05-25 16:49:01  INFO      [2022]  Screening 341 factors for Sharpe >= 0.8 …
+2026-05-25 16:49:37  INFO      [2022]  27/341 factors passed Sharpe filter  (NaN-filtered pool: 341)
+2026-05-25 16:49:39  DEBUG         XGBoost: best_iteration=26  top_feature=cop_me
+2026-05-25 16:49:39  INFO      [2022]  Model trained  n_train=1,659,882  n_features=27  best_iter=26
+2026-05-25 16:49:39  INFO        2022-01-31  |  qspread=+0.0152  IC=+0.093  n_features=27  n_universe=2,112
+2026-05-25 16:49:39  INFO        2022-02-28  |  qspread=-0.0135  IC=-0.038  n_features=27  n_universe=2,111
+2026-05-25 16:49:39  INFO        2022-03-31  |  qspread=+0.0469  IC=+0.103  n_features=27  n_universe=2,116
+2026-05-25 16:49:39  INFO        2022-04-30  |  qspread=+0.0564  IC=+0.158  n_features=27  n_universe=2,103
+2026-05-25 16:49:39  INFO        2022-05-31  |  qspread=-0.0714  IC=-0.137  n_features=27  n_universe=2,088
+2026-05-25 16:49:39  INFO        2022-06-30  |  qspread=+0.0010  IC=-0.043  n_features=27  n_universe=2,047
+2026-05-25 16:49:39  INFO        2022-07-31  |  qspread=+0.0283  IC=+0.082  n_features=27  n_universe=2,055
+2026-05-25 16:49:39  INFO        2022-08-31  |  qspread=-0.0261  IC=+0.009  n_features=27  n_universe=2,046
+2026-05-25 16:49:39  INFO        2022-09-30  |  qspread=+0.0816  IC=+0.137  n_features=27  n_universe=2,017
+2026-05-25 16:49:39  INFO        2022-10-31  |  qspread=+0.0191  IC=+0.007  n_features=27  n_universe=2,010
+2026-05-25 16:49:39  INFO        2022-11-30  |  qspread=-0.0166  IC=-0.007  n_features=27  n_universe=2,014
+2026-05-25 16:49:39  INFO        2022-12-31  |  qspread=+0.0627  IC=+0.130  n_features=27  n_universe=1,965
+2026-05-25 16:49:39  INFO        ✓ checkpoint  scoring_year=2022  scored_months=444  elapsed=13m
+2026-05-25 16:49:39  INFO      [2023]  Training on [1981-01 .. 2022-12] …
+2026-05-25 16:49:47  INFO      [2023]  Screening 341 factors for Sharpe >= 0.8 …
+2026-05-25 16:50:20  INFO      [2023]  27/341 factors passed Sharpe filter  (NaN-filtered pool: 341)
+2026-05-25 16:50:23  DEBUG         XGBoost: best_iteration=31  top_feature=cop_me
+2026-05-25 16:50:23  INFO      [2023]  Model trained  n_train=1,694,301  n_features=27  best_iter=31
+2026-05-25 16:50:23  INFO        2023-01-31  |  qspread=-0.0101  IC=+0.021  n_features=27  n_universe=1,985
+2026-05-25 16:50:23  INFO        2023-02-28  |  qspread=-0.0770  IC=-0.180  n_features=27  n_universe=1,968
+2026-05-25 16:50:23  INFO        2023-03-31  |  qspread=-0.0144  IC=-0.066  n_features=27  n_universe=1,945
+2026-05-25 16:50:23  INFO        2023-04-30  |  qspread=-0.0245  IC=-0.057  n_features=27  n_universe=1,941
+2026-05-25 16:50:23  INFO        2023-05-31  |  qspread=+0.0596  IC=+0.116  n_features=27  n_universe=1,925
+2026-05-25 16:50:23  INFO        2023-06-30  |  qspread=+0.0742  IC=+0.239  n_features=27  n_universe=1,926
+2026-05-25 16:50:23  INFO        2023-07-31  |  qspread=+0.0196  IC=+0.031  n_features=27  n_universe=1,936
+2026-05-25 16:50:23  INFO        2023-08-31  |  qspread=+0.0605  IC=+0.174  n_features=27  n_universe=1,911
+2026-05-25 16:50:23  INFO        2023-09-30  |  qspread=+0.0109  IC=-0.025  n_features=27  n_universe=1,896
+2026-05-25 16:50:23  INFO        2023-10-31  |  qspread=+0.0065  IC=-0.027  n_features=27  n_universe=1,872
+2026-05-25 16:50:23  INFO        2023-11-30  |  qspread=+0.0093  IC=+0.020  n_features=27  n_universe=1,875
+2026-05-25 16:50:23  INFO        2023-12-31  |  qspread=-0.0089  IC=+0.051  n_features=27  n_universe=1,885
+2026-05-25 16:50:23  INFO        ✓ checkpoint  scoring_year=2023  scored_months=456  elapsed=14m
+2026-05-25 16:50:23  INFO      [2024]  Training on [1981-01 .. 2023-12] …
+2026-05-25 16:50:31  INFO      [2024]  Screening 342 factors for Sharpe >= 0.8 …
+2026-05-25 16:51:14  INFO      [2024]  29/342 factors passed Sharpe filter  (NaN-filtered pool: 342)
+2026-05-25 16:51:17  DEBUG         XGBoost: best_iteration=31  top_feature=cop_mev
+2026-05-25 16:51:17  INFO      [2024]  Model trained  n_train=1,726,851  n_features=29  best_iter=31
+2026-05-25 16:51:17  INFO        2024-01-31  |  qspread=-0.0234  IC=-0.051  n_features=29  n_universe=1,768
+2026-05-25 16:51:17  INFO        2024-02-29  |  qspread=+0.0574  IC=+0.194  n_features=29  n_universe=1,769
+2026-05-25 16:51:17  INFO        2024-03-31  |  qspread=+0.0025  IC=+0.056  n_features=29  n_universe=1,753
+2026-05-25 16:51:18  INFO        2024-04-30  |  qspread=+0.0097  IC=+0.098  n_features=29  n_universe=1,738
+2026-05-25 16:51:18  INFO        2024-05-31  |  qspread=-0.0290  IC=-0.150  n_features=29  n_universe=1,725
+2026-05-25 16:51:18  INFO        2024-06-30  |  qspread=+0.0139  IC=+0.076  n_features=29  n_universe=1,725
+2026-05-25 16:51:18  INFO        2024-07-31  |  qspread=-0.0353  IC=-0.100  n_features=29  n_universe=1,733
+2026-05-25 16:51:18  INFO        2024-08-31  |  qspread=-0.0245  IC=-0.012  n_features=29  n_universe=1,718
+2026-05-25 16:51:18  INFO        2024-09-30  |  qspread=-0.0074  IC=-0.063  n_features=29  n_universe=1,717
+2026-05-25 16:51:18  INFO        2024-10-31  |  qspread=-0.0155  IC=+0.012  n_features=29  n_universe=1,737
+2026-05-25 16:51:18  INFO        2024-11-30  |  qspread=+0.0038  IC=+0.101  n_features=29  n_universe=1,704
+2026-05-25 16:51:18  INFO        2024-12-31  |  qspread=+0.0649  IC=+nan  n_features=29  n_universe=2
+2026-05-25 16:51:18  INFO        ✓ checkpoint  scoring_year=2024  scored_months=468  elapsed=15m
+2026-05-25 16:51:18  INFO      [2025]  Training on [1981-01 .. 2024-12] …
+2026-05-25 16:51:33  INFO      [2025]  Screening 342 factors for Sharpe >= 0.8 …
+2026-05-25 16:52:20  INFO      [2025]  27/342 factors passed Sharpe filter  (NaN-filtered pool: 342)
+2026-05-25 16:52:24  DEBUG         XGBoost: best_iteration=43  top_feature=cop_mev
+2026-05-25 16:52:24  INFO      [2025]  Model trained  n_train=1,751,432  n_features=27  best_iter=43
+2026-05-25 16:52:24  INFO        2025-01-31  |  qspread=-0.0307  IC=-0.072  n_features=27  n_universe=1,809
+2026-05-25 16:52:24  INFO        2025-02-28  |  qspread=+0.0154  IC=+0.002  n_features=27  n_universe=1,792
+2026-05-25 16:52:24  INFO        2025-03-31  |  qspread=-0.0604  IC=-0.104  n_features=27  n_universe=1,770
+2026-05-25 16:52:24  INFO        2025-04-30  |  qspread=+0.0036  IC=+0.078  n_features=27  n_universe=1,753
+2026-05-25 16:52:24  INFO        2025-05-31  |  qspread=+0.0188  IC=+0.119  n_features=27  n_universe=1,764
+2026-05-25 16:52:24  INFO        2025-06-30  |  qspread=+0.0126  IC=+0.028  n_features=27  n_universe=1,785
+2026-05-25 16:52:24  INFO        2025-07-31  |  qspread=+0.0565  IC=+0.165  n_features=27  n_universe=1,780
+2026-05-25 16:52:24  INFO        2025-08-31  |  qspread=-0.0080  IC=-0.068  n_features=27  n_universe=1,796
+2026-05-25 16:52:24  INFO        2025-09-30  |  qspread=+0.0188  IC=-0.047  n_features=27  n_universe=1,807
+2026-05-25 16:52:24  INFO        2025-10-31  |  qspread=+0.0243  IC=+0.107  n_features=27  n_universe=1,793
+2026-05-25 16:52:24  WARNING     2025-11-30  skipped — insufficient stocks with forward returns
+2026-05-25 16:52:24  WARNING     2025-12-31  skipped — insufficient stocks with forward returns
+2026-05-25 16:52:24  INFO        ✓ checkpoint  scoring_year=2025  scored_months=478  elapsed=16m
+2026-05-25 16:52:24  INFO      Finalising outputs …
+2026-05-25 16:52:24  INFO        → /Users/tungyuenlok/Desktop/MLII Project/data/backtest/xgboost_factor_screened/monthly_returns.csv  (478 rows)
+2026-05-25 16:52:24  INFO        → /Users/tungyuenlok/Desktop/MLII Project/data/backtest/xgboost_factor_screened/performance.csv
+2026-05-25 16:52:24  INFO      ==============================================================
+2026-05-25 16:52:24  INFO        XGBOOST + FACTOR SCREENING — PERFORMANCE SUMMARY
+2026-05-25 16:52:24  INFO      ==============================================================
+2026-05-25 16:52:24  INFO        Period         : 1986-01-31 → 2025-10-31
+2026-05-25 16:52:24  INFO        Months         : 478
+2026-05-25 16:52:24  INFO        TC             : 10.0 bps one-way
+2026-05-25 16:52:24  INFO        Sharpe thresh  : 0.8
+2026-05-25 16:52:24  INFO        Burn-in        : 5 years (1981-1985)
+2026-05-25 16:52:24  INFO        ── Gross Q-spread ──────────────────────────────
+2026-05-25 16:52:24  INFO        Ann. Return    :   13.50%
+2026-05-25 16:52:24  INFO        Ann. Volatility:   14.84%
+2026-05-25 16:52:24  INFO        Sharpe Ratio   :     0.91
+2026-05-25 16:52:24  INFO        Max Drawdown   :  -33.45%
+2026-05-25 16:52:24  INFO        Win Rate       :   65.69%
+2026-05-25 16:52:24  INFO        ── Net Q-spread (after 10.0 bps TC) ─────────────
+2026-05-25 16:52:24  INFO        Ann. Return    :   12.01%
+2026-05-25 16:52:24  INFO        Ann. Volatility:   14.84%
+2026-05-25 16:52:24  INFO        Sharpe Ratio   :     0.81
+2026-05-25 16:52:24  INFO        Max Drawdown   :  -35.10%
+2026-05-25 16:52:24  INFO        Win Rate       :   64.02%
+2026-05-25 16:52:24  INFO        ── Information Coefficient ─────────────────────
+2026-05-25 16:52:24  INFO        Mean IC (Pearson)  :   0.0312
+2026-05-25 16:52:24  INFO        Mean IC (Spearman) :   0.0286
+2026-05-25 16:52:24  INFO        ICIR (Spearman)    :     1.25
+2026-05-25 16:52:24  INFO      ==============================================================
+2026-05-25 16:52:24  INFO      Total elapsed: 16 min
+2026-05-25 16:52:25  INFO        → /Users/tungyuenlok/Desktop/MLII Project/data/backtest/xgboost_factor_screened/cumulative_returns.png
+2026-05-25 16:52:25  INFO      checkpoint.pkl removed (run complete)
