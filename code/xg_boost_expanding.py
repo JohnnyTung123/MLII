@@ -40,6 +40,7 @@ import numpy as np
 import pandas as pd
 from scipy.stats import spearmanr
 from xgboost import XGBRegressor
+from portfolio_fixed import construct_portfolio_vw
 
 warnings.filterwarnings("ignore")
 
@@ -399,16 +400,14 @@ _CKPT_PATH = BACKTEST / "checkpoint.pkl"
 
 def _save_checkpoint(
     scoring_year: int,
-    prev_long_ids: set,
-    prev_short_ids: set,
+    prev_weights: dict,
     n_train_rows: int,
 ) -> None:
     with open(_CKPT_PATH, "wb") as f:
         pickle.dump({
-            "scoring_year":  scoring_year,
-            "prev_long_ids":  prev_long_ids  or set(),
-            "prev_short_ids": prev_short_ids or set(),
-            "n_train_rows":   n_train_rows,
+            "scoring_year": scoring_year,
+            "prev_weights": prev_weights or {},
+            "n_train_rows": n_train_rows,
         }, f)
 
 
@@ -540,8 +539,7 @@ def run_backtest(
 
     # ── Resume logic ──────────────────────────────────────────────────────────
     resume_from_year: int | None = None
-    prev_long_ids:   set | None  = None
-    prev_short_ids:  set | None  = None
+    prev_weights: dict | None = None
     first_flush = True
 
     if resume:
@@ -552,8 +550,7 @@ def run_backtest(
             # resume_from_year is the next year to process (already completed
             # years up to scoring_year saved in checkpoint)
             resume_from_year = ckpt["scoring_year"] + 1
-            prev_long_ids    = ckpt["prev_long_ids"]
-            prev_short_ids   = ckpt["prev_short_ids"]
+            prev_weights     = ckpt.get("prev_weights")
             first_flush      = False
             logger.info(
                 f"Resuming from checkpoint: next scoring_year={resume_from_year}  "
@@ -647,8 +644,16 @@ def run_backtest(
 
             ic_p, ic_s = compute_ic(predicted, realized)
 
-            port_df, summary = construct_portfolio(
-                predicted, realized, prev_long_ids, prev_short_ids, tc_bps
+            # market equity for value-weighting, aligned to the scored names
+            me_t = slices[t]["me_company"].reindex(signal_df.index)
+
+            port_df, summary = construct_portfolio_vw(
+                predicted, realized, me_t,
+                prev_weights, tc_bps,
+                cap_pctl=0.80,      # winsorize cap weights at 80th pctl (JKP-style)
+                micro_pctl=0.20,    # drop bottom 20% by me each month; 0.0 disables
+                ret_cap=RET_CAP,
+                decile=DECILE,
             )
             if port_df is None:
                 logger.warning(
@@ -656,8 +661,7 @@ def run_backtest(
                 )
                 continue
 
-            prev_long_ids  = set(port_df.loc[port_df["leg"] == "long",  "id"])
-            prev_short_ids = set(port_df.loc[port_df["leg"] == "short", "id"])
+            prev_weights = dict(zip(port_df["id"], port_df["weight"]))
 
             row = {
                 "eom":            t,
@@ -687,7 +691,7 @@ def run_backtest(
         # ── Checkpoint + flush at end of each scoring year ────────────────────
         if rows_buf:
             _flush(rows_buf, port_buf, imp_buf, first_flush)
-            _save_checkpoint(scoring_year, prev_long_ids or set(), prev_short_ids or set(), n_train_rows)
+            _save_checkpoint(scoring_year, prev_weights or {}, n_train_rows)
             elapsed = (datetime.now() - t_start).seconds // 60
             logger.info(
                 f"  ✓ checkpoint saved after scoring_year={scoring_year}  "
