@@ -21,7 +21,6 @@ Run:
     python ab_harness.py --start 1986 --tc 10 --half-life 120
     python ab_harness.py --half-life inf        # disable recency weighting
 """
-# python final_code/ab_harness.py --half-life inf
 
 from __future__ import annotations
 
@@ -111,8 +110,10 @@ def _flush_rows(rows: list[dict], cfg: str, out: Path, first_flush: bool) -> Non
     )
 
 
-def run_ab(start_year=1986, burn_in_years=5, tc_bps=10.0, half_life=120.0, resume=False):
-    out = E.BACKTEST.parent / "xgboost_ab"
+def run_ab(start_year=1986, burn_in_years=5, tc_bps=10.0, half_life=120.0, fresh=False,
+           run_name=None):
+    hl_tag = f"hl{int(half_life)}" if np.isfinite(half_life) else "hlinf"
+    out = E.BACKTEST.parent / (run_name or f"xgboost_ab_{hl_tag}")
     out.mkdir(parents=True, exist_ok=True)
     logger = E.setup_logger(out)
     logger.info(f"A/B/C harness — recency half-life = {half_life} months")
@@ -133,20 +134,21 @@ def run_ab(start_year=1986, burn_in_years=5, tc_bps=10.0, half_life=120.0, resum
     recS = deque(maxlen=E.VOL_LOOKBACK)
     resume_from_year: int | None = None
 
-    if resume:
-        ckpt = _load_checkpoint(out)
-        if ckpt is None:
-            logger.info("No checkpoint found — starting fresh.")
-        else:
-            resume_from_year = ckpt["scoring_year"] + 1
-            prevA_long  = ckpt["prevA_long"]
-            prevA_short = ckpt["prevA_short"]
-            prevB       = ckpt["prevB"]
-            prevC       = ckpt["prevC"]
-            recL.extend(ckpt["recL"])
-            recS.extend(ckpt["recS"])
-            first_flush = {c: False for c in cfgs}
-            logger.info(f"Resuming from checkpoint: next scoring_year={resume_from_year}")
+    ckpt = None if fresh else _load_checkpoint(out)
+    if fresh:
+        logger.info("--fresh flag set — ignoring any existing checkpoint.")
+    elif ckpt is None:
+        logger.info("No checkpoint found — starting fresh.")
+    else:
+        resume_from_year = ckpt["scoring_year"] + 1
+        prevA_long  = ckpt["prevA_long"]
+        prevA_short = ckpt["prevA_short"]
+        prevB       = ckpt["prevB"]
+        prevC       = ckpt["prevC"]
+        recL.extend(ckpt["recL"])
+        recS.extend(ckpt["recS"])
+        first_flush = {c: False for c in cfgs}
+        logger.info(f"Resuming from checkpoint: next scoring_year={resume_from_year}")
 
     # expanding cache (reuse enhanced builder)
     X_cache, y_cache, ns_cache, oc_cache = E._build_train_arrays_range(
@@ -305,9 +307,11 @@ if __name__ == "__main__":
     p.add_argument("--tc", type=float, default=10.0)
     p.add_argument("--half-life", default="120",
                    help="recency half-life in months, or 'inf' to disable")
-    p.add_argument("--resume", action="store_true",
-                   help="Resume from the last saved checkpoint.")
+    p.add_argument("--fresh", action="store_true",
+                   help="Ignore any existing checkpoint and restart from scratch.")
+    p.add_argument("--run-name", default=None,
+                   help="Output folder name under data/backtest/ (default: xgboost_ab_hl<N>).")
     a = p.parse_args()
     hl = float("inf") if str(a.half_life).lower() in ("inf", "none") else float(a.half_life)
     run_ab(start_year=a.start, burn_in_years=a.burn_in, tc_bps=a.tc, half_life=hl,
-           resume=a.resume)
+           fresh=a.fresh, run_name=a.run_name)
