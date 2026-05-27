@@ -1,0 +1,17 @@
+,value
+gross_ann_ret,0.1239
+gross_ann_vol,0.1459
+gross_sharpe,0.8493
+gross_max_dd,-0.295
+gross_win_rate,0.6109
+net_ann_ret,0.1081
+net_ann_vol,0.1459
+net_sharpe,0.7407
+net_max_dd,-0.3136
+net_win_rate,0.5962
+ic_mean_pearson,0.0316
+ic_mean_spearman,0.0298
+icir_pearson,1.4559
+icir_spearman,1.3495
+n_months,478.0
+tc_bps,10.0
