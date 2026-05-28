@@ -189,6 +189,7 @@ def run_ab(start_year=1986, burn_in_years=5, tc_bps=10.0, half_life=120.0, resum
         best_iters = [m.best_iteration for m in models]
         logger.info(f"[{sy}] trained {len(models)} seeds  n={len(y_cache):,}  "
                     f"feats={len(cur_cols)}  recency={'on' if sw is not None else 'off'}")
+        _save_retrain_artifacts(sy, models, cur_cols, out, logger)
 
         for t in [m for m in months if m.year == sy and m in slices]:
             sdf = slices[t][cur_cols + [E.Y_COL]]
@@ -279,6 +280,18 @@ def run_ab(start_year=1986, burn_in_years=5, tc_bps=10.0, half_life=120.0, resum
         ckpt.unlink()
         logger.info("checkpoint.pkl removed (run complete)")
 
+    # consolidate all per-year importance CSVs into one file
+    importance_dir = out / "feature_importance"
+    yearly_files = sorted(importance_dir.glob("importance_*.csv"))
+    if yearly_files:
+        all_imp = pd.concat([pd.read_csv(f) for f in yearly_files], ignore_index=True)
+        all_imp.to_csv(importance_dir / "feature_importance_all.csv", index=False)
+        # also write a time-averaged summary ranked by mean gain
+        summary = (all_imp.groupby("feature")[["gain", "gain_norm", "weight", "cover"]]
+                   .mean().sort_values("gain", ascending=False).reset_index())
+        summary.to_csv(importance_dir / "feature_importance_summary.csv", index=False)
+        logger.info(f"Feature importance summary written to {importance_dir}")
+
 
 def _train_ensemble_weighted(X_train, y_train, cur_cols, sample_weight, logger):
     """train_ensemble, but threads an optional sample_weight into .fit()."""
@@ -296,6 +309,40 @@ def _train_ensemble_weighted(X_train, y_train, cur_cols, sample_weight, logger):
               eval_set=[(X_val, y_val)], verbose=False)
         models.append(m)
     return models
+
+
+def _save_retrain_artifacts(sy: int, models: list, cur_cols: list, out: Path, logger) -> None:
+    """Save ensemble models and feature importances after each retrain."""
+    models_dir = out / "models"
+    importance_dir = out / "feature_importance"
+    models_dir.mkdir(parents=True, exist_ok=True)
+    importance_dir.mkdir(parents=True, exist_ok=True)
+
+    # save full model ensemble
+    model_path = models_dir / f"ensemble_{sy}.pkl"
+    with open(model_path, "wb") as f:
+        pickle.dump({"year": sy, "models": models, "feature_names": cur_cols}, f)
+
+    # aggregate gain-based importance across all seeds
+    importance_types = ["gain", "weight", "cover"]
+    imp_frames = []
+    for imp_type in importance_types:
+        scores_per_seed = []
+        for m in models:
+            booster = m.get_booster()
+            raw = booster.get_score(importance_type=imp_type)
+            scores_per_seed.append(pd.Series(raw, name=imp_type))
+        # average across seeds, fill missing features with 0
+        avg = pd.concat(scores_per_seed, axis=1).fillna(0).mean(axis=1)
+        imp_frames.append(avg.rename(imp_type))
+
+    imp_df = pd.concat(imp_frames, axis=1).reset_index().rename(columns={"index": "feature"})
+    # normalise gain to sum to 1 for easy comparison
+    imp_df["gain_norm"] = imp_df["gain"] / imp_df["gain"].sum() if imp_df["gain"].sum() > 0 else 0.0
+    imp_df.insert(0, "year", sy)
+    imp_df.sort_values("gain", ascending=False, inplace=True)
+    imp_df.to_csv(importance_dir / f"importance_{sy}.csv", index=False)
+    logger.info(f"  [models] saved ensemble_{sy}.pkl + importance_{sy}.csv")
 
 
 if __name__ == "__main__":
